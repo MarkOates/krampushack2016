@@ -2,10 +2,13 @@
 
 
 TitleScreen
-  Input:
+  Actions:
     CursorUp
     CursorDown
+    SelectOption
+  Options:
     StartGame
+    Exit
 
 StoryBoardScreen
   Input:

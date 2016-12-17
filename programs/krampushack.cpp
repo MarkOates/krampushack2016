@@ -8,7 +8,9 @@
 class KrampusHackProject : public Screen
 {
 public:
-	KrampusHackProject(Display *display) : Screen(display) {}
+	KrampusHackProject(Display *display)
+      : Screen(display)
+   {}
 };
 
 

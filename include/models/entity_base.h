@@ -10,13 +10,12 @@
 
 class EntityBase : public ElementID
 {
-private:
+public:
    placement2d place;
    placement2d velocity;
    BitmapObject bitmap;
    std::string type;
 
-public:
    EntityBase(ElementID *parent, std::string type, float x, float y);
    ~EntityBase();
 

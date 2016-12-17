@@ -3,6 +3,7 @@
 
 #include <models/entity_base.h>
 #include <models/scene.h>
+#include <algorithm>
 
 
 
@@ -22,8 +23,15 @@ void Scene::update_all()
 
 void Scene::draw_all()
 {
-   for (auto &descendant : get_flat_list_of_descendants<EntityBase>())
-      descendant->draw();
+   // for rendering, all entities need to be sorted as a flat list based on their y position
+
+   std::vector<EntityBase *> entities = get_flat_list_of_descendants<EntityBase>();
+
+   std::sort(entities.begin(), entities.end(),[](const EntityBase *a, const EntityBase *b)
+         { return a->place.position.y < b->place.position.y; }
+      );
+
+   for (auto &entity : entities) entity->draw();
 }
 
 

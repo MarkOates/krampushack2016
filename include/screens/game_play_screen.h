@@ -9,7 +9,9 @@
 class GamePlayScreen : public Screen
 {
 public:
-	GamePlayScreen(Display *display);
+   GamePlayScreen(Display *display);
+
+   void primary_timer_func() override;
 };
 
 

@@ -9,13 +9,21 @@
 
 class TitleScreen : public Screen
 {
+private:
+   enum
+   {
+      SHOWING_TITLE,
+      ITEM_SELECTED
+   };
+
 public:
    FontBin fonts;
    int menu_cursor_pos;
    TextObject title;
    std::vector<TextObject> menu_items;
+   int state;
 
-	TitleScreen(Display *display);
+   TitleScreen(Display *display);
 
    void primary_timer_func() override;
    void key_down_func() override;

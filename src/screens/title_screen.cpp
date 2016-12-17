@@ -3,6 +3,13 @@
 
 #include <allegro_flare/framework.h>
 #include <screens/title_screen.h>
+#include <emitters/user_event_emitter.h>
+#include <user_events.h>
+
+
+
+#define MENU_OPTION_START "start"
+#define MENU_OPTION_EXIT "exit"
 
 
 
@@ -11,7 +18,8 @@ TitleScreen::TitleScreen(Display *display)
    , fonts()
    , menu_cursor_pos(0)
    , title(TextObject("KrampusHack"))
-   , menu_items({TextObject("start"), TextObject("exit")})
+   , menu_items({TextObject(MENU_OPTION_START), TextObject(MENU_OPTION_EXIT)})
+   , state(SHOWING_TITLE)
 {
    ALLEGRO_FONT *font = fonts["ChronoTrigger.ttf 60"];
 
@@ -99,7 +107,14 @@ void TitleScreen::refresh_focused_menu_item()
 
 void TitleScreen::select_option_action()
 {
-   // todo
+   state = ITEM_SELECTED;
+
+   std::string selected_menu_str = menu_items[menu_cursor_pos].str;
+
+   if (selected_menu_str == MENU_OPTION_START)
+      UserEventEmitter::emit_event(START_GAME_EVENT);
+   else if (selected_menu_str == MENU_OPTION_EXIT)
+      Framework::shutdown_program = true;
 }
 
 

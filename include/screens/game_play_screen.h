@@ -15,6 +15,9 @@ public:
    Scene *scene;
 
    void primary_timer_func() override;
+
+   void update();
+   void draw();
 };
 
 

@@ -19,9 +19,22 @@ GamePlayScreen::GamePlayScreen(Display *display)
 
 void GamePlayScreen::primary_timer_func()
 {
-   al_clear_to_color(color::hex("2f3938"));
+   update();
+   draw();
+}
 
+
+
+void GamePlayScreen::update()
+{
    if (scene) scene->update_all();
+}
+
+
+
+void GamePlayScreen::draw()
+{
+   al_clear_to_color(color::hex("2f3938"));
    if (scene) scene->draw_all();
 }
 

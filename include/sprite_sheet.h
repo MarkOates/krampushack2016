@@ -16,11 +16,11 @@ private:
    bool _create_sub_sprites();
    int sprite_width;
    int sprite_height;
-   int num_sprites_x;
-   int num_sprites_y;
+   int num_rows;
+   int num_columns;
 
 public:
-   SpriteSheet(std::string filename);
+   SpriteSheet(std::string filename, int sprite_width=32, int sprite_height=32, int num_rows=6, int num_columns=6);
    ~SpriteSheet();
 
    ALLEGRO_BITMAP *get_sprite(int index);

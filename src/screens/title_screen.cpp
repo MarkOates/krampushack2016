@@ -13,17 +13,22 @@ TitleScreen::TitleScreen(Display *display)
    , title(TextObject("KrampusHack"))
    , menu_items({TextObject("start"), TextObject("exit")})
 {
-   ALLEGRO_FONT *font = fonts["ChronoTrigger.ttf 20"];
+   ALLEGRO_FONT *font = fonts["ChronoTrigger.ttf 60"];
 
    title.font(font)
       .align(0.5, 0.5)
-      .scale(5, 5);
+      .scale(2, 2)
+      .position(display->center(), display->middle()-100);
 
+   int count = 0;
    for (auto &menu_item : menu_items)
    {
       menu_item.font(font)
          .align(0.5, 0.5)
-         .scale(1.0, 1.0);
+         .scale(1.0, 1.0)
+         .position(display->center(), display->middle()+count*50);
+
+      count++;
    }
 }
 

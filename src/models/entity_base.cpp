@@ -14,9 +14,6 @@ EntityBase::EntityBase(ElementID *parent, std::string type, float x, float y)
 {
    velocity.scale = vec2d(0, 0);
    velocity.align = vec2d(0, 0);
-
-   bitmap.align(0.5, 1.0);
-   bitmap.scale(5, 5);
 }
 
 

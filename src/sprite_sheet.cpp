@@ -25,7 +25,13 @@ SpriteSheet::SpriteSheet(std::string filename, int sprite_width, int sprite_heig
 
 void SpriteSheet::_create_atlas_copy()
 {
+   ALLEGRO_STATE previous_new_bitmap_state;
+   al_store_state(&previous_new_bitmap_state, ALLEGRO_STATE_BITMAP);
+   al_set_new_bitmap_flags(1);
+
    atlas = create_scaled_render(atlas, scale);
+
+   al_restore_state(&previous_new_bitmap_state);
 }
 
 
@@ -40,8 +46,8 @@ bool SpriteSheet::_create_sub_sprites()
          ALLEGRO_BITMAP *sub_bitmap = al_create_sub_bitmap(atlas,
                cursor_x * sprite_width * scale,
                cursor_y * sprite_height * scale,
-               sprite_width,
-               sprite_height);
+               sprite_width * scale,
+               sprite_height * scale);
 
          sprites.push_back(sub_bitmap);
       }

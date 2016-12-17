@@ -3,6 +3,8 @@
 
 #include <allegro_flare/allegro_flare.h>
 
+#include <screens/title_screen.h>
+
 
 
 class KrampusHackProject : public Screen
@@ -10,7 +12,9 @@ class KrampusHackProject : public Screen
 public:
 	KrampusHackProject(Display *display)
       : Screen(display)
-   {}
+   {
+      new TitleScreen(display);
+   }
 };
 
 

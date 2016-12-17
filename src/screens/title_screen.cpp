@@ -30,12 +30,16 @@ TitleScreen::TitleScreen(Display *display)
 
       count++;
    }
+
+   refresh_focused_menu_item();
 }
 
 
 
 void TitleScreen::primary_timer_func()
 {
+   al_clear_to_color(color::black);
+
    // draw the title
    title.draw();
 
@@ -68,6 +72,7 @@ void TitleScreen::cursor_up_action()
 {
    menu_cursor_pos--;
    if (menu_cursor_pos < 0) menu_cursor_pos = menu_items.size() - 1;
+   refresh_focused_menu_item();
 }
 
 
@@ -76,6 +81,18 @@ void TitleScreen::cursor_down_action()
 {
    menu_cursor_pos++;
    if (menu_cursor_pos >= menu_items.size()) menu_cursor_pos = 0;
+   refresh_focused_menu_item();
+}
+
+
+
+void TitleScreen::refresh_focused_menu_item()
+{
+   for (unsigned i=0; i<menu_items.size(); i++)
+   {
+      if (i == menu_cursor_pos) menu_items[i].scale(1.5, 1.5).color(color::yellow);
+      else menu_items[i].scale(1.0, 1.0).color(color::gray);
+   }
 }
 
 

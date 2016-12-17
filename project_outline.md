@@ -9,6 +9,9 @@ TitleScreen
   Options:
     StartGame
     Exit
+  State:
+    ShowingTitle
+    ItemSelected
 
 StoryBoardScreen
   Input:

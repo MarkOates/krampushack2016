@@ -23,6 +23,8 @@ public:
    void cursor_up_action();
    void cursor_down_action();
    void select_option_action();
+
+   void refresh_focused_menu_item();
 };
 
 

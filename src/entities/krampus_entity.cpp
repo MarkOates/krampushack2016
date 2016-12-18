@@ -60,6 +60,20 @@ void KrampusEntity::stand_still()
 
 
 
+void KrampusEntity::walk_up()
+{
+   set_state(WALKING_UP);
+}
+
+
+
+void KrampusEntity::walk_down()
+{
+   set_state(WALKING_DOWN);
+}
+
+
+
 void KrampusEntity::walk_left()
 {
    set_state(WALKING_LEFT);
@@ -101,6 +115,14 @@ bool KrampusEntity::set_state(state_t new_state, bool override_if_busy)
 
    switch(new_state)
    {
+   case WALKING_UP:
+      bitmap.bitmap(sprite_sheet->get_sprite(18));
+      velocity.position = vec2d(0.0, -1.0);
+      break;
+   case WALKING_DOWN:
+      bitmap.bitmap(sprite_sheet->get_sprite(18));
+      velocity.position = vec2d(0.0, 1.0);
+      break;
    case WALKING_LEFT:
       bitmap.bitmap(sprite_sheet->get_sprite(18));
       face_left();

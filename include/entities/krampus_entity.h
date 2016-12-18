@@ -35,6 +35,8 @@ public:
 
    void attack();
    void stand_still();
+   void walk_up();
+   void walk_down();
    void walk_left();
    void walk_right();
    void face_left();

@@ -14,7 +14,7 @@ EntityFactory *EntityFactory::get_instance()
 
 
 EntityFactory::EntityFactory()
-   : character_sprite_sheet("character_sprite_sheet.png", 32, 32, 6, 6, 3)
+   : character_sprite_sheet("sprites_grid-02b.png", 32, 32, 6, 6, 3)
 {}
 
 
@@ -29,6 +29,20 @@ EntityBase *EntityFactory::create_random_kid(ElementID *parent, float x, float y
    kid->bitmap.scale(2.0, 2.0);
 
    return kid;
+}
+
+
+
+EntityBase *EntityFactory::create_krampus(ElementID *parent, float x, float y)
+{
+   EntityBase *krampus = new EntityBase(parent, x, y);
+   krampus->set("type", "kid");
+   krampus->place.size = vec2d(120, 30);
+   krampus->bitmap.bitmap(get_instance()->character_sprite_sheet.get_sprite(18));
+   krampus->bitmap.align(0.5, 1.0);
+   krampus->bitmap.scale(2.0, 2.0);
+
+   return krampus;
 }
 
 

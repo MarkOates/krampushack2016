@@ -2,7 +2,7 @@
 
 
 
-#include <models/entity_base.h>
+#include <entities/entity_base.h>
 #include <sprite_sheet.h>
 
 

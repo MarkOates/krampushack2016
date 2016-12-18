@@ -4,7 +4,7 @@
 
 #include <sprite_sheet.h>
 
-#include <models/entity_base.h>
+#include <entities/entity_base.h>
 
 
 

@@ -1,7 +1,7 @@
 
 
 
-#include <models/entity_base.h>
+#include <entities/entity_base.h>
 #include <models/scene.h>
 #include <algorithm>
 

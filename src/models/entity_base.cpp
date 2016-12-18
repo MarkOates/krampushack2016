@@ -24,9 +24,7 @@ EntityBase::~EntityBase()
 
 
 void EntityBase::update()
-{
-   place += velocity;
-}
+{}
 
 
 

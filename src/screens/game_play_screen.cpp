@@ -11,8 +11,10 @@
 GamePlayScreen::GamePlayScreen(Display *display)
    : Screen(display)
    , scene(nullptr)
+   , state(NONE)
 {
    scene = SceneFactory::create_test_scene();
+   set_state(GET_READY);
 }
 
 
@@ -36,6 +38,13 @@ void GamePlayScreen::draw()
 {
    al_clear_to_color(color::hex("2f3938"));
    if (scene) scene->draw_all();
+}
+
+
+
+void GamePlayScreen::set_state(state_t new_state)
+{
+   state = new_state;
 }
 
 

@@ -8,6 +8,7 @@
 KrampusEntity::KrampusEntity(ElementID *parent, SpriteSheet *sprite_sheet, float x, float y)
    : EntityBase(parent, "krampus", x, y)
    , state_is_busy(false)
+   , facing_right(true)
    , state(STANDING)
    , sprite_sheet(sprite_sheet)
 {
@@ -22,6 +23,7 @@ KrampusEntity::KrampusEntity(ElementID *parent, SpriteSheet *sprite_sheet, float
 void KrampusEntity::update()
 {
    state_counter += 1.0 / 60.0;
+   place += velocity;
 
    switch(state)
    {
@@ -51,20 +53,70 @@ void KrampusEntity::attack()
 
 
 
+void KrampusEntity::stand_still()
+{
+   set_state(STANDING);
+}
+
+
+
+void KrampusEntity::walk_left()
+{
+   set_state(WALKING_LEFT);
+}
+
+
+
+void KrampusEntity::walk_right()
+{
+   set_state(WALKING_RIGHT);
+}
+
+
+
+void KrampusEntity::face_left()
+{
+   facing_right = true;
+   bitmap.flags(ALLEGRO_FLIP_HORIZONTAL);
+}
+
+
+
+void KrampusEntity::face_right()
+{
+   facing_right = false;
+   bitmap.flags(ALLEGRO_FLAGS_EMPTY);
+}
+
+
+
 bool KrampusEntity::set_state(state_t new_state, bool override_if_busy)
 {
-   if (state_is_busy && !override_if_busy) return false;
+   if (override_if_busy) state_is_busy = false;
+
+   if (state_is_busy) return false;
 
    state_counter = 0.0;
    state = new_state;
 
    switch(new_state)
    {
+   case WALKING_LEFT:
+      bitmap.bitmap(sprite_sheet->get_sprite(18));
+      face_left();
+      velocity.position = vec2d(-2.0, 0.0);
+      break;
+   case WALKING_RIGHT:
+      bitmap.bitmap(sprite_sheet->get_sprite(18));
+      face_right();
+      velocity.position = vec2d(2.0, 0.0);
+      break;
    case STANDING:
       bitmap.bitmap(sprite_sheet->get_sprite(18));
       velocity.position = vec2d(0.0, 0.0);
       break;
    case ATTACKING:
+      state_is_busy = true;
       bitmap.bitmap(sprite_sheet->get_sprite(19));
       velocity.position = vec2d(0.0, 0.0);
    default:
@@ -74,9 +126,6 @@ bool KrampusEntity::set_state(state_t new_state, bool override_if_busy)
 
    return true;
 }
-
-
-
 
 
 

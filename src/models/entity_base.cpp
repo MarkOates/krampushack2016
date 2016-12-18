@@ -5,12 +5,11 @@
 
 
 
-EntityBase::EntityBase(ElementID *parent, std::string type, float x, float y)
+EntityBase::EntityBase(ElementID *parent, float x, float y)
    : ElementID(parent)
    , place(x, y, 20, 10)
    , velocity()
    , bitmap(nullptr)
-   , type(type)
 {
    velocity.scale = vec2d(0, 0);
    velocity.align = vec2d(0, 0);

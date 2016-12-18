@@ -14,9 +14,8 @@ public:
    placement2d place;
    placement2d velocity;
    BitmapObject bitmap;
-   std::string type;
 
-   EntityBase(ElementID *parent, std::string type, float x, float y);
+   EntityBase(ElementID *parent, float x, float y);
    ~EntityBase();
 
    virtual void update();

@@ -4,6 +4,7 @@
 
 #include <allegro_flare/screen.h>
 
+#include <controllers/player_krampus_controller.h>
 #include <models/scene.h>
 
 
@@ -27,9 +28,12 @@ private:
 public:
    GamePlayScreen(Display *display);
    Scene *scene;
+   PlayerKrampusController player_krampus_controller;
    state_t state;
 
    void primary_timer_func() override;
+   void key_down_func() override;
+   void key_up_func() override;
 
    void update();
    void draw();

@@ -27,7 +27,7 @@ void SpriteSheet::_create_atlas_copy()
 {
    ALLEGRO_STATE previous_new_bitmap_state;
    al_store_state(&previous_new_bitmap_state, ALLEGRO_STATE_BITMAP);
-   al_set_new_bitmap_flags(1);
+   al_set_new_bitmap_flags(ALLEGRO_CONVERT_BITMAP);
 
    atlas = create_scaled_render(atlas, scale);
 

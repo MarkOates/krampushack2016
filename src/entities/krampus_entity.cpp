@@ -20,6 +20,12 @@ KrampusEntity::KrampusEntity(ElementID *parent, SpriteSheet *sprite_sheet, float
 
 
 
+KrampusEntity::~KrampusEntity()
+{
+}
+
+
+
 void KrampusEntity::update()
 {
    state_counter += 1.0 / 60.0;

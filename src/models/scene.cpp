@@ -14,6 +14,12 @@ Scene::Scene()
 
 
 
+Scene::~Scene()
+{
+}
+
+
+
 void Scene::update_all()
 {
    SceneCollisionHelper collision_helper(this);

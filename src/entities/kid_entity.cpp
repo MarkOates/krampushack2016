@@ -16,3 +16,9 @@ KidEntity::KidEntity(ElementID *parent, SpriteSheet *sprite_sheet, float x, floa
 
 
 
+KidEntity::~KidEntity()
+{
+}
+
+
+

@@ -30,6 +30,7 @@ public:
 
 public:
    KrampusEntity(ElementID *parent, SpriteSheet *sprite_sheet, float x, float y);
+   virtual ~KrampusEntity();
 
    void update() override;
 

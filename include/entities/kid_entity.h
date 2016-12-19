@@ -11,6 +11,7 @@ class KidEntity : public EntityBase
 {
 public:
    KidEntity(ElementID *parent, SpriteSheet *sprite_sheet, float x, float y);
+   virtual ~KidEntity();
 };
 
 

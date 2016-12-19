@@ -2,6 +2,7 @@
 
 
 #include <entities/entity_base.h>
+#include <helpers/scene_collision_helper.h>
 #include <models/scene.h>
 #include <algorithm>
 
@@ -15,8 +16,8 @@ Scene::Scene()
 
 void Scene::update_all()
 {
-   for (auto &descendant : get_flat_list_of_descendants<EntityBase>())
-      descendant->update();
+   SceneCollisionHelper collision_helper(this);
+   collision_helper.resolve_collisions();
 
    for (auto &descendant : find_all_descendants("can_be_deleted"))
       delete descendant;

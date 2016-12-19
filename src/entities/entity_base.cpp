@@ -33,7 +33,7 @@ void EntityBase::draw()
    place.start_transform();
    al_draw_rectangle(0, 0, place.size.x, place.size.y, color::red, 2.0);
    bitmap.position(place.size.x/2, place.size.y/2);
-   bitmap.draw();
+   //bitmap.draw();
    place.restore_transform();
 }
 

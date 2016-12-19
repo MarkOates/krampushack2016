@@ -22,7 +22,7 @@ public:
    virtual void draw();
 
    void flag_for_deletion();
-   void collides(const EntityBase &other);
+   bool collides(const EntityBase &other);
 };
 
 

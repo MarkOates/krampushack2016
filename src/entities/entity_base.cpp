@@ -46,7 +46,7 @@ void EntityBase::draw()
 
 
 
-void EntityBase::collides(const EntityBase &other)
+bool EntityBase::collides(const EntityBase &other)
 {
    float h_width = place.size.x * 0.5;
    float h_height = place.size.y * 0.5;
@@ -54,7 +54,7 @@ void EntityBase::collides(const EntityBase &other)
    // this will not account for rotation or anything fancy.
    // it's an unofficial ballpark close enough for jazz doodad:
 
-   return other.place.collides(
+   return other.place.collide(
          place.position.x + h_width,
          place.position.y + h_height,
          h_height,

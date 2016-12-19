@@ -28,6 +28,13 @@ void EntityBase::update()
 
 
 
+void EntityBase::flag_for_deletion()
+{
+   set("can_be_deleted");
+}
+
+
+
 void EntityBase::draw()
 {
    place.start_transform();

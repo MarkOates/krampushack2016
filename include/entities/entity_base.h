@@ -21,6 +21,7 @@ public:
    virtual void update();
    virtual void draw();
 
+   void flag_for_deletion();
    void collides(const EntityBase &other);
 };
 

@@ -17,6 +17,9 @@ void Scene::update_all()
 {
    for (auto &descendant : get_flat_list_of_descendants<EntityBase>())
       descendant->update();
+
+   for (auto &descendant : find_all_descendants("can_be_deleted"))
+      delete descendant;
 }
 
 

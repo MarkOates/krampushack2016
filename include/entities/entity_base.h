@@ -16,7 +16,7 @@ public:
    BitmapObject bitmap;
 
    EntityBase(ElementID *parent, std::string type, float x, float y);
-   ~EntityBase();
+   virtual ~EntityBase();
 
    virtual void update();
    virtual void draw();

@@ -18,6 +18,7 @@ public:
    void draw() override;
    void update() override;
 
+   bool is_dealing_damage();
    int get_damage(float x=0, float y=0);
 };
 

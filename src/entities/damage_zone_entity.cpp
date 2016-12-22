@@ -7,7 +7,7 @@
 
 DamageZoneEntity::DamageZoneEntity(ElementID *parent, std::string damage_zone_type, float x, float y, float w, float h)
    : EntityBase(parent, "damage_zone", x, y)
-   , dealing_damage(false)
+   , dealing_damage(true)
 {
    place.size = vec2d(w, h);
    set("damage_zone_type", damage_zone_type);
@@ -30,6 +30,14 @@ void DamageZoneEntity::draw()
 
 void DamageZoneEntity::update()
 {
+   dealing_damage = false;
+}
+
+
+
+bool DamageZoneEntity::is_dealing_damage()
+{
+   return dealing_damage;
 }
 
 

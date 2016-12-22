@@ -2,6 +2,7 @@
 
 
 #include <entities/entity_base.h>
+#include <helpers/scene_collection_helper.h>
 #include <helpers/scene_collision_helper.h>
 #include <models/scene.h>
 #include <algorithm>
@@ -33,15 +34,10 @@ void Scene::update_all()
 
 void Scene::draw_all()
 {
-   // for rendering, all entities need to be sorted as a flat list based on their y position
+   SceneCollectionHelper collection_helper(this);
 
-   std::vector<EntityBase *> entities = get_flat_list_of_descendants<EntityBase>();
-
-   std::sort(entities.begin(), entities.end(),[](const EntityBase *a, const EntityBase *b)
-         { return a->place.position.y < b->place.position.y; }
-      );
-
-   for (auto &entity : entities) entity->draw();
+   for (auto &entity : collection_helper.get_all_entities_y_sorted())
+      entity->draw();
 }
 
 

@@ -33,9 +33,8 @@ void SceneCollisionHelper::resolve_collisions()
    {
       for (auto &kid : kids)
       {
-         if (damage_zone->collides(*kid))
+         if (damage_zone->is_dealing_damage() && damage_zone->collides(*kid))
          {
-            std::cout << "col!";
             kid->flag_for_deletion();
          }
       }

@@ -30,7 +30,8 @@ void DamageZoneEntity::draw()
 
 void DamageZoneEntity::update()
 {
-   dealing_damage = false;
+   if (!dealing_damage) flag_for_deletion();
+   if (dealing_damage) dealing_damage = false;
 }
 
 

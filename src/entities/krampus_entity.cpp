@@ -38,10 +38,10 @@ void KrampusEntity::update()
       break;
    case ATTACKING:
       {
+         if (state_counter >= 0.4 && previous_state_counter < 0.4) bitmap.bitmap(sprite_sheet->get_sprite(20));
+         if (state_counter >= 0.5 && previous_state_counter < 0.5) bitmap.bitmap(sprite_sheet->get_sprite(21));
+         if (state_counter >= 0.7 && previous_state_counter < 0.7) bitmap.bitmap(sprite_sheet->get_sprite(22));
          if (state_counter >= 1.0 && previous_state_counter < 1.0) set_state(STANDING, true);
-         else if (state_counter >= 0.7 && previous_state_counter < 0.7) bitmap.bitmap(sprite_sheet->get_sprite(22));
-         else if (state_counter >= 0.5 && previous_state_counter < 0.5) bitmap.bitmap(sprite_sheet->get_sprite(21));
-         else if (state_counter >= 0.4 && previous_state_counter < 0.4) bitmap.bitmap(sprite_sheet->get_sprite(20));
          break;
       }
    default:

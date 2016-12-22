@@ -101,7 +101,7 @@ void KrampusEntity::walk_right()
 
 void KrampusEntity::face_left()
 {
-   facing_right = true;
+   facing_right = false;
    bitmap.flags(ALLEGRO_FLIP_HORIZONTAL);
 }
 
@@ -109,7 +109,7 @@ void KrampusEntity::face_left()
 
 void KrampusEntity::face_right()
 {
-   facing_right = false;
+   facing_right = true;
    bitmap.flags(ALLEGRO_FLAGS_EMPTY);
 }
 

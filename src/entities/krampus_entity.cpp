@@ -28,6 +28,7 @@ KrampusEntity::~KrampusEntity()
 
 void KrampusEntity::update()
 {
+   float previous_state_counter = state_counter;
    state_counter += 1.0 / 60.0;
    place += velocity;
 
@@ -37,12 +38,10 @@ void KrampusEntity::update()
       break;
    case ATTACKING:
       {
-         float speed = 2.0;
-         float playhead = state_counter * speed;
-         if (playhead >= 1.0) set_state(STANDING, true);
-         else if (playhead >= 0.7) bitmap.bitmap(sprite_sheet->get_sprite(22));
-         else if (playhead >= 0.5) bitmap.bitmap(sprite_sheet->get_sprite(21));
-         else if (playhead >= 0.4) bitmap.bitmap(sprite_sheet->get_sprite(20));
+         if (state_counter >= 1.0 && previous_state_counter < 1.0) set_state(STANDING, true);
+         else if (state_counter >= 0.7 && previous_state_counter < 0.7) bitmap.bitmap(sprite_sheet->get_sprite(22));
+         else if (state_counter >= 0.5 && previous_state_counter < 0.5) bitmap.bitmap(sprite_sheet->get_sprite(21));
+         else if (state_counter >= 0.4 && previous_state_counter < 0.4) bitmap.bitmap(sprite_sheet->get_sprite(20));
          break;
       }
    default:

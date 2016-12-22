@@ -2,6 +2,7 @@
 
 
 #include <entities/krampus_entity.h>
+#include <factories/entity_factory.h>
 
 
 
@@ -39,7 +40,12 @@ void KrampusEntity::update()
    case ATTACKING:
       {
          if (state_counter >= 0.4 && previous_state_counter < 0.4) bitmap.bitmap(sprite_sheet->get_sprite(20));
-         if (state_counter >= 0.5 && previous_state_counter < 0.5) bitmap.bitmap(sprite_sheet->get_sprite(21));
+         if (state_counter >= 0.5 && previous_state_counter < 0.5)
+         {
+            bitmap.bitmap(sprite_sheet->get_sprite(21));
+            EntityFactory::create_krampus_attack_damage_zone(get_parent(),
+                 place.x+place.w, place.y-30, 80, place.y);
+         }
          if (state_counter >= 0.7 && previous_state_counter < 0.7) bitmap.bitmap(sprite_sheet->get_sprite(22));
          if (state_counter >= 1.0 && previous_state_counter < 1.0) set_state(STANDING, true);
          break;

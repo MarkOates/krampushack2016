@@ -2,6 +2,7 @@
 
 
 #include <factories/entity_factory.h>
+#include <entities/damage_zone_entity.h>
 #include <entities/kid_entity.h>
 #include <entities/krampus_entity.h>
 
@@ -31,6 +32,13 @@ EntityBase *EntityFactory::create_random_kid(ElementID *parent, float x, float y
 EntityBase *EntityFactory::create_krampus(ElementID *parent, float x, float y)
 {
    return new KrampusEntity(parent, &get_instance()->character_sprite_sheet, x, y);
+}
+
+
+
+EntityBase *EntityFactory::create_krampus_attack_damage_zone(ElementID *parent, float x, float y, float w, float h)
+{
+   return new DamageZoneEntity(parent, "krampus_damage_zone", x, y, w, h);
 }
 
 

@@ -43,8 +43,12 @@ void KrampusEntity::update()
          if (state_counter >= 0.5 && previous_state_counter < 0.5)
          {
             bitmap.bitmap(sprite_sheet->get_sprite(21));
-            EntityFactory::create_krampus_attack_damage_zone(get_parent(),
-                 place.x+place.w, place.y-30, 80, place.y);
+
+            float dh = place.h;
+            float dy = place.y;
+            float dw = 80;
+            float dx = facing_right ? place.x + place.w : place.x - place.w;
+            EntityFactory::create_krampus_attack_damage_zone(get_parent(), dx, dy, dw, dh);
          }
          if (state_counter >= 0.7 && previous_state_counter < 0.7) bitmap.bitmap(sprite_sheet->get_sprite(22));
          if (state_counter >= 1.0 && previous_state_counter < 1.0) set_state(STANDING, true);

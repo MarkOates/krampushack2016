@@ -54,14 +54,7 @@ bool EntityBase::collides(const EntityBase &other)
    // this will not account for rotation or anything fancy.
    // it's an unofficial ballpark close enough for jazz doodad:
 
-   return other.place.collide(
-         place.position.x + h_width,
-         place.position.y + h_height,
-         h_height,
-         h_width,
-         h_height,
-         h_width
-      );
+   return other.place.collide(place.x, place.y, h_height, h_width, h_height, h_width);
 }
 
 

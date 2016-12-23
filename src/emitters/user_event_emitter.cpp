@@ -29,10 +29,11 @@ UserEventEmitter *UserEventEmitter::get_instance()
 
 
 
-void UserEventEmitter::emit_event(int32_t event_type)
+void UserEventEmitter::emit_event(int32_t event_type, intptr_t data1)
 {
    ALLEGRO_EVENT my_event;
    my_event.user.type = event_type;
+   my_event.user.data1 = data1;
    al_emit_user_event(&get_instance()->event_source, &my_event, NULL); // dtor is not needed for this type
 }
 

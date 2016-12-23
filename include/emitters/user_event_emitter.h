@@ -17,7 +17,7 @@ private:
    ~UserEventEmitter();
 
 public:
-   static void emit_event(int32_t event_type);
+   static void emit_event(int32_t event_type, intptr_t data1=0);
 };
 
 

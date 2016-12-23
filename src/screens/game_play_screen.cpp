@@ -14,12 +14,7 @@ GamePlayScreen::GamePlayScreen(Display *display)
    , state(NONE)
    , player_krampus_controller()
 {
-   scene = SceneFactory::create_test_scene();
-
-   player_krampus_controller.set_krampus(
-         static_cast<KrampusEntity *>(scene->find_first("type", "krampus"))
-      );
-
+   enter_scene();
    set_state(GET_READY);
 }
 
@@ -70,6 +65,19 @@ void GamePlayScreen::draw()
 void GamePlayScreen::set_state(state_t new_state)
 {
    state = new_state;
+}
+
+
+
+void GamePlayScreen::enter_scene()
+{
+   if (scene) delete scene;
+
+   scene = SceneFactory::create_test_scene();
+
+   player_krampus_controller.set_krampus(
+         static_cast<KrampusEntity *>(scene->find_first("type", "krampus"))
+      );
 }
 
 

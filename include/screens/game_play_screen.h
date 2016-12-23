@@ -39,6 +39,7 @@ public:
    void draw();
 
    void set_state(state_t new_state);
+   void enter_scene();
 };
 
 

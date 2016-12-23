@@ -19,8 +19,11 @@ Scene *SceneFactory::create_test_scene()
    for (unsigned i=0; i<20; i++)
       EntityFactory::create_random_kid(scene, random_float(200, 900), random_float(400, 600));
 
+   // doors
+   EntityFactory::create_door1(scene, 200, 465);
+
    // player
-   EntityFactory::create_krampus(scene, 300, 600);
+   EntityFactory::create_krampus(scene, 600, 600);
 
    return scene;
 }

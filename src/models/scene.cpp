@@ -11,8 +11,8 @@
 
 Scene::Scene()
    : ElementID(nullptr)
-   , floor_min_y(450)
-   , floor_max_y(500)
+   , floor_min_y(465)
+   , floor_max_y(600)
 {}
 
 

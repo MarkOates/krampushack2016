@@ -25,8 +25,8 @@ EntityFactory::EntityFactory()
    , background1(nullptr)
    , door1(nullptr)
 {
-   background1 = create_pixel_perfect_scaled_render(Framework::bitmap("background-1-05.png"), 5);
-   door1 = create_pixel_perfect_scaled_render(Framework::bitmap("door1.png"), 5);
+   background1 = create_pixel_perfect_scaled_render(Framework::bitmap("background-1-08.png"), 5);
+   door1 = create_pixel_perfect_scaled_render(Framework::bitmap("door-1-02.png"), 5);
 }
 
 

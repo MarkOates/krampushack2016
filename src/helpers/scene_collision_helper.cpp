@@ -13,6 +13,7 @@
 
 SceneCollisionHelper::SceneCollisionHelper(Scene *scene)
    : scene(scene)
+   , collections(scene)
 {}
 
 
@@ -20,8 +21,6 @@ SceneCollisionHelper::SceneCollisionHelper(Scene *scene)
 void SceneCollisionHelper::resolve_collisions()
 {
    if (!scene) return;
-
-   SceneCollectionHelper collections(scene);
 
    for (auto &entity : collections.get_all_entities())
       entity->update();

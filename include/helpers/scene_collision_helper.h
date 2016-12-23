@@ -3,6 +3,7 @@
 
 
 #include <models/scene.h>
+#include <helpers/scene_collection_helper.h>
 
 
 
@@ -10,6 +11,7 @@ class SceneCollisionHelper
 {
 private:
    Scene *scene;
+   SceneCollectionHelper collections;
 
 public:
    SceneCollisionHelper(Scene *scene);

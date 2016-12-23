@@ -66,3 +66,10 @@ std::vector<DoorEntity *> SceneCollectionHelper::get_doors()
 
 
 
+std::vector<ItemEntity *> SceneCollectionHelper::get_items()
+{
+   return ElementID::recast_collection<ItemEntity>(scene->find_all_descendants("type", "item"));
+}
+
+
+

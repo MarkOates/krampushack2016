@@ -11,12 +11,30 @@
 
 Scene::Scene()
    : ElementID(nullptr)
+   , floor_min_y(450)
+   , floor_max_y(500)
 {}
 
 
 
 Scene::~Scene()
 {
+}
+
+
+
+void Scene::set_y_bounds(float min_y, float max_y)
+{
+   floor_min_y = min_y;
+   floor_max_y = max_y;
+}
+
+
+
+void Scene::get_y_bounds(float *min_y, float *max_y)
+{
+   *min_y = floor_min_y;
+   *max_y = floor_max_y;
 }
 
 

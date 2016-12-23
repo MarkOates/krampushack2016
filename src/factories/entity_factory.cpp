@@ -23,7 +23,7 @@ EntityFactory::EntityFactory()
    : character_sprite_sheet("sprites_grid-04.png", 32, 32, 6, 6, 3)
    , background1(nullptr)
 {
-   ALLEGRO_BITMAP *original_bitmap = Framework::bitmap("background-1-02.png");
+   ALLEGRO_BITMAP *original_bitmap = Framework::bitmap("background-1-05.png");
    background1 = create_pixel_perfect_scaled_render(original_bitmap, 5);
 }
 

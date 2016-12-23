@@ -18,6 +18,7 @@ public:
 
    void resolve_collisions();
    void limit_sprites_to_world_bounds();
+   void check_damage_zones_on_children();
 };
 
 

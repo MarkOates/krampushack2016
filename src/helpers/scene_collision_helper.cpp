@@ -26,20 +26,7 @@ void SceneCollisionHelper::resolve_collisions()
       entity->update();
 
    limit_sprites_to_world_bounds();
-
-   std::vector<KidEntity *> kids = collections.get_kids();
-
-   // damage zone <-> kid collisions
-   for (auto &damage_zone : collections.get_damage_zones())
-   {
-      for (auto &kid : kids)
-      {
-         if (damage_zone->is_dealing_damage() && damage_zone->collides(*kid))
-         {
-            kid->flag_for_deletion();
-         }
-      }
-   }
+   check_damage_zones_on_children();
 };
 
 
@@ -53,6 +40,25 @@ void SceneCollisionHelper::limit_sprites_to_world_bounds()
    {
       if (entity->place.y < min_y) entity->place.y = min_y;
       if (entity->place.y > max_y) entity->place.y = max_y;
+   }
+}
+
+
+
+void SceneCollisionHelper::check_damage_zones_on_children()
+{
+   std::vector<KidEntity *> kids = collections.get_kids();
+
+   // damage zone <-> kid collisions
+   for (auto &damage_zone : collections.get_damage_zones())
+   {
+      for (auto &kid : kids)
+      {
+         if (damage_zone->is_dealing_damage() && damage_zone->collides(*kid))
+         {
+            kid->flag_for_deletion();
+         }
+      }
    }
 }
 

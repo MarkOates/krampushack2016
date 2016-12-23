@@ -9,13 +9,17 @@
 
 
 
+#define TEST_SCENE_ID 1
+
+
+
 GamePlayScreen::GamePlayScreen(Display *display)
    : Screen(display)
    , scene(nullptr)
    , state(NONE)
    , player_krampus_controller()
 {
-   enter_scene();
+   enter_scene(TEST_SCENE_ID);
    set_state(GET_READY);
 }
 
@@ -54,7 +58,8 @@ void GamePlayScreen::user_event_func()
    switch (event->user.type)
    {
    case ENTER_DOOR_EVENT:
-      enter_scene();
+      int scene_id = event->user.data1;
+      enter_scene(scene_id);
       break;
    }
 }
@@ -84,11 +89,11 @@ void GamePlayScreen::set_state(state_t new_state)
 
 
 
-void GamePlayScreen::enter_scene()
+void GamePlayScreen::enter_scene(int scene_id)
 {
    if (scene) delete scene;
 
-   scene = SceneFactory::create_test_scene();
+   scene = SceneFactory::create_scene_by_id(scene_id);
 
    player_krampus_controller.set_krampus(
          static_cast<KrampusEntity *>(scene->find_first("type", "krampus"))

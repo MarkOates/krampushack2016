@@ -17,7 +17,7 @@ EntityFactory *EntityFactory::get_instance()
 
 
 EntityFactory::EntityFactory()
-   : character_sprite_sheet("sprites_grid-03.png", 32, 32, 6, 6, 3)
+   : character_sprite_sheet("sprites_grid-04.png", 32, 32, 6, 6, 3)
 {}
 
 

@@ -22,6 +22,9 @@ Scene *SceneFactory::create_test_scene()
    // doors
    EntityFactory::create_door1(scene, 200, 465);
 
+   // doors
+   EntityFactory::create_club_item(scene, 900, 565);
+
    // player
    EntityFactory::create_krampus(scene, 600, 600);
 

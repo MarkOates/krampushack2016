@@ -20,7 +20,7 @@ GamePlayScreen::GamePlayScreen(Display *display)
    , player_krampus_controller()
 {
    enter_scene(TEST_SCENE_ID);
-   set_state(GET_READY);
+   set_state(GAME_PLAY);
 }
 
 

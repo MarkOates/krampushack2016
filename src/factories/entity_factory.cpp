@@ -2,6 +2,7 @@
 
 
 #include <factories/entity_factory.h>
+#include <entities/background_entity.h>
 #include <entities/damage_zone_entity.h>
 #include <entities/kid_entity.h>
 #include <entities/krampus_entity.h>
@@ -39,6 +40,13 @@ EntityBase *EntityFactory::create_krampus(ElementID *parent, float x, float y)
 EntityBase *EntityFactory::create_krampus_attack_damage_zone(ElementID *parent, float x, float y, float w, float h)
 {
    return new DamageZoneEntity(parent, "krampus_damage_zone", x, y, w, h);
+}
+
+
+
+EntityBase *EntityFactory::create_background(ElementID *parent, ALLEGRO_BITMAP *bmp, float x, float y)
+{
+   return new BackgroundEntity(parent, bmp, x, y);
 }
 
 

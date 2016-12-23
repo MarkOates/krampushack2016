@@ -60,7 +60,7 @@ void GamePlayScreen::update()
 
 void GamePlayScreen::draw()
 {
-   al_clear_to_color(color::hex("2f3938"));
+   al_clear_to_color(color::hex("1f4630"));
    if (scene) scene->draw_all();
 }
 

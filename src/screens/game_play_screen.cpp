@@ -53,6 +53,7 @@ void GamePlayScreen::key_up_func()
 
 void GamePlayScreen::update()
 {
+   player_krampus_controller.update_polled_keyboard_input();
    if (scene) scene->update_all();
 }
 

@@ -27,6 +27,7 @@ void SceneCollisionHelper::resolve_collisions()
 
    limit_sprites_to_world_bounds();
    check_damage_zones_on_children();
+   check_krampus_on_door();
 };
 
 
@@ -59,6 +60,17 @@ void SceneCollisionHelper::check_damage_zones_on_children()
             kid->flag_for_deletion();
          }
       }
+   }
+}
+
+
+
+void SceneCollisionHelper::check_krampus_on_door()
+{
+   KrampusEntity *krampus = collections.get_krampus();
+   for (auto &door : collections.get_doors())
+   {
+      if (door->place.collide(krampus->place.x, krampus->place.y)); // will need to update action here
    }
 }
 

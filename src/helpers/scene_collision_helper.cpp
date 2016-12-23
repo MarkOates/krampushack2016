@@ -79,3 +79,15 @@ void SceneCollisionHelper::check_krampus_on_door()
 
 
 
+void SceneCollisionHelper::check_krampus_on_items()
+{
+   KrampusEntity *krampus = collections.get_krampus();
+   for (auto &item : collections.get_items())
+   {
+      if (item->place.collide(krampus->place.x, krampus->place.y, 20, 10, 20, 10))
+         UserEventEmitter::emit_event(COLLECT_ITEM_EVENT, item->get_id());
+   }
+}
+
+
+

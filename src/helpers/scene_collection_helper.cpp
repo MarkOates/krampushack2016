@@ -59,3 +59,10 @@ std::vector<EntityBase *> SceneCollectionHelper::get_entities_bound_in_world()
 
 
 
+std::vector<DoorEntity *> SceneCollectionHelper::get_doors()
+{
+   return ElementID::recast_collection<DoorEntity>(scene->find_all_descendants("type", "door"));
+}
+
+
+

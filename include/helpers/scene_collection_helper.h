@@ -7,6 +7,7 @@
 #include <entities/kid_entity.h>
 #include <entities/krampus_entity.h>
 #include <entities/damage_zone_entity.h>
+#include <entities/door_entity.h>
 
 
 
@@ -23,6 +24,7 @@ public:
    std::vector<KidEntity *> get_kids();
    std::vector<DamageZoneEntity *> get_damage_zones();
    std::vector<EntityBase *> get_entities_bound_in_world();
+   std::vector<DoorEntity *> get_doors();
    KrampusEntity *get_krampus();
 };
 

@@ -17,6 +17,7 @@ public:
    SceneCollisionHelper(Scene *scene);
 
    void resolve_collisions();
+   void limit_sprites_to_world_bounds();
 };
 
 

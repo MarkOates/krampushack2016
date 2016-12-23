@@ -25,6 +25,8 @@ void SceneCollisionHelper::resolve_collisions()
    for (auto &entity : collections.get_all_entities())
       entity->update();
 
+   limit_sprites_to_world_bounds();
+
    std::vector<KidEntity *> kids = collections.get_kids();
 
    // damage zone <-> kid collisions
@@ -39,6 +41,20 @@ void SceneCollisionHelper::resolve_collisions()
       }
    }
 };
+
+
+
+void SceneCollisionHelper::limit_sprites_to_world_bounds()
+{
+   float min_y, max_y;
+   scene->get_y_bounds(&min_y, &max_y);
+
+   for (auto &entity : collections.get_entities_bound_in_world())
+   {
+      if (entity->place.y < min_y) entity->place.y = min_y;
+      if (entity->place.y > max_y) entity->place.y = max_y;
+   }
+}
 
 
 

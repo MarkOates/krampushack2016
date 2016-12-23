@@ -169,3 +169,10 @@ bool KrampusEntity::set_state(state_t new_state, bool override_if_busy)
 
 
 
+bool KrampusEntity::is_idle()
+{
+   return state == STANDING;
+}
+
+
+

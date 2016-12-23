@@ -42,6 +42,8 @@ public:
    void walk_right();
    void face_left();
    void face_right();
+
+   bool is_idle();
 };
 
 

@@ -17,6 +17,8 @@ KrampusEntity::KrampusEntity(ElementID *parent, SpriteSheet *sprite_sheet, float
    bitmap.bitmap(sprite_sheet->get_sprite(18));
    bitmap.align(0.5, 1.0);
    bitmap.scale(2.0, 2.0);
+
+   set("bound_in_world");
 }
 
 

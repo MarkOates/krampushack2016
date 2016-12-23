@@ -52,3 +52,10 @@ KrampusEntity *SceneCollectionHelper::get_krampus()
 
 
 
+std::vector<EntityBase *> SceneCollectionHelper::get_entities_bound_in_world()
+{
+   return ElementID::recast_collection<EntityBase>(scene->find_all_descendants("bound_in_world"));
+}
+
+
+

@@ -1,6 +1,8 @@
 
 
 
+#include <allegro_flare/framework.h>
+#include <allegro_flare/image_processing.h>
 #include <factories/entity_factory.h>
 #include <entities/background_entity.h>
 #include <entities/damage_zone_entity.h>
@@ -19,7 +21,11 @@ EntityFactory *EntityFactory::get_instance()
 
 EntityFactory::EntityFactory()
    : character_sprite_sheet("sprites_grid-04.png", 32, 32, 6, 6, 3)
-{}
+   , background1(nullptr)
+{
+   ALLEGRO_BITMAP *original_bitmap = Framework::bitmap("background-1-02.png");
+   background1 = create_pixel_perfect_scaled_render(original_bitmap, 5);
+}
 
 
 
@@ -44,9 +50,9 @@ EntityBase *EntityFactory::create_krampus_attack_damage_zone(ElementID *parent, 
 
 
 
-EntityBase *EntityFactory::create_background(ElementID *parent, ALLEGRO_BITMAP *bmp, float x, float y)
+EntityBase *EntityFactory::create_background1(ElementID *parent, float x, float y)
 {
-   return new BackgroundEntity(parent, bmp, x, y);
+   return new BackgroundEntity(parent, get_instance()->background1, x, y);
 }
 
 

@@ -5,6 +5,7 @@
 
 #include <allegro_flare/allegro_flare.h>
 #include <factories/scene_factory.h>
+#include <user_events.h>
 
 
 
@@ -42,6 +43,20 @@ void GamePlayScreen::key_up_func()
    int al_keycode = Framework::current_event->keyboard.keycode;
 
    player_krampus_controller.on_key_up(al_keycode);
+}
+
+
+
+void GamePlayScreen::user_event_func()
+{
+   ALLEGRO_EVENT *event = Framework::current_event;
+
+   switch (event->user.type)
+   {
+   case ENTER_DOOR_EVENT:
+      enter_scene();
+      break;
+   }
 }
 
 

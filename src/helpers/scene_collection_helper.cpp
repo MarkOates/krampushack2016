@@ -10,6 +10,7 @@ SceneCollectionHelper::SceneCollectionHelper(Scene *scene)
 {}
 
 
+
 std::vector<EntityBase *> SceneCollectionHelper::get_all_entities()
 {
    return scene->get_flat_list_of_descendants<EntityBase>();

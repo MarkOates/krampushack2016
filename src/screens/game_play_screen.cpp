@@ -21,7 +21,7 @@ GamePlayScreen::GamePlayScreen(Display *display)
       );
 
    set_state(GET_READY);
- }
+}
 
 
 

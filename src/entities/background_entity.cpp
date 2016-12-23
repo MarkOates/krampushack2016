@@ -15,9 +15,7 @@ BackgroundEntity::BackgroundEntity(ElementID *parent, ALLEGRO_BITMAP *al_bitmap,
 
 
 BackgroundEntity::~BackgroundEntity()
-{
-   al_destroy_bitmap(bitmap.get_bitmap());
-}
+{}
 
 
 

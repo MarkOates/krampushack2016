@@ -3,11 +3,13 @@
 
 #include <helpers/scene_collision_helper.h>
 
+#include <emitters/user_event_emitter.h>
 #include <entities/damage_zone_entity.h>
 #include <entities/entity_base.h>
 #include <entities/kid_entity.h>
 #include <entities/krampus_entity.h>
 #include <helpers/scene_collection_helper.h>
+#include <user_events.h>
 
 
 
@@ -70,7 +72,8 @@ void SceneCollisionHelper::check_krampus_on_door()
    KrampusEntity *krampus = collections.get_krampus();
    for (auto &door : collections.get_doors())
    {
-      if (door->place.collide(krampus->place.x, krampus->place.y)); // will need to update action here
+      if (door->place.collide(krampus->place.x, krampus->place.y))
+         UserEventEmitter::emit_event(ENTER_DOOR_EVENT, 1);
    }
 }
 

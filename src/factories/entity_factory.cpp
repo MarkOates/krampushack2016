@@ -7,6 +7,7 @@
 #include <entities/background_entity.h>
 #include <entities/door_entity.h>
 #include <entities/damage_zone_entity.h>
+#include <entities/item_entity.h>
 #include <entities/kid_entity.h>
 #include <entities/krampus_entity.h>
 
@@ -62,6 +63,13 @@ EntityBase *EntityFactory::create_background1(ElementID *parent, float x, float 
 EntityBase *EntityFactory::create_door1(ElementID *parent, float x, float y)
 {
    return new DoorEntity(parent, get_instance()->door1, x, y);
+}
+
+
+
+EntityBase *EntityFactory::create_club_item(ElementID *parent, float x, float y)
+{
+   return new ItemEntity(parent, get_instance()->character_sprite_sheet.get_sprite(23), "club", x, y);
 }
 
 

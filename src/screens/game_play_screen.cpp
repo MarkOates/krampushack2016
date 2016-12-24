@@ -58,9 +58,11 @@ void GamePlayScreen::user_event_func()
    switch (event->user.type)
    {
    case ENTER_DOOR_EVENT:
-      int scene_id = event->user.data1;
-      enter_scene(scene_id);
-      break;
+      {
+         int scene_id = event->user.data1;
+         enter_scene(scene_id);
+         break;
+      }
    }
 }
 

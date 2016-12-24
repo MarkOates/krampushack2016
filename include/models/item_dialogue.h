@@ -17,7 +17,7 @@ private:
    BitmapObject bitmap;
 
 public:
-   ItemDialogue(float x, float y, float w, float h, ALLEGRO_BITMAP *item_bitmap, std::vector<std::string> pages);
+   ItemDialogue(float x, float y, float w, float h, ALLEGRO_BITMAP *item_bitmap, ALLEGRO_FONT *font, std::vector<std::string> pages);
 
    void draw(int page_num);
    int get_num_pages();

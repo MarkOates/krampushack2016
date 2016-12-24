@@ -38,9 +38,10 @@ ItemDialogue DialogueFactory::build_collected_item_dialog(int item_type)
    int dialogue_w = 800;
    int dialogue_h = 200;
    ALLEGRO_BITMAP *item_bitmap = get_instance()->item_sprite_sheet.get_sprite(23);
+   ALLEGRO_FONT *font = get_instance()->dialogue_font;
    std::vector<std::string> dialogue = {"You picked up an item!"};
 
-   ItemDialogue item_dialogue = ItemDialogue(dialogue_x, dialogue_y, dialogue_w, dialogue_h, item_bitmap, dialogue);
+   ItemDialogue item_dialogue = ItemDialogue(dialogue_x, dialogue_y, dialogue_w, dialogue_h, item_bitmap, font, dialogue);
 
    return item_dialogue;
 }

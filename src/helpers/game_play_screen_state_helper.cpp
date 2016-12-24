@@ -3,7 +3,9 @@
 
 #include <helpers/game_play_screen_state_helper.h>
 
+#include <factories/dialogue_factory.h>
 #include <screens/game_play_screen.h>
+#include <item_type_nums.h>
 
 
 
@@ -32,6 +34,9 @@ void GamePlayScreenStateHelper::update_state()
       game_play_screen->player_krampus_controller.update_polled_keyboard_input();
       if (game_play_screen->scene) game_play_screen->scene->update_all();
       break;
+   case GamePlayScreen::ITEM_COLLECTED:
+      if (state_counter > 3.0) set_state(GamePlayScreen::GAME_PLAY);
+      break;
    default:
       break;
    }
@@ -48,6 +53,13 @@ void GamePlayScreenStateHelper::draw_state()
    case GamePlayScreen::GAME_PLAY:
       if (game_play_screen->scene) game_play_screen->scene->draw_all();
       break;
+   case GamePlayScreen::ITEM_COLLECTED:
+      {
+         if (game_play_screen->scene) game_play_screen->scene->draw_all();
+         ItemDialogue dialogue = DialogueFactory::build_collected_item_dialog(ITEM_TYPE_CLUB);
+         dialogue.draw(0);
+         break;
+      }
    default:
       break;
    }

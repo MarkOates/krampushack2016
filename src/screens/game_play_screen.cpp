@@ -68,7 +68,8 @@ void GamePlayScreen::user_event_func()
    case COLLECT_ITEM_EVENT:
       {
          int item_type_int = event->user.data1;
-         // handle picking up item
+         player_inventory.add_item(item_type_int);
+         set_state(ITEM_COLLECTED);
          break;
       }
    }

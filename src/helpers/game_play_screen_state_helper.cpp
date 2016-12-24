@@ -34,6 +34,8 @@ void GamePlayScreenStateHelper::update_state()
       game_play_screen->player_krampus_controller.update_polled_keyboard_input();
       if (game_play_screen->scene) game_play_screen->scene->update_all();
       break;
+   default:
+      break;
    }
 }
 

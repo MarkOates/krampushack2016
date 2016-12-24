@@ -42,7 +42,15 @@ void GamePlayScreenStateHelper::update_state()
 void GamePlayScreenStateHelper::draw_state()
 {
    al_clear_to_color(color::hex("1f4630"));
-   if (game_play_screen->scene) game_play_screen->scene->draw_all();
+
+   switch (game_play_screen->state)
+   {
+   case GamePlayScreen::GAME_PLAY:
+      if (game_play_screen->scene) game_play_screen->scene->draw_all();
+      break;
+   default:
+      break;
+   }
 }
 
 

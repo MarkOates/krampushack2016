@@ -28,6 +28,9 @@ public:
    static EntityBase *create_background1(ElementID *parent, float x, float y);
    static EntityBase *create_door1(ElementID *parent, float x, float y);
    static EntityBase *create_club_item(ElementID *parent, float x, float y);
+   static EntityBase *create_stone_of_defiance_item(ElementID *parent, float x, float y);
+   static EntityBase *create_naughty_list_item(ElementID *parent, float x, float y);
+   static EntityBase *create_key_item(ElementID *parent, float x, float y);
 };
 
 

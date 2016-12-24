@@ -23,7 +23,7 @@ EntityFactory *EntityFactory::get_instance()
 
 
 EntityFactory::EntityFactory()
-   : character_sprite_sheet("sprites_grid-04.png", 32, 32, 6, 6, 3)
+   : character_sprite_sheet("sprites_grid-05.png", 32, 32, 6, 6, 3)
    , background1(nullptr)
    , door1(nullptr)
 {
@@ -71,6 +71,27 @@ EntityBase *EntityFactory::create_door1(ElementID *parent, float x, float y)
 EntityBase *EntityFactory::create_club_item(ElementID *parent, float x, float y)
 {
    return new ItemEntity(parent, get_instance()->character_sprite_sheet.get_sprite(23), ITEM_TYPE_CLUB, x, y);
+}
+
+
+
+EntityBase *EntityFactory::create_stone_of_defiance_item(ElementID *parent, float x, float y)
+{
+   return new ItemEntity(parent, get_instance()->character_sprite_sheet.get_sprite(24), ITEM_TYPE_STONE_OF_DEFIANCE, x, y);
+}
+
+
+
+EntityBase *EntityFactory::create_naughty_list_item(ElementID *parent, float x, float y)
+{
+   return new ItemEntity(parent, get_instance()->character_sprite_sheet.get_sprite(25), ITEM_TYPE_NAUGHTY_LIST, x, y);
+}
+
+
+
+EntityBase *EntityFactory::create_key_item(ElementID *parent, float x, float y)
+{
+   return new ItemEntity(parent, get_instance()->character_sprite_sheet.get_sprite(26), ITEM_TYPE_KEY, x, y);
 }
 
 

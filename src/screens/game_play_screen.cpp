@@ -77,8 +77,13 @@ void GamePlayScreen::user_event_func()
 
 void GamePlayScreen::update()
 {
-   player_krampus_controller.update_polled_keyboard_input();
-   if (scene) scene->update_all();
+   switch (state)
+   {
+   case GAME_PLAY:
+      player_krampus_controller.update_polled_keyboard_input();
+      if (scene) scene->update_all();
+      break;
+   }
 }
 
 

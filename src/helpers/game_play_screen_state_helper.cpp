@@ -14,12 +14,6 @@ GamePlayScreenStateHelper::GamePlayScreenStateHelper(GamePlayScreen *game_play_s
 
 
 
-GamePlayScreenStateHelper::~GamePlayScreenStateHelper()
-{
-}
-
-
-
 void GamePlayScreenStateHelper::set_state(int new_state)
 {
    game_play_screen->state = (GamePlayScreen::state_t)new_state;

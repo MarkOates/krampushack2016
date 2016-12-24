@@ -12,7 +12,6 @@ private:
 
 public:
    GamePlayScreenStateHelper(GamePlayScreen *game_play_screen);
-   ~GamePlayScreenStateHelper();
 
    void set_state(int new_state);
    void update_state();

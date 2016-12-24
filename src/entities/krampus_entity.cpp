@@ -57,6 +57,8 @@ void KrampusEntity::update()
          if (state_counter*scale >= 1.0 && previous_state_counter*scale < 1.0) set_state(STANDING, true);
          break;
       }
+   case CELEBRATING:
+      break;
    default:
       break;
    }
@@ -160,6 +162,10 @@ bool KrampusEntity::set_state(state_t new_state, bool override_if_busy)
       bitmap.bitmap(sprite_sheet->get_sprite(19));
       velocity.position = vec2d(0.0, 0.0);
       break;
+   case CELEBRATING:
+      state_is_busy = true;
+      bitmap.bitmap(sprite_sheet->get_sprite(19));
+      velocity.position = vec2d(0.0, 0.0);
    default:
       return false;
       break;

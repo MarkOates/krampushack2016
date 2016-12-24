@@ -17,6 +17,7 @@ public:
       WALKING_RIGHT,
       WALKING_LEFT,
       STANDING,
+      CELEBRATING,
       ATTACKING,
       DEAD
    };
@@ -36,6 +37,7 @@ public:
 
    void attack();
    void stand_still();
+   void celebrate();
    void walk_up();
    void walk_down();
    void walk_left();

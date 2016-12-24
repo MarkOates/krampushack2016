@@ -18,6 +18,7 @@ GamePlayScreen::GamePlayScreen(Display *display)
    , scene(nullptr)
    , state(NONE)
    , player_krampus_controller()
+   , player_inventory()
 {
    enter_scene(TEST_SCENE_ID);
    set_state(GAME_PLAY);

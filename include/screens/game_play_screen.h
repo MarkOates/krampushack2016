@@ -5,6 +5,7 @@
 #include <allegro_flare/screen.h>
 
 #include <controllers/player_krampus_controller.h>
+#include <models/inventory.h>
 #include <models/scene.h>
 
 
@@ -27,6 +28,7 @@ private:
    state_t state;
    Scene *scene;
    PlayerKrampusController player_krampus_controller;
+   Inventory player_inventory;
 
 public:
    GamePlayScreen(Display *display);

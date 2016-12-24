@@ -30,6 +30,7 @@ void SceneCollisionHelper::resolve_collisions()
    limit_sprites_to_world_bounds();
    check_damage_zones_on_children();
    check_krampus_on_door();
+   check_krampus_on_items();
 };
 
 
@@ -85,7 +86,11 @@ void SceneCollisionHelper::check_krampus_on_items()
    for (auto &item : collections.get_items())
    {
       if (item->place.collide(krampus->place.x, krampus->place.y, 20, 10, 20, 10))
-         UserEventEmitter::emit_event(COLLECT_ITEM_EVENT, item->get_id());
+      {
+         int item_type_int = item->get_as_int("item_type_int");
+         UserEventEmitter::emit_event(COLLECT_ITEM_EVENT, item_type_int);
+         item->flag_for_deletion();
+      }
    }
 }
 

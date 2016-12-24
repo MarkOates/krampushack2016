@@ -63,6 +63,12 @@ void GamePlayScreen::user_event_func()
          enter_scene(scene_id);
          break;
       }
+   case COLLECT_ITEM_EVENT:
+      {
+         int item_type_int = event->user.data1;
+         // handle picking up item
+         break;
+      }
    }
 }
 

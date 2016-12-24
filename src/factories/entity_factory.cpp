@@ -10,6 +10,7 @@
 #include <entities/item_entity.h>
 #include <entities/kid_entity.h>
 #include <entities/krampus_entity.h>
+#include <item_type_nums.h>
 
 
 

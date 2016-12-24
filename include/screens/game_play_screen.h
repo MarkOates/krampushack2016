@@ -24,12 +24,12 @@ private:
       BOSS_FIGHT,
       STATE_COMPLETE
    };
+   state_t state;
+   Scene *scene;
+   PlayerKrampusController player_krampus_controller;
 
 public:
    GamePlayScreen(Display *display);
-   Scene *scene;
-   PlayerKrampusController player_krampus_controller;
-   state_t state;
 
    void primary_timer_func() override;
    void key_down_func() override;

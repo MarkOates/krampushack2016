@@ -9,6 +9,7 @@
 
 GamePlayScreenStateHelper::GamePlayScreenStateHelper(GamePlayScreen *game_play_screen)
    : game_play_screen(game_play_screen)
+   , state_counter(1.0)
 {}
 
 
@@ -22,12 +23,15 @@ GamePlayScreenStateHelper::~GamePlayScreenStateHelper()
 void GamePlayScreenStateHelper::set_state(int new_state)
 {
    game_play_screen->state = (GamePlayScreen::state_t)new_state;
+   state_counter = 0.0;
 }
 
 
 
 void GamePlayScreenStateHelper::update_state()
 {
+   state_counter += 1.0 / 60.0;
+
    switch (game_play_screen->state)
    {
    case GamePlayScreen::GAME_PLAY:

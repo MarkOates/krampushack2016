@@ -8,6 +8,7 @@ class GamePlayScreenStateHelper
 {
 private:
    GamePlayScreen *game_play_screen;
+   float state_counter;
 
 public:
    GamePlayScreenStateHelper(GamePlayScreen *game_play_screen);

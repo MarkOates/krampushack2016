@@ -32,6 +32,8 @@ private:
    Inventory player_inventory;
    GamePlayScreenStateHelper state_helper;
 
+   friend class GamePlayScreenStateHelper;
+
 public:
    GamePlayScreen(Display *display);
 

@@ -78,28 +78,21 @@ void GamePlayScreen::user_event_func()
 
 void GamePlayScreen::update()
 {
-   switch (state)
-   {
-   case GAME_PLAY:
-      player_krampus_controller.update_polled_keyboard_input();
-      if (scene) scene->update_all();
-      break;
-   }
+   state_helper.update_state();
 }
 
 
 
 void GamePlayScreen::draw()
 {
-   al_clear_to_color(color::hex("1f4630"));
-   if (scene) scene->draw_all();
+   state_helper.draw_state();
 }
 
 
 
 void GamePlayScreen::set_state(state_t new_state)
 {
-   state = new_state;
+   state_helper.set_state(new_state);
 }
 
 

@@ -9,7 +9,7 @@
 class ItemEntity : public EntityBase
 {
 public:
-   ItemEntity(ElementID *parent, ALLEGRO_BITMAP *image, std::string item_type, float x, float y);
+   ItemEntity(ElementID *parent, ALLEGRO_BITMAP *image, int item_type_num, float x, float y);
 };
 
 

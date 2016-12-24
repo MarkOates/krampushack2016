@@ -5,7 +5,7 @@
 
 
 
-ItemEntity::ItemEntity(ElementID *parent, ALLEGRO_BITMAP *bmp, std::string item_type, float x, float y)
+ItemEntity::ItemEntity(ElementID *parent, ALLEGRO_BITMAP *bmp, int item_type_int, float x, float y)
    : EntityBase(parent, "item", x, y)
 {
    place.size = vec2d(80, 20);
@@ -13,7 +13,7 @@ ItemEntity::ItemEntity(ElementID *parent, ALLEGRO_BITMAP *bmp, std::string item_
    bitmap.align(0.5, 1.0);
    bitmap.scale(2.0, 2.0);
 
-   set("item_type", item_type);
+   set("item_type_int", item_type_int);
 }
 
 

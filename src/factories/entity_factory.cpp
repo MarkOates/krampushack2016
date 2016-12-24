@@ -69,7 +69,7 @@ EntityBase *EntityFactory::create_door1(ElementID *parent, float x, float y)
 
 EntityBase *EntityFactory::create_club_item(ElementID *parent, float x, float y)
 {
-   return new ItemEntity(parent, get_instance()->character_sprite_sheet.get_sprite(23), "club", x, y);
+   return new ItemEntity(parent, get_instance()->character_sprite_sheet.get_sprite(23), ITEM_TYPE_CLUB, x, y);
 }
 
 

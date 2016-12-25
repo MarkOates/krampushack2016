@@ -24,9 +24,7 @@ void SceneCollisionHelper::resolve_collisions()
 {
    if (!scene) return;
 
-   for (auto &entity : collections.get_all_entities())
-      entity->update();
-
+   update_entities();
    limit_sprites_to_world_bounds();
    check_damage_zones_on_children();
    check_krampus_on_door();

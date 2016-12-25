@@ -9,10 +9,11 @@
 
 
 
-Scene::Scene()
+Scene::Scene(int width)
    : ElementID(nullptr)
    , floor_min_y(465)
    , floor_max_y(600)
+   , width(width)
 {}
 
 
@@ -35,6 +36,13 @@ void Scene::get_y_bounds(float *min_y, float *max_y)
 {
    *min_y = floor_min_y;
    *max_y = floor_max_y;
+}
+
+
+
+float Scene::get_width()
+{
+   return width;
 }
 
 

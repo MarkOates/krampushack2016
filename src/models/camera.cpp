@@ -79,3 +79,11 @@ void Camera::fade_to_clear(float duration)
 
 
 
+void Camera::zoom_to(float scale, float duration)
+{
+   motion.cmove_to(&place.scale.x, scale, duration);
+   motion.cmove_to(&place.scale.y, scale, duration);
+}
+
+
+

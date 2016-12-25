@@ -26,6 +26,7 @@ public:
    void restore_transform();
    void fade_to_black(float duration=0.4);
    void fade_to_clear(float duration=0.4);
+   void zoom_to(float scale=1.0, float duration=0.4);
 
    void draw_overlay();
 };

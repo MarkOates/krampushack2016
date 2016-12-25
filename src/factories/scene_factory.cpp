@@ -47,7 +47,7 @@ Scene *SceneFactory::create_scene_by_id(int scene_id)
 {
    switch (scene_id)
    {
-   case 1: return SceneFactory::create_test_scene(); break;
+   case 999: return SceneFactory::create_test_scene(); break;
    default: break;
    }
 

@@ -10,10 +10,11 @@
 
 Scene *SceneFactory::create_test_scene()
 {
-   Scene *scene = new Scene();
+   Scene *scene = new Scene(ONE_SCREEN_WIDTH*2);
 
    // background
    EntityFactory::create_background1(scene, 0, 0);
+   EntityFactory::create_background1(scene, ONE_SCREEN_WIDTH, 0);
 
    // enemies
    for (unsigned i=0; i<20; i++)

@@ -6,6 +6,10 @@
 
 
 
+#define ONE_SCREEN_WIDTH (256*5)
+
+
+
 class SceneFactory
 {
 public:

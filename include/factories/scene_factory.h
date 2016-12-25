@@ -12,6 +12,9 @@
 
 class SceneFactory
 {
+private:
+   static Scene *_create_scene_by_dimentions(int screen_widths);
+
 public:
    static Scene *create_test_scene();
 

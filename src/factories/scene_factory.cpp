@@ -8,13 +8,22 @@
 
 
 
-Scene *SceneFactory::create_test_scene()
+Scene *SceneFactory::_create_scene_by_dimentions(int screen_widths)
 {
-   Scene *scene = new Scene(ONE_SCREEN_WIDTH*2);
+   Scene *scene = new Scene(ONE_SCREEN_WIDTH*screen_widths);
 
    // background
-   EntityFactory::create_background1(scene, 0, 0);
-   EntityFactory::create_background1(scene, ONE_SCREEN_WIDTH, 0);
+   for (unsigned i=0; i<screen_widths; i++)
+      EntityFactory::create_background1(scene, i*ONE_SCREEN_WIDTH, 0);
+
+   return scene;
+}
+
+
+
+Scene *SceneFactory::create_test_scene()
+{
+   Scene *scene = _create_scene_by_dimentions(2);
 
    // enemies
    for (unsigned i=0; i<20; i++)

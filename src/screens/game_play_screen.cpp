@@ -44,7 +44,14 @@ void GamePlayScreen::key_down_func()
 {
    int al_keycode = Framework::current_event->keyboard.keycode;
 
-   player_krampus_controller.on_key_down(al_keycode);
+   switch (state)
+   {
+   case GAME_PLAY:
+      player_krampus_controller.on_key_down(al_keycode);
+      break;
+   default:
+      break;
+   }
 }
 
 
@@ -53,7 +60,14 @@ void GamePlayScreen::key_up_func()
 {
    int al_keycode = Framework::current_event->keyboard.keycode;
 
-   player_krampus_controller.on_key_up(al_keycode);
+   switch (state)
+   {
+   case GAME_PLAY:
+      player_krampus_controller.on_key_up(al_keycode);
+      break;
+   default:
+      break;
+   }
 }
 
 

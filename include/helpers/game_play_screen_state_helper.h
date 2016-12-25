@@ -16,6 +16,8 @@ public:
    void set_state(int new_state);
    void update_state();
    void draw_state();
+
+   void draw_scene_with_camera();
 };
 
 

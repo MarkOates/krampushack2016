@@ -54,21 +54,13 @@ void GamePlayScreenStateHelper::draw_state()
    switch (game_play_screen->state)
    {
    case GamePlayScreen::GAME_PLAY:
-      if (game_play_screen->scene)
       {
-         game_play_screen->camera.start_transform();
-         game_play_screen->scene->draw_all();
-         game_play_screen->camera.restore_transform();
+         if (game_play_screen->scene) draw_scene_with_camera();
+         break;
       }
-      break;
    case GamePlayScreen::ITEM_COLLECTED:
       {
-         if (game_play_screen->scene)
-         {
-            game_play_screen->camera.start_transform();
-            game_play_screen->scene->draw_all();
-            game_play_screen->camera.restore_transform();
-         }
+         if (game_play_screen->scene) draw_scene_with_camera();
          ItemDialogue dialogue = DialogueFactory::build_collected_item_dialog(ITEM_TYPE_CLUB);
          dialogue.draw(0);
          break;
@@ -76,6 +68,15 @@ void GamePlayScreenStateHelper::draw_state()
    default:
       break;
    }
+}
+
+
+
+void GamePlayScreenStateHelper::draw_scene_with_camera()
+{
+   game_play_screen->camera.start_transform();
+   game_play_screen->scene->draw_all();
+   game_play_screen->camera.restore_transform();
 }
 
 

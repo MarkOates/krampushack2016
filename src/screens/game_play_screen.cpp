@@ -49,6 +49,9 @@ void GamePlayScreen::key_down_func()
    case GAME_PLAY:
       player_krampus_controller.on_key_down(al_keycode);
       break;
+   case ENTERING_THROUGH_DOOR:
+      // nothing
+      break;
    default:
       break;
    }
@@ -64,6 +67,9 @@ void GamePlayScreen::key_up_func()
    {
    case GAME_PLAY:
       player_krampus_controller.on_key_up(al_keycode);
+      break;
+   case ENTERING_THROUGH_DOOR:
+      // nothing
       break;
    default:
       break;
@@ -139,7 +145,12 @@ void GamePlayScreen::enter_scene(int scene_id, char door_name)
    camera.set_target(krampus);
 
    // place krampus at the destination_door
-   if (door) krampus->place.position = door->place.position + vec2d(0.0, door->place.h/2 + krampus->place.h/2);
+   if (door)
+   {
+      krampus->place.position = door->place.position + vec2d(0.0, door->place.h/2 + krampus->place.h/2) + 5;
+      krampus->walk_down();
+      set_state(ENTERING_THROUGH_DOOR);
+   }
 }
 
 

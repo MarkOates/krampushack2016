@@ -4,6 +4,7 @@
 #include <helpers/game_play_screen_state_helper.h>
 
 #include <factories/dialogue_factory.h>
+#include <helpers/scene_collection_helper.h>
 #include <screens/game_play_screen.h>
 #include <item_type_nums.h>
 
@@ -37,6 +38,16 @@ void GamePlayScreenStateHelper::update_state()
    case GamePlayScreen::ITEM_COLLECTED:
       if (state_counter > 3.0) set_state(GamePlayScreen::GAME_PLAY);
       break;
+   case GamePlayScreen::ENTERING_THROUGH_DOOR:
+      if (game_play_screen->scene) game_play_screen->scene->update_all();
+      if (state_counter > 0.65)
+      {
+         SceneCollectionHelper collections(game_play_screen->scene);
+         KrampusEntity *krampus = collections.get_krampus();
+         if (krampus) krampus->stand_still();
+         set_state(GamePlayScreen::GAME_PLAY);
+      }
+      break;
    default:
       break;
    }
@@ -64,6 +75,10 @@ void GamePlayScreenStateHelper::draw_state()
          ItemDialogue dialogue = DialogueFactory::build_collected_item_dialog(game_play_screen->_item_recently_collected);
          dialogue.draw(0);
          break;
+      }
+   case GamePlayScreen::ENTERING_THROUGH_DOOR:
+      {
+         if (game_play_screen->scene) draw_scene_with_camera();
       }
    default:
       break;

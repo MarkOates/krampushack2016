@@ -83,6 +83,9 @@ void GamePlayScreenStateHelper::draw_state()
    default:
       break;
    }
+
+   // draw the camera's overlay color
+   game_play_screen->camera.draw_overlay();
 }
 
 

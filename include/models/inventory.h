@@ -2,6 +2,7 @@
 
 
 
+#include <string>
 #include <vector>
 
 
@@ -16,6 +17,8 @@ public:
 
    void add_item(int item_type);
    bool has_item(int item_type);
+
+   std::string get_str();
 };
 
 

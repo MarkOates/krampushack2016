@@ -56,6 +56,16 @@ Scene *SceneFactory::create_scene_by_id(int scene_id)
 
    switch (scene_id)
    {
+   case 0: scene = SceneFactory::create_scene_0(); break;
+   case 1: scene = SceneFactory::create_scene_1(); break;
+   case 2: scene = SceneFactory::create_scene_2(); break;
+   case 3: scene = SceneFactory::create_scene_3(); break;
+   case 4: scene = SceneFactory::create_scene_4(); break;
+   case 5: scene = SceneFactory::create_scene_5(); break;
+   case 6: scene = SceneFactory::create_scene_6(); break;
+   case 7: scene = SceneFactory::create_scene_7(); break;
+   case 8: scene = SceneFactory::create_scene_8(); break;
+   case 9: scene = SceneFactory::create_scene_9(); break;
    case 999: scene = SceneFactory::create_test_scene(); break;
    default: break;
    }

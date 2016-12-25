@@ -35,9 +35,6 @@ Scene *SceneFactory::create_test_scene()
    // items
    EntityFactory::create_club_item(scene, 900, 565);
 
-   // player
-   EntityFactory::create_krampus(scene, 600, 600);
-
    return scene;
 }
 
@@ -52,6 +49,9 @@ Scene *SceneFactory::create_scene_by_id(int scene_id)
    case 999: scene = SceneFactory::create_test_scene(); break;
    default: break;
    }
+
+   // player
+   EntityFactory::create_krampus(scene, 600, 600);
 
    return scene;
 }

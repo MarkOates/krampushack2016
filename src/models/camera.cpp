@@ -67,17 +67,17 @@ void Camera::fade_to_black(float duration)
    motion.cmove_to(&overlay_color.r, 0, duration);
    motion.cmove_to(&overlay_color.g, 0, duration);
    motion.cmove_to(&overlay_color.b, 0, duration);
-   motion.cmove_to(&overlay_color.a, 0, duration);
+   motion.cmove_to(&overlay_color.a, 1.0, duration);
 }
 
 
 
 void Camera::fade_to_clear(float duration)
 {
-   motion.cmove_to(&overlay_color.r, 1.0, duration);
-   motion.cmove_to(&overlay_color.g, 1.0, duration);
-   motion.cmove_to(&overlay_color.b, 1.0, duration);
-   motion.cmove_to(&overlay_color.a, 1.0, duration);
+   motion.cmove_to(&overlay_color.r, 0, duration);
+   motion.cmove_to(&overlay_color.g, 0, duration);
+   motion.cmove_to(&overlay_color.b, 0, duration);
+   motion.cmove_to(&overlay_color.a, 0, duration);
 }
 
 

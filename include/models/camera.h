@@ -18,7 +18,7 @@ public:
 
    void set_target(EntityBase *new_target=nullptr);
 
-   void update();
+   void update(float max_x);
    void start_transform();
    void restore_transform();
 };

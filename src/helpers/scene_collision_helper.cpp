@@ -39,11 +39,14 @@ void SceneCollisionHelper::limit_sprites_to_world_bounds()
 {
    float min_y, max_y;
    scene->get_y_bounds(&min_y, &max_y);
+   float max_x = scene->get_width();
 
    for (auto &entity : collections.get_entities_bound_in_world())
    {
       if (entity->place.y < min_y) entity->place.y = min_y;
       if (entity->place.y > max_y) entity->place.y = max_y;
+      if (entity->place.x < 0) entity->place.x = 0;
+      if (entity->place.x > max_x) entity->place.x = max_x;
    }
 }
 

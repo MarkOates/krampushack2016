@@ -59,6 +59,13 @@ void Camera::draw_overlay()
 
 
 
+void Camera::set_overlay_color(ALLEGRO_COLOR new_overlay_color)
+{
+   overlay_color = new_overlay_color;
+}
+
+
+
 void Camera::fade_to_black(float duration)
 {
    motion.cmove_to(&overlay_color.r, 0, duration);
@@ -75,6 +82,14 @@ void Camera::fade_to_clear(float duration)
    motion.cmove_to(&overlay_color.g, 1.0, duration);
    motion.cmove_to(&overlay_color.b, 1.0, duration);
    motion.cmove_to(&overlay_color.a, 1.0, duration);
+}
+
+
+
+void Camera::set_zoom(float scale)
+{
+   place.scale.x = scale;
+   place.scale.y = scale;
 }
 
 

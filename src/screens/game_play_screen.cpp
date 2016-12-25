@@ -11,6 +11,7 @@
 
 
 #define TEST_SCENE_ID 999
+#define START_SCENE_ID 0
 
 
 
@@ -23,7 +24,7 @@ GamePlayScreen::GamePlayScreen(Display *display)
    , state_helper(this)
    , camera(display, nullptr)
 {
-   enter_scene(TEST_SCENE_ID);
+   enter_scene(START_SCENE_ID);
    set_state(GAME_PLAY);
 }
 

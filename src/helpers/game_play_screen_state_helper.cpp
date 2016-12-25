@@ -40,6 +40,9 @@ void GamePlayScreenStateHelper::update_state()
    default:
       break;
    }
+
+   // always update the camera, regardless of state
+   game_play_screen->camera.update(game_play_screen->scene->get_width());
 }
 
 
@@ -51,11 +54,21 @@ void GamePlayScreenStateHelper::draw_state()
    switch (game_play_screen->state)
    {
    case GamePlayScreen::GAME_PLAY:
-      if (game_play_screen->scene) game_play_screen->scene->draw_all();
+      if (game_play_screen->scene)
+      {
+         game_play_screen->camera.start_transform();
+         game_play_screen->scene->draw_all();
+         game_play_screen->camera.restore_transform();
+      }
       break;
    case GamePlayScreen::ITEM_COLLECTED:
       {
-         if (game_play_screen->scene) game_play_screen->scene->draw_all();
+         if (game_play_screen->scene)
+         {
+            game_play_screen->camera.start_transform();
+            game_play_screen->scene->draw_all();
+            game_play_screen->camera.restore_transform();
+         }
          ItemDialogue dialogue = DialogueFactory::build_collected_item_dialog(ITEM_TYPE_CLUB);
          dialogue.draw(0);
          break;

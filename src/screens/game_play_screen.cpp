@@ -4,6 +4,7 @@
 #include <screens/game_play_screen.h>
 
 #include <allegro_flare/allegro_flare.h>
+#include <entities/door_entity.h>
 #include <factories/scene_factory.h>
 #include <models/hud.h>
 #include <user_events.h>
@@ -66,7 +67,9 @@ void GamePlayScreen::user_event_func()
    case ENTER_DOOR_EVENT:
       {
          int scene_id = event->user.data1;
-         enter_scene(scene_id);
+         std::string destination_door_name;
+         destination_door_name.push_back((char)event->user.data2);
+         enter_scene(scene_id, destination_door_name[0]);
          break;
       }
    case COLLECT_ITEM_EVENT:
@@ -106,17 +109,23 @@ void GamePlayScreen::set_state(state_t new_state)
 
 
 
-void GamePlayScreen::enter_scene(int scene_id)
+void GamePlayScreen::enter_scene(int scene_id, char door_name)
 {
    if (scene) delete scene;
 
    scene = SceneFactory::create_scene_by_id(scene_id);
 
    KrampusEntity *krampus = static_cast<KrampusEntity *>(scene->find_first("type", "krampus"));
+   DoorEntity *door = static_cast<DoorEntity *>(scene->find_first("door_name", tostring(door_name)));
 
+   // set the player controller to control krampus
    player_krampus_controller.set_krampus(krampus);
 
+   // have the camera follow krampus
    camera.set_target(krampus);
+
+   // place krampus at the destination_door
+   if (door) krampus->place.position = door->place.position + vec2d(0.0, door->place.h/2 + krampus->place.h/2);
 }
 
 

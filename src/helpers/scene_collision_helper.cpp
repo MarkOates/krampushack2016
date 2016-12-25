@@ -35,6 +35,14 @@ void SceneCollisionHelper::resolve_collisions()
 
 
 
+void SceneCollisionHelper::update_entities()
+{
+   for (auto &entity : collections.get_all_entities())
+      entity->update();
+}
+
+
+
 void SceneCollisionHelper::limit_sprites_to_world_bounds()
 {
    float min_y, max_y;

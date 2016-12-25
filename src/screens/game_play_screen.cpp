@@ -5,6 +5,7 @@
 
 #include <allegro_flare/allegro_flare.h>
 #include <factories/scene_factory.h>
+#include <models/hud.h>
 #include <user_events.h>
 
 
@@ -87,6 +88,9 @@ void GamePlayScreen::update()
 void GamePlayScreen::draw()
 {
    state_helper.draw_state();
+
+   HUD hud(3, 10, &player_inventory, 3, 6);
+   hud.draw();
 }
 
 

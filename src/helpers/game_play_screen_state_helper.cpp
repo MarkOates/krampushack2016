@@ -61,7 +61,7 @@ void GamePlayScreenStateHelper::draw_state()
    case GamePlayScreen::ITEM_COLLECTED:
       {
          if (game_play_screen->scene) draw_scene_with_camera();
-         ItemDialogue dialogue = DialogueFactory::build_collected_item_dialog(ITEM_TYPE_CLUB);
+         ItemDialogue dialogue = DialogueFactory::build_collected_item_dialog(game_play_screen->_item_recently_collected);
          dialogue.draw(0);
          break;
       }

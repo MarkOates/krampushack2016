@@ -23,6 +23,7 @@ GamePlayScreen::GamePlayScreen(Display *display)
    , player_inventory()
    , state_helper(this)
    , camera(display, nullptr)
+   , _item_recently_collected(0)
 {
    enter_scene(START_SCENE_ID);
    set_state(GAME_PLAY);
@@ -72,6 +73,7 @@ void GamePlayScreen::user_event_func()
       {
          int item_type_int = event->user.data1;
          player_inventory.add_item(item_type_int);
+         _item_recently_collected = item_type_int;
          set_state(ITEM_COLLECTED);
          break;
       }

@@ -36,6 +36,8 @@ private:
 
    friend class GamePlayScreenStateHelper;
 
+   int _item_recently_collected;
+
 public:
    GamePlayScreen(Display *display);
 

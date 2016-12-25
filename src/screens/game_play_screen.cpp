@@ -21,6 +21,7 @@ GamePlayScreen::GamePlayScreen(Display *display)
    , player_krampus_controller()
    , player_inventory()
    , state_helper(this)
+   , camera(display, nullptr)
 {
    enter_scene(TEST_SCENE_ID);
    set_state(GAME_PLAY);
@@ -108,9 +109,11 @@ void GamePlayScreen::enter_scene(int scene_id)
 
    scene = SceneFactory::create_scene_by_id(scene_id);
 
-   player_krampus_controller.set_krampus(
-         static_cast<KrampusEntity *>(scene->find_first("type", "krampus"))
-      );
+   KrampusEntity *krampus = static_cast<KrampusEntity *>(scene->find_first("type", "krampus"));
+
+   player_krampus_controller.set_krampus(krampus);
+
+   camera.set_target(krampus);
 }
 
 

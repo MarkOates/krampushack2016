@@ -45,13 +45,95 @@ Scene *SceneFactory::create_test_scene()
 
 Scene *SceneFactory::create_scene_by_id(int scene_id)
 {
+   Scene *scene = nullptr;
+
    switch (scene_id)
    {
-   case 999: return SceneFactory::create_test_scene(); break;
+   case 999: scene = SceneFactory::create_test_scene(); break;
    default: break;
    }
 
-   return nullptr;
+   return scene;
+}
+
+
+
+Scene *SceneFactory::create_scene_0()
+{
+   Scene *scene = _create_scene_by_dimentions(2);
+   return scene;
+}
+
+
+
+Scene *SceneFactory::create_scene_1()
+{
+   Scene *scene = _create_scene_by_dimentions(5);
+   return scene;
+}
+
+
+
+Scene *SceneFactory::create_scene_2()
+{
+   Scene *scene = _create_scene_by_dimentions(2);
+   return scene;
+}
+
+
+
+Scene *SceneFactory::create_scene_3()
+{
+   Scene *scene = _create_scene_by_dimentions(2);
+   return scene;
+}
+
+
+
+Scene *SceneFactory::create_scene_4()
+{
+   Scene *scene = _create_scene_by_dimentions(1);
+   return scene;
+}
+
+
+
+Scene *SceneFactory::create_scene_5()
+{
+   Scene *scene = _create_scene_by_dimentions(1);
+   return scene;
+}
+
+
+
+Scene *SceneFactory::create_scene_6()
+{
+   Scene *scene = _create_scene_by_dimentions(1);
+   return scene;
+}
+
+
+
+Scene *SceneFactory::create_scene_7()
+{
+   Scene *scene = _create_scene_by_dimentions(3);
+   return scene;
+}
+
+
+
+Scene *SceneFactory::create_scene_8()
+{
+   Scene *scene = _create_scene_by_dimentions(1);
+   return scene;
+}
+
+
+
+Scene *SceneFactory::create_scene_9()
+{
+   Scene *scene = _create_scene_by_dimentions(9);
+   return scene;
 }
 
 

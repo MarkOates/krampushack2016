@@ -141,6 +141,9 @@ Scene *SceneFactory::create_scene_4()
    EntityFactory::create_door1(scene, door_notch_x(0), FLOOR_TOP, "g", 2, "G");
    EntityFactory::create_door1(scene, door_notch_x(1), FLOOR_TOP, "H", 6, "h");
 
+   // items
+   EntityFactory::create_naughty_list_item(scene, door_notch_x(2), FLOOR_MIDDLE);
+
    return scene;
 }
 
@@ -153,6 +156,9 @@ Scene *SceneFactory::create_scene_5()
    // doors
    EntityFactory::create_door1(scene, door_notch_x(0), FLOOR_TOP, "d", 3, "D");
 
+   // items
+   EntityFactory::create_club_item(scene, door_notch_x(2), FLOOR_MIDDLE);
+
    return scene;
 }
 
@@ -164,6 +170,9 @@ Scene *SceneFactory::create_scene_6()
 
    // doors
    EntityFactory::create_door1(scene, door_notch_x(0), FLOOR_TOP, "h", 4, "H");
+
+   // items
+   EntityFactory::create_key_item(scene, door_notch_x(2), FLOOR_MIDDLE);
 
    return scene;
 }
@@ -189,6 +198,9 @@ Scene *SceneFactory::create_scene_8()
 
    // doors
    EntityFactory::create_door1(scene, door_notch_x(0), FLOOR_TOP, "d", 7, "D");
+
+   // items
+   EntityFactory::create_stone_of_defiance_item(scene, door_notch_x(2), FLOOR_MIDDLE);
 
    return scene;
 }

@@ -8,6 +8,8 @@
 
 #define ONE_SCREEN_WIDTH (256*5)
 #define FLOOR_TOP (465)
+#define FLOOR_BOTTOM (600)
+#define FLOOR_MIDDLE ((FLOOR_BOTTOM-FLOOR_TOP)/2.0+FLOOR_TOP)
 
 
 

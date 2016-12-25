@@ -8,6 +8,8 @@
 Camera::Camera(Display *display, EntityBase *target)
    : place(0, 0, display->width(), display->height())
    , target(target)
+   , overlay_color(color::transparent)
+   , motion()
 {
    place.anchor = vec2d(place.w/2, place.h/2);
 }
@@ -23,6 +25,8 @@ void Camera::set_target(EntityBase *new_target)
 
 void Camera::update(float max_x)
 {
+   motion.update(al_get_time());
+
    if (target) place.x = place.w/2 - target->place.x;
 
    // prevent from moving beyond the size of the room
@@ -44,6 +48,33 @@ void Camera::start_transform()
 void Camera::restore_transform()
 {
    place.restore_transform();
+}
+
+
+
+void Camera::draw_overlay()
+{
+   al_draw_filled_rectangle(0, 0, place.w, place.h, overlay_color);
+}
+
+
+
+void Camera::fade_to_black(float duration)
+{
+   motion.cmove_to(&overlay_color.r, 0, duration);
+   motion.cmove_to(&overlay_color.g, 0, duration);
+   motion.cmove_to(&overlay_color.b, 0, duration);
+   motion.cmove_to(&overlay_color.a, 0, duration);
+}
+
+
+
+void Camera::fade_to_clear(float duration)
+{
+   motion.cmove_to(&overlay_color.r, 1.0, duration);
+   motion.cmove_to(&overlay_color.g, 1.0, duration);
+   motion.cmove_to(&overlay_color.b, 1.0, duration);
+   motion.cmove_to(&overlay_color.a, 1.0, duration);
 }
 
 

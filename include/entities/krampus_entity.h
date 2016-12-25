@@ -24,6 +24,7 @@ public:
    int state;
    float state_counter;
    bool state_is_busy;
+   int walking_speed;
    bool facing_right;
    SpriteSheet *sprite_sheet;
 

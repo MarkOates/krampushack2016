@@ -9,6 +9,7 @@
 KrampusEntity::KrampusEntity(ElementID *parent, SpriteSheet *sprite_sheet, float x, float y)
    : EntityBase(parent, "krampus", x, y)
    , state_is_busy(false)
+   , walking_speed(5.0)
    , facing_right(true)
    , state(STANDING)
    , sprite_sheet(sprite_sheet)
@@ -137,21 +138,21 @@ bool KrampusEntity::set_state(state_t new_state, bool override_if_busy)
    {
    case WALKING_UP:
       bitmap.bitmap(sprite_sheet->get_sprite(18));
-      velocity.position = vec2d(0.0, -1.0);
+      velocity.position = vec2d(0.0, -walking_speed/2);
       break;
    case WALKING_DOWN:
       bitmap.bitmap(sprite_sheet->get_sprite(18));
-      velocity.position = vec2d(0.0, 1.0);
+      velocity.position = vec2d(0.0, walking_speed/2);
       break;
    case WALKING_LEFT:
       bitmap.bitmap(sprite_sheet->get_sprite(18));
       face_left();
-      velocity.position = vec2d(-2.0, 0.0);
+      velocity.position = vec2d(-walking_speed, 0.0);
       break;
    case WALKING_RIGHT:
       bitmap.bitmap(sprite_sheet->get_sprite(18));
       face_right();
-      velocity.position = vec2d(2.0, 0.0);
+      velocity.position = vec2d(walking_speed, 0.0);
       break;
    case STANDING:
       bitmap.bitmap(sprite_sheet->get_sprite(18));

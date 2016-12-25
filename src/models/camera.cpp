@@ -10,9 +10,7 @@ Camera::Camera(Display *display, EntityBase *target)
    , target(target)
    , overlay_color(color::transparent)
    , motion()
-{
-   place.anchor = vec2d(place.w/2, place.h/2);
-}
+{}
 
 
 
@@ -27,20 +25,18 @@ void Camera::update(float max_x)
 {
    motion.update(al_get_time());
 
-   if (target) place.x = place.w/2 - target->place.x;
+   if (target) place.x = target->place.x;
+   place.y = place.h/2;
 
-   // prevent from moving beyond the size of the room
-   float screen_width = (256*5);
-   float room_width = max_x - screen_width;
-   if (place.x > 0) place.x = 0; // left edge
-   if (place.x < -room_width) place.x = -room_width; // right edge
+   if (place.x < place.w/2) place.x = place.w/2;
+   if (place.x > max_x-place.w/2) place.x = max_x-place.w/2;
 }
 
 
 
 void Camera::start_transform()
 {
-   place.start_transform();
+   place.start_reverse_transform();
 }
 
 

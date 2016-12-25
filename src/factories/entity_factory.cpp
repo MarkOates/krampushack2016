@@ -61,9 +61,9 @@ EntityBase *EntityFactory::create_background1(ElementID *parent, float x, float 
 
 
 
-EntityBase *EntityFactory::create_door1(ElementID *parent, float x, float y)
+EntityBase *EntityFactory::create_door1(ElementID *parent, float x, float y, std::string name, int destination_scene, std::string destination_door_name)
 {
-   return new DoorEntity(parent, get_instance()->door1, x, y);
+   return new DoorEntity(parent, name, destination_scene, destination_door_name, get_instance()->door1, x, y);
 }
 
 

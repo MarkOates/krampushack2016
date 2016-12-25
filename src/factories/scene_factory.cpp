@@ -30,7 +30,7 @@ Scene *SceneFactory::create_test_scene()
       EntityFactory::create_random_kid(scene, random_float(200, 900), random_float(400, 600));
 
    // doors
-   EntityFactory::create_door1(scene, 200, 465);
+   EntityFactory::create_door1(scene, 200, 465, "A", 999, "A");
 
    // items
    EntityFactory::create_club_item(scene, 900, 565);

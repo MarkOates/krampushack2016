@@ -43,7 +43,10 @@ Scene *SceneFactory::create_test_scene()
    EntityFactory::create_door1(scene, door_notch_x(0), FLOOR_TOP, "A", 999, "A");
 
    // items
-   EntityFactory::create_club_item(scene, 900, 565);
+   EntityFactory::create_club_item(scene, 800, 565);
+   EntityFactory::create_naughty_list_item(scene, 900, 565);
+   EntityFactory::create_stone_of_defiance_item(scene, 1000, 565);
+   EntityFactory::create_key_item(scene, 1100, 565);
 
    return scene;
 }

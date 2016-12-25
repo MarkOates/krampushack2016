@@ -15,9 +15,9 @@ ItemDialogue::ItemDialogue(float x, float y, float w, float h, ALLEGRO_BITMAP *i
    , pages(pages)
 {
    bitmap.align(0.5, 0.5);
-   bitmap.position(150/2, 150/2);
+   bitmap.position(150/2-30, 150/2-40);
    bitmap.rotation(-0.3);
-   bitmap.scale(3.2, 3.2);
+   bitmap.scale(3.3, 3.3);
 }
 
 

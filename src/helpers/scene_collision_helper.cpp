@@ -77,7 +77,13 @@ void SceneCollisionHelper::check_krampus_on_door()
    for (auto &door : collections.get_doors())
    {
       if (door->place.collide(krampus->place.x, krampus->place.y))
-         UserEventEmitter::emit_event(ENTER_DOOR_EVENT, 1);
+      {
+         int destination_scene = door->get_as_int("destination_scene");
+         std::string destination_door_name = door->get_as_string("destination_door_name");
+         char dest_door_char = destination_door_name.size() == 1 ? destination_door_name[0] : '!';
+
+         UserEventEmitter::emit_event(ENTER_DOOR_EVENT, destination_scene, dest_door_char);
+      }
    }
 }
 

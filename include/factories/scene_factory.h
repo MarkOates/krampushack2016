@@ -7,12 +7,15 @@
 
 
 #define ONE_SCREEN_WIDTH (256*5)
+#define FLOOR_TOP (465)
 
 
 
 class SceneFactory
 {
 private:
+   static float door_notch_x(int pos);
+
    static Scene *_create_scene_by_dimentions(int screen_widths);
    static Scene *create_test_scene();
 

@@ -8,6 +8,16 @@
 
 
 
+float SceneFactory::door_notch_x(int pos)
+   // door_notch_x is a convience function for easily
+   // getting an x coordintate for placing a door
+{
+   float door_spacing = ONE_SCREEN_WIDTH / 6.0;
+   return door_spacing + (door_spacing * 2) * pos;
+}
+
+
+
 Scene *SceneFactory::_create_scene_by_dimentions(int screen_widths)
 {
    Scene *scene = new Scene(ONE_SCREEN_WIDTH*screen_widths);
@@ -30,7 +40,7 @@ Scene *SceneFactory::create_test_scene()
       EntityFactory::create_random_kid(scene, random_float(200, 900), random_float(400, 600));
 
    // doors
-   EntityFactory::create_door1(scene, 200, 465, "A", 999, "A");
+   EntityFactory::create_door1(scene, door_notch_x(0), FLOOR_TOP, "A", 999, "A");
 
    // items
    EntityFactory::create_club_item(scene, 900, 565);

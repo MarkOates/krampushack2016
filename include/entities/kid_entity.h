@@ -21,13 +21,25 @@ enum behavior_t
 class KidEntity : public EntityBase
 {
 private:
+   enum state_t
+   {
+      STATE_STANDING_STILL,
+      STATE_WALKING_UP,
+      STATE_WALKING_DOWN,
+      STATE_WALKING_LEFT,
+      STATE_WALKING_RIGHT
+   };
+
    behavior_t behavior;
    std::string name;
    float walk_speed;
+   state_t state;
    Shader *flat_color_shader;
    float identity_reveal_counter;
    ALLEGRO_COLOR get_identity_color();
    float get_identity_tint_intensity();
+
+   void set_state(state_t);
 
 public:
    KidEntity(ElementID *parent, SpriteSheet *sprite_sheet, Shader *flat_color_shader, float x, float y, std::string name, behavior_t behavior);

@@ -11,6 +11,7 @@ KidEntity::KidEntity(ElementID *parent, SpriteSheet *sprite_sheet, Shader *flat_
    : EntityBase(parent, "kid", x, y)
    , name(name)
    , walk_speed(5.0)
+   , state(STATE_STANDING_STILL)
    , flat_color_shader(flat_color_shader)
    , behavior(behavior)
    , identity_reveal_counter(0.0)
@@ -64,35 +65,61 @@ void KidEntity::draw()
 
 void KidEntity::stand_still()
 {
-   velocity.position = vec2d(0.0, 0.0);
+   set_state(STATE_STANDING_STILL);
 }
 
 
 
 void KidEntity::walk_up()
 {
-   velocity.position = vec2d(0.0, -walk_speed/2);
+   set_state(STATE_WALKING_UP);
 }
 
 
 
 void KidEntity::walk_down()
 {
-   velocity.position = vec2d(0.0, walk_speed/2);
+   set_state(STATE_WALKING_DOWN);
 }
 
 
 
 void KidEntity::walk_left()
 {
-   velocity.position = vec2d(-walk_speed, 0.0);
+   set_state(STATE_WALKING_UP);
 }
 
 
 
 void KidEntity::walk_right()
 {
-   velocity.position = vec2d(walk_speed, 0.0);
+   set_state(STATE_WALKING_RIGHT);
+}
+
+
+
+void KidEntity::set_state(state_t new_state)
+{
+   state = new_state;
+
+   switch (state)
+   {
+   case STATE_STANDING_STILL:
+      velocity.position = vec2d(0.0, 0.0);
+      break;
+   case STATE_WALKING_UP:
+      velocity.position = vec2d(0.0, -walk_speed/2);
+      break;
+   case STATE_WALKING_DOWN:
+      velocity.position = vec2d(0.0, walk_speed/2);
+      break;
+   case STATE_WALKING_LEFT:
+      velocity.position = vec2d(-walk_speed, 0.0);
+      break;
+   case STATE_WALKING_RIGHT:
+      velocity.position = vec2d(walk_speed, 0.0);
+      break;
+   }
 }
 
 

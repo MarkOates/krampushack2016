@@ -57,7 +57,7 @@ EntityFactory::EntityFactory()
 EntityBase *EntityFactory::create_random_kid(ElementID *parent, float x, float y)
 {
    behavior_t behavior = (behavior_t)random_int(BEHAVIOR_ADULT, BEHAVIOR_NICE);
-   return new KidEntity(parent, &get_instance()->character_sprite_sheet, x, y, "[random name]", behavior);
+   return new KidEntity(parent, &get_instance()->character_sprite_sheet, &get_instance()->flat_color_shader, x, y, "[random name]", behavior);
 }
 
 

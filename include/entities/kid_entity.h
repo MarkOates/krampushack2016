@@ -3,6 +3,8 @@
 
 
 #include <entities/entity_base.h>
+
+#include <allegro_flare/shader.h>
 #include <sprite_sheet.h>
 
 
@@ -21,11 +23,12 @@ class KidEntity : public EntityBase
 private:
    behavior_t behavior;
    std::string name;
+   Shader *flat_color_shader;
    float identity_counter;
    ALLEGRO_COLOR get_identity_color();
 
 public:
-   KidEntity(ElementID *parent, SpriteSheet *sprite_sheet, float x, float y, std::string name, behavior_t behavior);
+   KidEntity(ElementID *parent, SpriteSheet *sprite_sheet, Shader *flat_color_shader, float x, float y, std::string name, behavior_t behavior);
    virtual ~KidEntity();
 
    void update() override;

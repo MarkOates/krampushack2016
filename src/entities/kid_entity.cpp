@@ -5,9 +5,10 @@
 
 
 
-KidEntity::KidEntity(ElementID *parent, SpriteSheet *sprite_sheet, float x, float y, std::string name, behavior_t behavior)
+KidEntity::KidEntity(ElementID *parent, SpriteSheet *sprite_sheet, Shader *flat_color_shader, float x, float y, std::string name, behavior_t behavior)
    : EntityBase(parent, "kid", x, y)
    , name(name)
+   , flat_color_shader(flat_color_shader)
    , behavior(behavior)
    , identity_counter(0.0)
 {

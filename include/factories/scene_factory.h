@@ -18,7 +18,7 @@ class SceneFactory
 private:
    static float door_notch_x(int pos);
 
-   static Scene *_create_scene_by_dimentions(int screen_widths);
+   static Scene *_create_scene_by_dimentions(int screen_widths, int background_type=1);
    static Scene *create_test_scene();
 
    static Scene *create_scene_0();

@@ -18,13 +18,19 @@ float SceneFactory::door_notch_x(int pos)
 
 
 
-Scene *SceneFactory::_create_scene_by_dimentions(int screen_widths)
+Scene *SceneFactory::_create_scene_by_dimentions(int screen_widths, int background_type)
 {
    Scene *scene = new Scene(ONE_SCREEN_WIDTH*screen_widths);
 
    // background
    for (unsigned i=0; i<screen_widths; i++)
-      EntityFactory::create_background1(scene, i*ONE_SCREEN_WIDTH, 0);
+   {
+      switch (background_type)
+      {
+      case 1: EntityFactory::create_background1(scene, i*ONE_SCREEN_WIDTH, 0); break;
+      default: EntityFactory::create_background1(scene, i*ONE_SCREEN_WIDTH, 0); break;
+      }
+   }
 
    return scene;
 }

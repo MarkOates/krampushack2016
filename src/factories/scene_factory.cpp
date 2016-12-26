@@ -140,7 +140,7 @@ Scene *SceneFactory::create_scene_3()
    // doors
    EntityFactory::create_door1(scene, door_notch_x(0), FLOOR_TOP, "b", 1, "B");
    EntityFactory::create_door1(scene, door_notch_x(4), FLOOR_TOP, "C", 7, "c");
-   EntityFactory::create_door1(scene, door_notch_x(5), FLOOR_TOP, "D", 5, "d");
+   EntityFactory::create_door2(scene, door_notch_x(5), FLOOR_TOP, "D", 5, "d");
 
    return scene;
 }
@@ -153,7 +153,7 @@ Scene *SceneFactory::create_scene_4()
 
    // doors
    EntityFactory::create_door1(scene, door_notch_x(0), FLOOR_TOP, "g", 2, "G");
-   EntityFactory::create_door1(scene, door_notch_x(1), FLOOR_TOP, "H", 6, "h");
+   EntityFactory::create_door2(scene, door_notch_x(1), FLOOR_TOP, "H", 6, "h");
 
    // items
    EntityFactory::create_naughty_list_item(scene, door_notch_x(2), FLOOR_MIDDLE);
@@ -168,7 +168,7 @@ Scene *SceneFactory::create_scene_5()
    Scene *scene = _create_scene_by_dimentions(1, 5);
 
    // doors
-   EntityFactory::create_door1(scene, door_notch_x(0), FLOOR_TOP, "d", 3, "D");
+   EntityFactory::create_door2(scene, door_notch_x(0), FLOOR_TOP, "d", 3, "D");
 
    // items
    EntityFactory::create_club_item(scene, door_notch_x(2), FLOOR_MIDDLE);
@@ -183,7 +183,7 @@ Scene *SceneFactory::create_scene_6()
    Scene *scene = _create_scene_by_dimentions(1, 4);
 
    // doors
-   EntityFactory::create_door1(scene, door_notch_x(0), FLOOR_TOP, "h", 4, "H");
+   EntityFactory::create_door2(scene, door_notch_x(0), FLOOR_TOP, "h", 4, "H");
 
    // items
    EntityFactory::create_key_item(scene, door_notch_x(2), FLOOR_MIDDLE);

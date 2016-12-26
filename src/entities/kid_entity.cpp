@@ -38,12 +38,22 @@ void KidEntity::reveal_identity()
 void KidEntity::update()
 {
    identity_counter += 1.0 / 60.0;
+}
 
+
+
+void KidEntity::draw()
+{
    ALLEGRO_COLOR identity_color = get_identity_color();
-   ALLEGRO_COLOR normal_color = color::white;
-   float color_blend_ammt = std::min(identity_counter*0.25, 1.0);
+   float tint_intensity = 1.0 - std::min(identity_counter*0.25, 1.0);
 
-   bitmap.color(color::mix(identity_color, normal_color, color_blend_ammt));
+   flat_color_shader->use();
+
+   flat_color_shader->set_vec3("tint", identity_color.r, identity_color.g, identity_color.b);
+   flat_color_shader->set_float("tint_intensity", tint_intensity);
+   EntityBase::draw();
+
+   flat_color_shader->stop();
 }
 
 

@@ -32,6 +32,7 @@ public:
    virtual ~KidEntity();
 
    void update() override;
+   void draw() override;
 
    void reveal_identity();
 };

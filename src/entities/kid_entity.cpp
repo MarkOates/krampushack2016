@@ -84,9 +84,11 @@ ALLEGRO_COLOR KidEntity::get_identity_color()
 
 float KidEntity::get_identity_tint_intensity()
 {
-   float speed = 3.0;
-   float normalized_oscilation = sin(al_get_time() * speed*4) * 0.5 + 0.5;
-   float tint_intensity = 1.0 - std::min(identity_reveal_counter*0.25, 1.0);
+   float strobe_speed = 3.0;
+   float identiy_reveal_duration = 4.0;
+
+   float normalized_oscilation = sin(al_get_time() * strobe_speed*4) * 0.5 + 0.5;
+   float tint_intensity = 1.0 - std::min(identity_reveal_counter*(1.0/identiy_reveal_duration), 1.0);
 
    return normalized_oscilation * interpolator::fast_in(tint_intensity);
 }

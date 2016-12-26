@@ -3,6 +3,8 @@
 
 #include <entities/kid_entity.h>
 
+#include <cmath>
+
 
 
 KidEntity::KidEntity(ElementID *parent, SpriteSheet *sprite_sheet, Shader *flat_color_shader, float x, float y, std::string name, behavior_t behavior)
@@ -45,7 +47,7 @@ void KidEntity::update()
 void KidEntity::draw()
 {
    ALLEGRO_COLOR identity_color = get_identity_color();
-   float tint_intensity = 1.0 - std::min(identity_reveal_counter*0.25, 1.0);
+   float tint_intensity = get_identity_tint_intensity();
 
    flat_color_shader->use();
 
@@ -76,6 +78,17 @@ ALLEGRO_COLOR KidEntity::get_identity_color()
    }
 
    return identity_color;
+}
+
+
+
+float KidEntity::get_identity_tint_intensity()
+{
+   float speed = 3.0;
+   float normalized_oscilation = sin(al_get_time() * speed*4) * 0.5 + 0.5;
+   float tint_intensity = 1.0 - std::min(identity_reveal_counter*0.25, 1.0);
+
+   return normalized_oscilation * interpolator::fast_in(tint_intensity);
 }
 
 

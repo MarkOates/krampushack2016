@@ -28,6 +28,11 @@ Scene *SceneFactory::_create_scene_by_dimentions(int screen_widths, int backgrou
       switch (background_type)
       {
       case 1: EntityFactory::create_background1(scene, i*ONE_SCREEN_WIDTH, 0); break;
+      case 2: EntityFactory::create_background2(scene, i*ONE_SCREEN_WIDTH, 0); break;
+      case 3: EntityFactory::create_background3(scene, i*ONE_SCREEN_WIDTH, 0); break;
+      case 4: EntityFactory::create_background4(scene, i*ONE_SCREEN_WIDTH, 0); break;
+      case 5: EntityFactory::create_background5(scene, i*ONE_SCREEN_WIDTH, 0); break;
+      case 6: EntityFactory::create_background6(scene, i*ONE_SCREEN_WIDTH, 0); break;
       default: EntityFactory::create_background1(scene, i*ONE_SCREEN_WIDTH, 0); break;
       }
    }

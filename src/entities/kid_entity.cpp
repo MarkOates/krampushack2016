@@ -10,7 +10,7 @@ KidEntity::KidEntity(ElementID *parent, SpriteSheet *sprite_sheet, Shader *flat_
    , name(name)
    , flat_color_shader(flat_color_shader)
    , behavior(behavior)
-   , identity_counter(0.0)
+   , identity_reveal_counter(0.0)
 {
    place.size = vec2d(60, 30);
    bitmap.bitmap(sprite_sheet->get_sprite(random_int(0, 16)));
@@ -30,14 +30,14 @@ KidEntity::~KidEntity()
 
 void KidEntity::reveal_identity()
 {
-   identity_counter = 0.0;
+   identity_reveal_counter = 0.0;
 }
 
 
 
 void KidEntity::update()
 {
-   identity_counter += 1.0 / 60.0;
+   identity_reveal_counter += 1.0 / 60.0;
 }
 
 
@@ -45,7 +45,7 @@ void KidEntity::update()
 void KidEntity::draw()
 {
    ALLEGRO_COLOR identity_color = get_identity_color();
-   float tint_intensity = 1.0 - std::min(identity_counter*0.25, 1.0);
+   float tint_intensity = 1.0 - std::min(identity_reveal_counter*0.25, 1.0);
 
    flat_color_shader->use();
 

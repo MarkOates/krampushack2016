@@ -24,7 +24,7 @@ private:
    behavior_t behavior;
    std::string name;
    Shader *flat_color_shader;
-   float identity_counter;
+   float identity_reveal_counter;
    ALLEGRO_COLOR get_identity_color();
 
 public:

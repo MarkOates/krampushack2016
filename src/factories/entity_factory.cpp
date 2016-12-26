@@ -25,9 +25,19 @@ EntityFactory *EntityFactory::get_instance()
 EntityFactory::EntityFactory()
    : character_sprite_sheet("sprites_grid-05.png", 32, 32, 6, 6, 3)
    , background1(nullptr)
+   , background2(nullptr)
+   , background3(nullptr)
+   , background4(nullptr)
+   , background5(nullptr)
+   , background6(nullptr)
    , door1(nullptr)
 {
    background1 = create_pixel_perfect_scaled_render(Framework::bitmap("background-1-08.png"), 5);
+   background2 = create_pixel_perfect_scaled_render(Framework::bitmap("background-2-02.png"), 5);
+   background3 = create_pixel_perfect_scaled_render(Framework::bitmap("background-3-02b.png"), 5);
+   background4 = create_pixel_perfect_scaled_render(Framework::bitmap("background-4-01.png"), 5);
+   background5 = create_pixel_perfect_scaled_render(Framework::bitmap("background-5-01.png"), 5);
+   background6 = create_pixel_perfect_scaled_render(Framework::bitmap("background-6-02.png"), 5);
    door1 = create_pixel_perfect_scaled_render(Framework::bitmap("door-1-02.png"), 5);
 }
 
@@ -57,6 +67,41 @@ EntityBase *EntityFactory::create_krampus_attack_damage_zone(ElementID *parent, 
 EntityBase *EntityFactory::create_background1(ElementID *parent, float x, float y)
 {
    return new BackgroundEntity(parent, get_instance()->background1, x, y);
+}
+
+
+
+EntityBase *EntityFactory::create_background2(ElementID *parent, float x, float y)
+{
+   return new BackgroundEntity(parent, get_instance()->background2, x, y);
+}
+
+
+
+EntityBase *EntityFactory::create_background3(ElementID *parent, float x, float y)
+{
+   return new BackgroundEntity(parent, get_instance()->background3, x, y);
+}
+
+
+
+EntityBase *EntityFactory::create_background4(ElementID *parent, float x, float y)
+{
+   return new BackgroundEntity(parent, get_instance()->background4, x, y);
+}
+
+
+
+EntityBase *EntityFactory::create_background5(ElementID *parent, float x, float y)
+{
+   return new BackgroundEntity(parent, get_instance()->background5, x, y);
+}
+
+
+
+EntityBase *EntityFactory::create_background6(ElementID *parent, float x, float y)
+{
+   return new BackgroundEntity(parent, get_instance()->background6, x, y);
 }
 
 

@@ -223,10 +223,10 @@ Scene *SceneFactory::create_scene_8()
 
 Scene *SceneFactory::create_scene_9()
 {
-   Scene *scene = _create_scene_by_dimentions(9, 6);
+   Scene *scene = _create_scene_by_dimentions(2, 6);
 
    // doors
-   EntityFactory::create_door1(scene, door_notch_x(4), FLOOR_TOP, "e", 1, "E");  // external big santa door
+   EntityFactory::create_door1(scene, door_notch_x(5), FLOOR_TOP, "e", 1, "E");  // external big santa door
 
    return scene;
 }

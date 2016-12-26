@@ -97,7 +97,7 @@ Scene *SceneFactory::create_scene_0()
    Scene *scene = _create_scene_by_dimentions(2, 2);
 
    // doors
-   EntityFactory::create_door1(scene, door_notch_x(4), FLOOR_TOP, "A", 1, "a");
+   EntityFactory::create_door5(scene, door_notch_x(4), FLOOR_TOP, "A", 1, "a");
 
    return scene;
 }

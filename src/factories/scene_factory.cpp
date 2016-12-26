@@ -111,7 +111,7 @@ Scene *SceneFactory::create_scene_1()
 
    // doors
    EntityFactory::create_door1(scene, door_notch_x(0), FLOOR_TOP, "F", 2, "f");
-   EntityFactory::create_door1(scene, door_notch_x(4), FLOOR_TOP, "E", 9, "e"); // big santa door
+   EntityFactory::create_door4(scene, door_notch_x(4), FLOOR_TOP, "E", 9, "e"); // big santa door
    EntityFactory::create_door1(scene, door_notch_x(7), FLOOR_TOP, "B", 3, "b");
    EntityFactory::create_door1(scene, door_notch_x(10), FLOOR_TOP, "a", 0, "A");
 

@@ -68,7 +68,7 @@ ALLEGRO_COLOR KidEntity::get_identity_color()
       identity_color = color::gray;
       break;
    case BEHAVIOR_NAUGHTY:
-      identity_color = color::red;
+      identity_color = color::firebrick;
       break;
    case BEHAVIOR_NICE:
       identity_color = color::white;

@@ -23,6 +23,7 @@ class KidEntity : public EntityBase
 private:
    behavior_t behavior;
    std::string name;
+   float walk_speed;
    Shader *flat_color_shader;
    float identity_reveal_counter;
    ALLEGRO_COLOR get_identity_color();
@@ -34,6 +35,12 @@ public:
 
    void update() override;
    void draw() override;
+
+   void stand_still();
+   void walk_up();
+   void walk_down();
+   void walk_left();
+   void walk_right();
 
    void reveal_identity();
 };

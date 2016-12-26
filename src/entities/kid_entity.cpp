@@ -10,6 +10,7 @@
 KidEntity::KidEntity(ElementID *parent, SpriteSheet *sprite_sheet, Shader *flat_color_shader, float x, float y, std::string name, behavior_t behavior)
    : EntityBase(parent, "kid", x, y)
    , name(name)
+   , walk_speed(5.0)
    , flat_color_shader(flat_color_shader)
    , behavior(behavior)
    , identity_reveal_counter(0.0)
@@ -40,6 +41,7 @@ void KidEntity::reveal_identity()
 void KidEntity::update()
 {
    identity_reveal_counter += 1.0 / 60.0;
+   place += velocity;
 }
 
 
@@ -56,6 +58,41 @@ void KidEntity::draw()
    EntityBase::draw();
 
    flat_color_shader->stop();
+}
+
+
+
+void KidEntity::stand_still()
+{
+   velocity.position = vec2d(0.0, 0.0);
+}
+
+
+
+void KidEntity::walk_up()
+{
+   velocity.position = vec2d(0.0, -walk_speed/2);
+}
+
+
+
+void KidEntity::walk_down()
+{
+   velocity.position = vec2d(0.0, walk_speed/2);
+}
+
+
+
+void KidEntity::walk_left()
+{
+   velocity.position = vec2d(-walk_speed, 0.0);
+}
+
+
+
+void KidEntity::walk_right()
+{
+   velocity.position = vec2d(walk_speed, 0.0);
 }
 
 

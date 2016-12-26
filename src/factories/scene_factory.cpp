@@ -199,7 +199,7 @@ Scene *SceneFactory::create_scene_7()
 
    // doors
    EntityFactory::create_door1(scene, door_notch_x(1), FLOOR_TOP, "D", 8, "d");
-   EntityFactory::create_door1(scene, door_notch_x(6), FLOOR_TOP, "c", 3, "C");
+   EntityFactory::create_door1(scene, door_notch_x(8), FLOOR_TOP, "c", 3, "C");
 
    return scene;
 }

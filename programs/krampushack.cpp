@@ -37,8 +37,8 @@ public:
 int main(int argc, char **argv)
 {
 	Framework::initialize();
-	Display *display = Framework::create_display();
-	KrampusHackProject *proj = new KrampusHackProject(display);
+	Display *display = Framework::create_display(1280, 720, ALLEGRO_OPENGL | ALLEGRO_PROGRAMMABLE_PIPELINE);
+   KrampusHackProject *proj = new KrampusHackProject(display);
 	Framework::run_loop();
 	return 0;
 }

@@ -4,6 +4,7 @@
 
 #include <sprite_sheet.h>
 
+#include <allegro_flare/shader.h>
 #include <entities/entity_base.h>
 
 
@@ -12,6 +13,7 @@ class EntityFactory
 {
 private:
    SpriteSheet character_sprite_sheet;
+   Shader flat_color_shader;
    ALLEGRO_BITMAP *background1;
    ALLEGRO_BITMAP *background2;
    ALLEGRO_BITMAP *background3;

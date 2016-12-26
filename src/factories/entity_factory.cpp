@@ -24,6 +24,7 @@ EntityFactory *EntityFactory::get_instance()
 
 EntityFactory::EntityFactory()
    : character_sprite_sheet("sprites_grid-05.png", 32, 32, 6, 6, 3)
+   , flat_color_shader("data/shaders/flat_color_shader.vertex.glsl", "data/shaders/flat_color_shader.fragment.glsl")
    , background1(nullptr)
    , background2(nullptr)
    , background3(nullptr)

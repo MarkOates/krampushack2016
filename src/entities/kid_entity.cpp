@@ -5,8 +5,10 @@
 
 
 
-KidEntity::KidEntity(ElementID *parent, SpriteSheet *sprite_sheet, float x, float y)
+KidEntity::KidEntity(ElementID *parent, SpriteSheet *sprite_sheet, float x, float y, std::string name, behavior_t behavior)
    : EntityBase(parent, "kid", x, y)
+   , name(name)
+   , behavior(behavior)
 {
    place.size = vec2d(60, 30);
    bitmap.bitmap(sprite_sheet->get_sprite(random_int(0, 16)));

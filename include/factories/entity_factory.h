@@ -23,6 +23,7 @@ private:
    ALLEGRO_BITMAP *door3;
    ALLEGRO_BITMAP *door4;
    ALLEGRO_BITMAP *door5;
+   ALLEGRO_BITMAP *door6;
    ALLEGRO_BITMAP *club_item;
    static EntityFactory *instance;
    static EntityFactory *get_instance();
@@ -39,6 +40,7 @@ public:
    static EntityBase *create_door3(ElementID *parent, float x, float y, std::string name, int destination_scene, std::string destination_door_name);
    static EntityBase *create_door4(ElementID *parent, float x, float y, std::string name, int destination_scene, std::string destination_door_name);
    static EntityBase *create_door5(ElementID *parent, float x, float y, std::string name, int destination_scene, std::string destination_door_name);
+   static EntityBase *create_door6(ElementID *parent, float x, float y, std::string name, int destination_scene, std::string destination_door_name);
    static EntityBase *create_club_item(ElementID *parent, float x, float y);
    static EntityBase *create_stone_of_defiance_item(ElementID *parent, float x, float y);
    static EntityBase *create_naughty_list_item(ElementID *parent, float x, float y);

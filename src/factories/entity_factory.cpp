@@ -35,6 +35,7 @@ EntityFactory::EntityFactory()
    , door3(nullptr)
    , door4(nullptr)
    , door5(nullptr)
+   , door6(nullptr)
 {
    background1 = create_pixel_perfect_scaled_render(Framework::bitmap("background-1-08.png"), 5);
    background2 = create_pixel_perfect_scaled_render(Framework::bitmap("background-2-02.png"), 5);
@@ -47,6 +48,7 @@ EntityFactory::EntityFactory()
    door3 = create_pixel_perfect_scaled_render(Framework::bitmap("door-3-01.png"), 5);
    door4 = create_pixel_perfect_scaled_render(Framework::bitmap("door-4-01.png"), 5);
    door5 = create_pixel_perfect_scaled_render(Framework::bitmap("door-5-01.png"), 5);
+   door6 = create_pixel_perfect_scaled_render(Framework::bitmap("door-6-01.png"), 5);
 }
 
 
@@ -145,6 +147,13 @@ EntityBase *EntityFactory::create_door4(ElementID *parent, float x, float y, std
 EntityBase *EntityFactory::create_door5(ElementID *parent, float x, float y, std::string name, int destination_scene, std::string destination_door_name)
 {
    return new DoorEntity(parent, name, destination_scene, destination_door_name, get_instance()->door5, x, y);
+}
+
+
+
+EntityBase *EntityFactory::create_door6(ElementID *parent, float x, float y, std::string name, int destination_scene, std::string destination_door_name)
+{
+   return new DoorEntity(parent, name, destination_scene, destination_door_name, get_instance()->door6, x, y);
 }
 
 

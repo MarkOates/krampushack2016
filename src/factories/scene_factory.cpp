@@ -125,8 +125,8 @@ Scene *SceneFactory::create_scene_2()
    Scene *scene = _create_scene_by_dimentions(2, 4);
 
    // doors
-   EntityFactory::create_door1(scene, door_notch_x(0), FLOOR_TOP, "G", 4, "g");
-   EntityFactory::create_door1(scene, door_notch_x(5), FLOOR_TOP, "f", 1, "F");
+   EntityFactory::create_door2(scene, door_notch_x(0), FLOOR_TOP, "G", 4, "g");
+   EntityFactory::create_door2(scene, door_notch_x(5), FLOOR_TOP, "f", 1, "F");
 
    return scene;
 }
@@ -139,7 +139,7 @@ Scene *SceneFactory::create_scene_3()
 
    // doors
    EntityFactory::create_door1(scene, door_notch_x(0), FLOOR_TOP, "b", 1, "B");
-   EntityFactory::create_door1(scene, door_notch_x(4), FLOOR_TOP, "C", 7, "c");
+   EntityFactory::create_door2(scene, door_notch_x(4), FLOOR_TOP, "C", 7, "c");
    EntityFactory::create_door2(scene, door_notch_x(5), FLOOR_TOP, "D", 5, "d");
 
    return scene;
@@ -152,7 +152,7 @@ Scene *SceneFactory::create_scene_4()
    Scene *scene = _create_scene_by_dimentions(1, 4);
 
    // doors
-   EntityFactory::create_door1(scene, door_notch_x(0), FLOOR_TOP, "g", 2, "G");
+   EntityFactory::create_door2(scene, door_notch_x(0), FLOOR_TOP, "g", 2, "G");
    EntityFactory::create_door2(scene, door_notch_x(1), FLOOR_TOP, "H", 6, "h");
 
    // items
@@ -198,8 +198,8 @@ Scene *SceneFactory::create_scene_7()
    Scene *scene = _create_scene_by_dimentions(3, 4);
 
    // doors
-   EntityFactory::create_door1(scene, door_notch_x(1), FLOOR_TOP, "D", 8, "d");
-   EntityFactory::create_door1(scene, door_notch_x(8), FLOOR_TOP, "c", 3, "C");
+   EntityFactory::create_door2(scene, door_notch_x(1), FLOOR_TOP, "D", 8, "d");
+   EntityFactory::create_door2(scene, door_notch_x(8), FLOOR_TOP, "c", 3, "C");
 
    return scene;
 }
@@ -211,7 +211,7 @@ Scene *SceneFactory::create_scene_8()
    Scene *scene = _create_scene_by_dimentions(1, 4);
 
    // doors
-   EntityFactory::create_door1(scene, door_notch_x(0), FLOOR_TOP, "d", 7, "D");
+   EntityFactory::create_door2(scene, door_notch_x(0), FLOOR_TOP, "d", 7, "D");
 
    // items
    EntityFactory::create_stone_of_defiance_item(scene, door_notch_x(2), FLOOR_MIDDLE);

@@ -87,6 +87,19 @@ float KidEntity::get_identity_tint_intensity()
    float strobe_speed = 3.0;
    float identiy_reveal_duration = 4.0;
 
+   switch (behavior)
+   {
+   case BEHAVIOR_ADULT:
+      return 1.0 - std::min(identity_reveal_counter*(1.0/identiy_reveal_duration), 1.0);
+      break;
+   case BEHAVIOR_NAUGHTY:
+      strobe_speed = 3.0;
+      break;
+   case BEHAVIOR_NICE:
+      strobe_speed = 1.0;
+      break;
+   }
+
    float normalized_oscilation = sin(al_get_time() * strobe_speed*4) * 0.5 + 0.5;
    float tint_intensity = 1.0 - std::min(identity_reveal_counter*(1.0/identiy_reveal_duration), 1.0);
 

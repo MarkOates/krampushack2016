@@ -94,10 +94,10 @@ Scene *SceneFactory::create_scene_by_id(int scene_id)
 
 Scene *SceneFactory::create_scene_0()
 {
-   Scene *scene = _create_scene_by_dimentions(2, 2);
+   Scene *scene = _create_scene_by_dimentions(1, 2);
 
    // doors
-   EntityFactory::create_door5(scene, door_notch_x(4), FLOOR_TOP, "A", 1, "a");
+   EntityFactory::create_door5(scene, door_notch_x(2), FLOOR_TOP, "A", 1, "a");
 
    return scene;
 }
@@ -112,8 +112,8 @@ Scene *SceneFactory::create_scene_1()
    // doors
    EntityFactory::create_door1(scene, door_notch_x(0), FLOOR_TOP, "F", 2, "f");
    EntityFactory::create_door4(scene, door_notch_x(4), FLOOR_TOP, "E", 9, "e"); // big santa door
-   EntityFactory::create_door1(scene, door_notch_x(7), FLOOR_TOP, "B", 3, "b");
-   EntityFactory::create_door6(scene, door_notch_x(10), FLOOR_TOP, "a", 0, "A");
+   EntityFactory::create_door6(scene, door_notch_x(8), FLOOR_TOP, "a", 0, "A");
+   EntityFactory::create_door1(scene, door_notch_x(11), FLOOR_TOP, "B", 3, "b");
 
    return scene;
 }
@@ -198,7 +198,7 @@ Scene *SceneFactory::create_scene_7()
    Scene *scene = _create_scene_by_dimentions(3, 4);
 
    // doors
-   EntityFactory::create_door2(scene, door_notch_x(1), FLOOR_TOP, "D", 8, "d");
+   EntityFactory::create_door2(scene, door_notch_x(0), FLOOR_TOP, "D", 8, "d");
    EntityFactory::create_door2(scene, door_notch_x(8), FLOOR_TOP, "c", 3, "C");
 
    return scene;

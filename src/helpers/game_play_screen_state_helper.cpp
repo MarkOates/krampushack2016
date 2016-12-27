@@ -31,6 +31,7 @@ void GamePlayScreenStateHelper::set_state(int new_state)
          SceneCollectionHelper collections(game_play_screen->scene);
          KrampusEntity *krampus = collections.get_krampus();
          if (krampus) krampus->celebrate();
+         game_play_screen->camera.zoom_to(0.6, 0.3);
       }
       break;
    case GamePlayScreen::ENTERING_THROUGH_DOOR:
@@ -64,6 +65,7 @@ void GamePlayScreenStateHelper::update_state()
          if (state_counter > 3.0)
          {
             if (krampus) krampus->stand_still();
+            game_play_screen->camera.zoom_to(1.0, 0.6);
             set_state(GamePlayScreen::GAME_PLAY);
          }
       }

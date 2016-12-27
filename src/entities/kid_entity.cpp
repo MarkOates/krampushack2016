@@ -10,7 +10,7 @@
 KidEntity::KidEntity(ElementID *parent, SpriteSheet *sprite_sheet, Shader *flat_color_shader, float x, float y, std::string name, behavior_t behavior)
    : EntityBase(parent, "kid", x, y)
    , name(name)
-   , walk_speed(5.0)
+   , walk_speed(1.5)
    , state(STATE_STANDING_STILL)
    , flat_color_shader(flat_color_shader)
    , behavior(behavior)

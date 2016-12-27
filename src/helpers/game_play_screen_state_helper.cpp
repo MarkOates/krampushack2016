@@ -21,6 +21,22 @@ void GamePlayScreenStateHelper::set_state(int new_state)
 {
    game_play_screen->state = (GamePlayScreen::state_t)new_state;
    state_counter = 0.0;
+
+   switch (game_play_screen->state)
+   {
+   case GamePlayScreen::GAME_PLAY:
+      break;
+   case GamePlayScreen::ITEM_COLLECTED:
+      break;
+   case GamePlayScreen::ENTERING_THROUGH_DOOR:
+      game_play_screen->camera.set_overlay_color(color::black);
+      game_play_screen->camera.fade_to_clear(1.5);
+      game_play_screen->camera.set_zoom(0.8);
+      game_play_screen->camera.zoom_to(1.0, 2.2);
+      break;
+   default:
+      break;
+   }
 }
 
 

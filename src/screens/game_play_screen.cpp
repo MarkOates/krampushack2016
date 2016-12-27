@@ -154,17 +154,14 @@ void GamePlayScreen::enter_scene(int scene_id, char door_name)
    // have the camera follow krampus
    camera.set_target(krampus);
 
-   // place krampus at the destination_door
+   // place krampus at the destination_door and walk down
    if (door)
    {
       krampus->place.position = door->place.position + vec2d(0.0, door->place.h/2 + krampus->place.h/2) + 5;
       krampus->walk_down();
-      camera.set_overlay_color(color::black);
-      camera.fade_to_clear(1.5);
-      camera.set_zoom(0.8);
-      camera.zoom_to(1.0, 2.2);
-      set_state(ENTERING_THROUGH_DOOR);
    }
+
+   set_state(ENTERING_THROUGH_DOOR);
 }
 
 

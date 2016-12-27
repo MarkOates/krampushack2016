@@ -32,6 +32,7 @@ void GamePlayScreenStateHelper::set_state(int new_state)
          KrampusEntity *krampus = collections.get_krampus();
          if (krampus) krampus->celebrate();
          game_play_screen->camera.zoom_to(0.6, 0.3);
+         game_play_screen->camera.tilt_to(random_bool() ? 0.1 : -0.1, 0.3);
       }
       break;
    case GamePlayScreen::ENTERING_THROUGH_DOOR:
@@ -66,6 +67,7 @@ void GamePlayScreenStateHelper::update_state()
          {
             if (krampus) krampus->stand_still();
             game_play_screen->camera.zoom_to(1.0, 0.6);
+            game_play_screen->camera.tilt_to(0.0, 0.3);
             set_state(GamePlayScreen::GAME_PLAY);
          }
       }

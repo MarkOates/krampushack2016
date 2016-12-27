@@ -163,3 +163,15 @@ void GamePlayScreen::enter_scene(int scene_id, char door_name)
 
 
 
+void GamePlayScreen::_destroy_ai_kid_controller_for(KidEntity *kid)
+{
+   for (unsigned i=0; i<ai_kid_controllers.size(); i++)
+      if (ai_kid_controllers[i].is_controlling(kid))
+      {
+         ai_kid_controllers.erase(ai_kid_controllers.begin() + i);
+         i--;
+      }
+}
+
+
+

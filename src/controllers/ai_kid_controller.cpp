@@ -56,3 +56,10 @@ void AIKidController::update()
 
 
 
+bool AIKidController::is_controlling(KidEntity *possibly_controlled_kid)
+{
+   return kid == possibly_controlled_kid;
+}
+
+
+

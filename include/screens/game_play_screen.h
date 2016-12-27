@@ -39,6 +39,7 @@ private:
    friend class GamePlayScreenStateHelper;
 
    int _item_recently_collected;
+   void _destroy_ai_kid_controller_for(KidEntity *kid);
 
 public:
    GamePlayScreen(Display *display);

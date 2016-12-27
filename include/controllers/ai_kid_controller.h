@@ -19,6 +19,7 @@ public:
    AIKidController(KidEntity *kid);
 
    void update();
+   bool is_controlling(KidEntity *possibly_controlled_kid);
 };
 
 

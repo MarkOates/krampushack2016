@@ -6,6 +6,7 @@
 #include <allegro_flare/allegro_flare.h>
 #include <entities/door_entity.h>
 #include <factories/scene_factory.h>
+#include <helpers/scene_collection_helper.h>
 #include <models/hud.h>
 #include <user_events.h>
 
@@ -135,8 +136,10 @@ void GamePlayScreen::enter_scene(int scene_id, char door_name)
 
    scene = SceneFactory::create_scene_by_id(scene_id);
 
-   KrampusEntity *krampus = static_cast<KrampusEntity *>(scene->find_first("type", "krampus"));
-   DoorEntity *door = static_cast<DoorEntity *>(scene->find_first("door_name", tostring(door_name)));
+   SceneCollectionHelper collections(scene);
+
+   KrampusEntity *krampus = collections.get_krampus();
+   DoorEntity *door = collections.get_door(door_name);
 
    // set the player controller to control krampus
    player_krampus_controller.set_krampus(krampus);

@@ -65,6 +65,17 @@ std::vector<EntityBase *> SceneCollectionHelper::get_all_flagged_for_deletion()
 }
 
 
+std::vector<KidEntity *> SceneCollectionHelper::get_kids_flagged_for_deletion()
+{
+   std::vector<KidEntity* > kids_flagged_for_deletion;
+
+   for (auto &kid : get_kids())
+      if (kid->exists("can_be_deleted")) kids_flagged_for_deletion.push_back(kid);
+
+   return kids_flagged_for_deletion;
+}
+
+
 
 std::vector<DoorEntity *> SceneCollectionHelper::get_doors()
 {

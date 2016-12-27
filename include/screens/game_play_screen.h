@@ -5,6 +5,7 @@
 #include <allegro_flare/screen.h>
 
 #include <controllers/player_krampus_controller.h>
+#include <controllers/ai_kid_controller.h>
 #include <helpers/game_play_screen_state_helper.h>
 #include <models/camera.h>
 #include <models/inventory.h>
@@ -30,6 +31,7 @@ private:
    state_t state;
    Scene *scene;
    PlayerKrampusController player_krampus_controller;
+   std::vector<AIKidController> ai_kid_controllers;
    Inventory player_inventory;
    GamePlayScreenStateHelper state_helper;
    Camera camera;

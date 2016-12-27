@@ -73,3 +73,10 @@ std::vector<ItemEntity *> SceneCollectionHelper::get_items()
 
 
 
+DoorEntity *SceneCollectionHelper::get_door(char door_name)
+{
+   return static_cast<DoorEntity *>(scene->find_first("door_name", tostring(door_name)));
+}
+
+
+

@@ -28,6 +28,7 @@ public:
    std::vector<DoorEntity *> get_doors();
    std::vector<ItemEntity *> get_items();
    KrampusEntity *get_krampus();
+   DoorEntity *get_door(char door_name);
 };
 
 

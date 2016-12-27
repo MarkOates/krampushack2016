@@ -41,6 +41,8 @@ private:
 
    void set_state(state_t);
 
+   friend class AIKidController;
+
 public:
    KidEntity(ElementID *parent, SpriteSheet *sprite_sheet, Shader *flat_color_shader, float x, float y, std::string name, behavior_t behavior);
    virtual ~KidEntity();

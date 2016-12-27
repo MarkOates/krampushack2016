@@ -2,6 +2,7 @@
 
 
 
+#include <entities/kid_entity.h>
 #include <string>
 #include <vector>
 
@@ -15,6 +16,7 @@ private:
    public:
       std::string name;
       int scene_id;
+      behavior_t behavior;
       bool killed;
       Kid(std::string name);
    };
@@ -22,6 +24,8 @@ private:
    std::vector<Kid> kids;
 
    void _initialize_kids_names();
+   void _shuffle_kids();
+   void _distribute_kid_behavior();
 
 public:
    NaughtyList();

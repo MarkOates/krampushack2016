@@ -27,13 +27,8 @@ private:
 
    std::vector<Kid> kids;
 
-   void _initialize_kids_names();
-   void _shuffle_kids();
-   void _distribute_kid_behavior();
-
 public:
    NaughtyList();
-   ~NaughtyList();
 };
 
 

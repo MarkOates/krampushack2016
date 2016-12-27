@@ -52,7 +52,16 @@ void Scene::update_all()
    SceneCollisionHelper collision_helper(this);
    collision_helper.resolve_collisions();
 
-   for (auto &descendant : find_all_descendants("can_be_deleted"))
+   cleanup_all();
+}
+
+
+
+void Scene::cleanup_all()
+{
+   SceneCollectionHelper collection_helper(this);
+
+   for (auto &descendant : collection_helper.get_all_flagged_for_deletion())
       delete descendant;
 }
 

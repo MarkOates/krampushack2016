@@ -59,6 +59,13 @@ std::vector<EntityBase *> SceneCollectionHelper::get_entities_bound_in_world()
 
 
 
+std::vector<EntityBase *> SceneCollectionHelper::get_all_flagged_for_deletion()
+{
+   return ElementID::recast_collection<EntityBase>(scene->find_all_descendants("can_be_deleted"));
+}
+
+
+
 std::vector<DoorEntity *> SceneCollectionHelper::get_doors()
 {
    return ElementID::recast_collection<DoorEntity>(scene->find_all_descendants("type", "door"));

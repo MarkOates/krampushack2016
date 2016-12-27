@@ -21,6 +21,7 @@ public:
    float get_width();
 
    void update_all();
+   void cleanup_all();
    void draw_all();
 };
 

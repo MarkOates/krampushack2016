@@ -25,6 +25,7 @@ public:
    std::vector<KidEntity *> get_kids();
    std::vector<DamageZoneEntity *> get_damage_zones();
    std::vector<EntityBase *> get_entities_bound_in_world();
+   std::vector<EntityBase *> get_all_flagged_for_deletion();
    std::vector<DoorEntity *> get_doors();
    std::vector<ItemEntity *> get_items();
    KrampusEntity *get_krampus();

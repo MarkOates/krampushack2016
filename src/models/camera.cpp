@@ -98,3 +98,10 @@ void Camera::zoom_to(float scale, float duration)
 
 
 
+void Camera::tilt_to(float tilt, float duration)
+{
+   motion.cmove_to(&place.rotation, tilt, duration);
+}
+
+
+

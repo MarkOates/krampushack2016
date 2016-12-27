@@ -29,6 +29,7 @@ public:
    void fade_to_clear(float duration=0.4);
    void set_zoom(float scale=1.0);
    void zoom_to(float scale=1.0, float duration=0.4);
+   void tilt_to(float tilt, float duration=0.4);
 
    void draw_overlay();
 };

@@ -2,7 +2,9 @@
 
 
 #include <entities/krampus_entity.h>
+
 #include <factories/entity_factory.h>
+#include <cmath>
 
 
 
@@ -59,6 +61,13 @@ void KrampusEntity::update()
          break;
       }
    case CELEBRATING:
+      {
+         float previous_state_counter_modded = std::fmod(previous_state_counter, 0.4);
+         float state_counter_modded = std::fmod(state_counter, 0.4);
+         float scale = 1.0;
+         if (state_counter_modded*scale >= 0.1 && previous_state_counter_modded*scale < 0.1) bitmap.bitmap(sprite_sheet->get_sprite(19));
+         if (state_counter_modded*scale >= 0.3 && previous_state_counter_modded*scale < 0.3) bitmap.bitmap(sprite_sheet->get_sprite(18));
+      }
       break;
    default:
       break;
@@ -125,6 +134,13 @@ void KrampusEntity::face_right()
 
 
 
+void KrampusEntity::celebrate()
+{
+   set_state(CELEBRATING);
+}
+
+
+
 bool KrampusEntity::set_state(state_t new_state, bool override_if_busy)
 {
    if (override_if_busy) state_is_busy = false;
@@ -164,7 +180,6 @@ bool KrampusEntity::set_state(state_t new_state, bool override_if_busy)
       velocity.position = vec2d(0.0, 0.0);
       break;
    case CELEBRATING:
-      state_is_busy = true;
       bitmap.bitmap(sprite_sheet->get_sprite(19));
       velocity.position = vec2d(0.0, 0.0);
    default:

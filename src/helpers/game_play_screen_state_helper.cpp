@@ -33,13 +33,13 @@ void GamePlayScreenStateHelper::update_state()
    {
    case GamePlayScreen::GAME_PLAY:
       game_play_screen->player_krampus_controller.update_polled_keyboard_input();
-      if (game_play_screen->scene) game_play_screen->scene->update_all();
+      update_scene();
       break;
    case GamePlayScreen::ITEM_COLLECTED:
       if (state_counter > 3.0) set_state(GamePlayScreen::GAME_PLAY);
       break;
    case GamePlayScreen::ENTERING_THROUGH_DOOR:
-      if (game_play_screen->scene) game_play_screen->scene->update_all();
+      update_scene();
       if (state_counter > 0.65)
       {
          SceneCollectionHelper collections(game_play_screen->scene);
@@ -86,6 +86,16 @@ void GamePlayScreenStateHelper::draw_state()
 
    // draw the camera's overlay color
    game_play_screen->camera.draw_overlay();
+}
+
+
+
+void GamePlayScreenStateHelper::update_scene()
+{
+   if (!game_play_screen->scene) return;
+
+   game_play_screen->scene->update_all();
+   game_play_screen->scene->cleanup_all();
 }
 
 

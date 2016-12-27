@@ -17,6 +17,7 @@ public:
    void update_state();
    void draw_state();
 
+   void update_scene();
    void draw_scene_with_camera();
 };
 

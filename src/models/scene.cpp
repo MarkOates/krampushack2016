@@ -51,8 +51,6 @@ void Scene::update_all()
 {
    SceneCollisionHelper collision_helper(this);
    collision_helper.resolve_collisions();
-
-   cleanup_all();
 }
 
 

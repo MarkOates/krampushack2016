@@ -77,58 +77,6 @@ NaughtyList::NaughtyList()
       , {"Sam"}
       , {"Luther"}
       , {"Walter"}
-
-      // KrampusHack participants
-      , {"Mark Oates"}
-      , {"Eric Johnson"}
-      , {"Edgar Reynaldo"}
-      , {"Elias"}
-      , {"Amarillion"}
-      , {"SiegeLord"}
-      , {"Vanneto"}
-      , {"m c"}
-      , {"Takaaki Furukawa"}
-      , {"Derezo"}
-
-      // Also joined the discussion in
-      // https://www.allegro.cc/forums/thread/616642
-      , {"GullRaDriel"}
-      , {"Felix-The-Ghost"}
-      , {"bamccaig"}
-      , {"Specter Phoenix"}
-      , {"MiquelFire"}
-      , {"Onewing"}
-      , {"LennyLen"}
-
-      // Other notable a.cc members
-      , {"Johan Halmén"}
-      , {"torhu"}
-      , {"LennyLen"}
-      , {"AMCerasoli"}
-      , {"Steve Terry"}
-      , {"Ariesnl"}
-      , {"Thomas Fjellstrom"}
-      , {"Dennis"}
-      , {"Gideon Weems"}
-      , {"Polybios"}
-      , {"Rodolfo Lam"}
-      , {"Don Freeman"}
-      , {"Bob Keane"}
-      , {"anto80"}
-      , {"Neil Roy"}
-      , {"relpatseht"}
-      , {"Bruce Perry"}
-      , {"Chris Katko"}
-      , {"Matthew Leverton"}
-      , {"jmasterx"}
-      , {"Peter Hull"}
-      , {"OnlineCop"}
-      , {"Niunio"}
-      , {"DanielH"}
-      , {"Audric"}
-      , {"Paul whoknows"}
-      , {"Aaron Bolyard"}
-
       })
 {
 }

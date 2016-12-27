@@ -94,7 +94,17 @@ void GamePlayScreenStateHelper::update_scene()
 {
    if (!game_play_screen->scene) return;
 
+   for (auto &ai_kid_controller : game_play_screen->ai_kid_controllers)
+      ai_kid_controller.update();
+
    game_play_screen->scene->update_all();
+
+   // destroy the AI controllers for kids flagged for deletion
+   SceneCollectionHelper collections(game_play_screen->scene);
+   for (auto &kid : collections.get_kids_flagged_for_deletion())
+      game_play_screen->_destroy_ai_kid_controller_for(kid);
+
+   // now remove those entities
    game_play_screen->scene->cleanup_all();
 }
 

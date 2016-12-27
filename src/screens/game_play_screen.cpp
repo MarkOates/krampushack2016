@@ -142,6 +142,12 @@ void GamePlayScreen::enter_scene(int scene_id, char door_name)
    KrampusEntity *krampus = collections.get_krampus();
    DoorEntity *door = collections.get_door(door_name);
 
+   // create AI controllers to control the kids
+   ai_kid_controllers.clear();
+
+   for (auto &kid : collections.get_kids())
+      ai_kid_controllers.push_back(AIKidController(kid));
+
    // set the player controller to control krampus
    player_krampus_controller.set_krampus(krampus);
 

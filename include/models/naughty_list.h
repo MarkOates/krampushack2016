@@ -21,6 +21,8 @@ private:
 
    std::vector<Kid> kids;
 
+   void _initialize_kids_names();
+
 public:
    NaughtyList();
    ~NaughtyList();

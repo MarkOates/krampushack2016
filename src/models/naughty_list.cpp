@@ -13,8 +13,9 @@ NaughtyList::Kid::Kid(std::string name)
 
 
 
-NaughtyList::NaughtyList()
-   : kids(
+void NaughtyList::_initialize_kids_names()
+{
+   kids =
       { {"Sally"}
       , {"Jill"}
       , {"Tara"}
@@ -77,8 +78,15 @@ NaughtyList::NaughtyList()
       , {"Sam"}
       , {"Luther"}
       , {"Walter"}
-      })
+      };
+}
+
+
+
+NaughtyList::NaughtyList()
+   : kids()
 {
+   _initialize_kids_names();
 }
 
 

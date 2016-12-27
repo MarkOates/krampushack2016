@@ -12,7 +12,7 @@ AIKidController::AIKidController(KidEntity *kid)
 
 
 
-KidEntity::state_t AIKidController::select_random_state()
+KidEntity::state_t AIKidController::_get_a_random_state()
 {
    std::vector<KidEntity::state_t> possible_states = {
          KidEntity::STATE_STANDING_STILL,
@@ -27,15 +27,21 @@ KidEntity::state_t AIKidController::select_random_state()
 
 
 
+KidEntity::state_t AIKidController::_get_a_random_state_different_from_current_one()
+{
+   KidEntity::state_t random_state = _get_a_random_state();
+   while ((random_state = _get_a_random_state()) != kid->state);
+
+   return random_state;
+}
+
+
+
 void AIKidController::set_new_state()
 {
+   kid->set_state(_get_a_random_state_different_from_current_one());
+
    float duration_until_next_state_chage = random_float(0.5, 5.0);
-
-   KidEntity::state_t next_state = select_random_state();
-   while ((next_state = select_random_state()) != kid->state);
-
-   kid->set_state(next_state);
-
    state_counter = duration_until_next_state_chage;
 }
 

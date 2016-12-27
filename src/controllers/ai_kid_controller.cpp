@@ -30,7 +30,7 @@ KidEntity::state_t AIKidController::_get_a_random_state()
 KidEntity::state_t AIKidController::_get_a_random_state_different_from_current_one()
 {
    KidEntity::state_t random_state = _get_a_random_state();
-   while ((random_state = _get_a_random_state()) != kid->state);
+   while ((random_state = _get_a_random_state()) == kid->state);
 
    return random_state;
 }

@@ -19,6 +19,10 @@ private:
       behavior_t behavior;
       bool killed;
       Kid(std::string name);
+      bool is_naughty();
+      bool is_nice();
+      bool is_adult();
+      bool is_alive();
    };
 
    std::vector<Kid> kids;

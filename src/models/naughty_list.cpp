@@ -16,6 +16,34 @@ NaughtyList::Kid::Kid(std::string name)
 
 
 
+bool NaughtyList::Kid::is_naughty()
+{
+   return behavior == BEHAVIOR_NAUGHTY;
+}
+
+
+
+bool NaughtyList::Kid::is_nice()
+{
+   return behavior == BEHAVIOR_NICE;
+}
+
+
+
+bool NaughtyList::Kid::is_adult()
+{
+   return behavior == BEHAVIOR_ADULT;
+}
+
+
+
+bool NaughtyList::Kid::is_alive()
+{
+   return !killed;
+}
+
+
+
 void NaughtyList::_initialize_kids_names()
 {
    kids =

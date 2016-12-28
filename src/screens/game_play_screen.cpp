@@ -5,6 +5,7 @@
 
 #include <allegro_flare/allegro_flare.h>
 #include <entities/door_entity.h>
+#include <factories/entity_factory.h>
 #include <factories/scene_factory.h>
 #include <helpers/scene_collection_helper.h>
 #include <models/hud.h>
@@ -24,6 +25,7 @@ GamePlayScreen::GamePlayScreen(Display *display)
    , player_krampus_controller()
    , ai_kid_controllers()
    , player_inventory()
+   , naughty_list()
    , state_helper(this)
    , camera(display, nullptr)
    , _item_recently_collected(0)
@@ -139,8 +141,22 @@ void GamePlayScreen::enter_scene(int scene_id, char door_name)
 
    SceneCollectionHelper collections(scene);
 
+   std::vector<NaughtyList::Kid> naughty_list_kids = naughty_list.get_alive_kids_for_scene(scene_id);
    KrampusEntity *krampus = collections.get_krampus();
    DoorEntity *door = collections.get_door(door_name);
+
+   // create entities for the alive kids in this scene
+   for (auto &kid : naughty_list_kids)
+   {
+      float min_y, max_y;
+      float scene_width = scene->get_width();
+      scene->get_y_bounds(&min_y, &max_y);
+
+      float new_kid_x = random_float(0, scene->get_width());
+      float new_kid_y = random_float(min_y, max_y);
+
+      EntityFactory::create_random_kid(scene, new_kid_x, new_kid_y);
+   }
 
    // create AI controllers to control the kids
    ai_kid_controllers.clear();

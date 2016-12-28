@@ -9,6 +9,7 @@
 #include <helpers/game_play_screen_state_helper.h>
 #include <models/camera.h>
 #include <models/inventory.h>
+#include <models/naughty_list.h>
 #include <models/scene.h>
 
 
@@ -33,6 +34,7 @@ private:
    PlayerKrampusController player_krampus_controller;
    std::vector<AIKidController> ai_kid_controllers;
    Inventory player_inventory;
+   NaughtyList naughty_list;
    GamePlayScreenStateHelper state_helper;
    Camera camera;
 

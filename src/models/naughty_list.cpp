@@ -84,3 +84,15 @@ NaughtyList::NaughtyList()
 
 
 
+std::vector<NaughtyList::Kid> NaughtyList::get_alive_kids_for_scene(int scene)
+{
+   std::vector<Kid> results;
+
+   for (auto &kid : kids)
+      if (kid.is_alive() && kid.scene_id == scene) results.push_back(kid);
+
+   return results;
+}
+
+
+

@@ -11,7 +11,7 @@
 
 class NaughtyList
 {
-private:
+public:
    class Kid
    {
    public:
@@ -26,6 +26,7 @@ private:
       bool is_alive();
    };
 
+private:
    std::vector<Kid> kids;
 
    KidNameGenerator kid_name_generator;
@@ -33,6 +34,8 @@ private:
 
 public:
    NaughtyList();
+
+   std::vector<Kid> get_alive_kids_for_scene(int scene);
 };
 
 

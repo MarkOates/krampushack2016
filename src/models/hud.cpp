@@ -100,17 +100,20 @@ void HUD::draw()
    al_draw_text(font, color::white, 324, 86, ALLEGRO_ALIGN_CENTRE, player_health_str.c_str());
 
    // draw the naughty list stats
-   std::stringstream hud_str;
+   if (player_inventory->has_item(ITEM_TYPE_NAUGHTY_LIST))
+   {
+      std::stringstream hud_str;
 
-   hud_str << "     Naughty: "
-      << naughty_list->get_num_alive_naughty_kids()
-      << "/" << naughty_list->get_num_total_naughty_kids();
-   hud_str << "     Nice: "
-      << naughty_list->get_num_alive_nice_kids()
-      << "/" << naughty_list->get_num_total_nice_kids();
-   hud_str << "     Adults: " << naughty_list->get_num_alive_adults();
+      hud_str << "     Naughty: "
+         << naughty_list->get_num_alive_naughty_kids()
+         << "/" << naughty_list->get_num_total_naughty_kids();
+      hud_str << "     Nice: "
+         << naughty_list->get_num_alive_nice_kids()
+         << "/" << naughty_list->get_num_total_nice_kids();
+      hud_str << "     Adults: " << naughty_list->get_num_alive_adults();
 
-   al_draw_text(font, color::white, 1280 - 100, 720-70, ALLEGRO_ALIGN_RIGHT, hud_str.str().c_str());
+      al_draw_text(font, color::white, 1280 - 100, 720-70, ALLEGRO_ALIGN_RIGHT, hud_str.str().c_str());
+   }
 
    // draw the black bars
    float black_bar_height = 100;

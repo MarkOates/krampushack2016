@@ -83,6 +83,7 @@ void GamePlayScreenStateHelper::set_state(int new_state)
 
 void GamePlayScreenStateHelper::update_state()
 {
+   float previous_state_counter = state_counter;
    state_counter += 1.0 / 60.0;
 
    switch (game_play_screen->state)
@@ -99,16 +100,22 @@ void GamePlayScreenStateHelper::update_state()
       }
       break;
    case GamePlayScreen::ENTERING_THROUGH_DOOR:
-      update_scene();
-      if (state_counter > 0.5)
       {
          SceneCollectionHelper collections(game_play_screen->scene);
          KrampusEntity *krampus = collections.get_krampus();
-         if (krampus) krampus->stand_still();
-      }
-      if (state_counter > 1.1)
-      {
-         set_state(GamePlayScreen::GAME_PLAY);
+         if (previous_state_counter < 0.3 && state_counter >= 0.3)
+         {
+            krampus->walk_down();
+         }
+         if (previous_state_counter < 0.7 && state_counter >= 0.7)
+         {
+            if (krampus) krampus->stand_still();
+         }
+         if (previous_state_counter < 0.9 && state_counter >= 0.9)
+         {
+            set_state(GamePlayScreen::GAME_PLAY);
+         }
+         update_scene();
       }
       break;
    default:

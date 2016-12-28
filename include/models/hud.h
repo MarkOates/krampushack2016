@@ -15,6 +15,9 @@ private:
    int player_health;
    int player_max_health;
 
+   BitmapObject chrome_bitmap;
+   ALLEGRO_FONT *font;
+
 public:
    HUD(Inventory *player_inventory, NaughtyList *naughty_list);
 

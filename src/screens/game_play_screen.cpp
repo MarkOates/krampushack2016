@@ -123,8 +123,11 @@ void GamePlayScreen::draw()
    int num_nice_kids = naughty_list.get_num_alive_nice_kids();
    int num_naughty_kids = naughty_list.get_num_alive_naughty_kids();
    int num_adults = naughty_list.get_num_alive_adults();
+   int total_nice_kids = naughty_list.get_num_total_nice_kids();
+   int total_naughty_kids = naughty_list.get_num_total_naughty_kids();
+   int total_adults = naughty_list.get_num_total_adults();
 
-   HUD hud(3, 10, &player_inventory, num_naughty_kids, num_nice_kids, num_adults);
+   HUD hud(3, 10, &player_inventory, num_naughty_kids, num_nice_kids, num_adults, total_naughty_kids, total_nice_kids, total_adults);
    hud.draw();
 }
 

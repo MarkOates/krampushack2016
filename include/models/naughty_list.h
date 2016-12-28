@@ -40,6 +40,9 @@ public:
    int get_num_alive_naughty_kids();
    int get_num_alive_nice_kids();
    int get_num_alive_adults();
+   int get_num_total_naughty_kids();
+   int get_num_total_nice_kids();
+   int get_num_total_adults();
 };
 
 

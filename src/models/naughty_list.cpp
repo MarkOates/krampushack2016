@@ -132,3 +132,36 @@ int NaughtyList::get_num_alive_adults()
 
 
 
+int NaughtyList::get_num_total_naughty_kids()
+{
+   int count = 0;
+
+   for (auto &kid : kids) if (kid.behavior == BEHAVIOR_NAUGHTY) count++;
+
+   return count;
+}
+
+
+
+int NaughtyList::get_num_total_nice_kids()
+{
+   int count = 0;
+
+   for (auto &kid : kids) if (kid.behavior == BEHAVIOR_NICE) count++;
+
+   return count;
+}
+
+
+
+int NaughtyList::get_num_total_adults()
+{
+   int count = 0;
+
+   for (auto &kid : kids) if (kid.behavior == BEHAVIOR_ADULT) count++;
+
+   return count;
+}
+
+
+

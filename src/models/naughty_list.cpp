@@ -96,3 +96,39 @@ std::vector<NaughtyList::Kid> NaughtyList::get_alive_kids_for_scene(int scene)
 
 
 
+int NaughtyList::get_num_alive_naughty_kids()
+{
+   int count = 0;
+
+   for (auto &kid : kids)
+      if (kid.is_alive() && kid.behavior == BEHAVIOR_NAUGHTY) count++;
+
+   return count;
+}
+
+
+
+int NaughtyList::get_num_alive_nice_kids()
+{
+   int count = 0;
+
+   for (auto &kid : kids)
+      if (kid.is_alive() && kid.behavior == BEHAVIOR_NICE) count++;
+
+   return count;
+}
+
+
+
+int NaughtyList::get_num_alive_adults()
+{
+   int count = 0;
+
+   for (auto &kid : kids)
+      if (kid.is_alive() && kid.behavior == BEHAVIOR_ADULT) count++;
+
+   return count;
+}
+
+
+

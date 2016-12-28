@@ -36,6 +36,10 @@ public:
    NaughtyList();
 
    std::vector<Kid> get_alive_kids_for_scene(int scene);
+
+   int get_num_alive_naughty_kids();
+   int get_num_alive_nice_kids();
+   int get_num_alive_adults();
 };
 
 

@@ -48,17 +48,7 @@ void GamePlayScreen::key_down_func()
 {
    int al_keycode = Framework::current_event->keyboard.keycode;
 
-   switch (state)
-   {
-   case GAME_PLAY:
-      player_krampus_controller.on_key_down(al_keycode);
-      break;
-   case ENTERING_THROUGH_DOOR:
-      // nothing
-      break;
-   default:
-      break;
-   }
+   state_helper.process_key_down(al_keycode);
 }
 
 

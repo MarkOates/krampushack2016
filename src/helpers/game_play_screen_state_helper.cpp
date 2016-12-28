@@ -17,6 +17,24 @@ GamePlayScreenStateHelper::GamePlayScreenStateHelper(GamePlayScreen *game_play_s
 
 
 
+
+void GamePlayScreenStateHelper::process_key_down(int al_keycode)
+{
+   switch (game_play_screen->state)
+   {
+   case GamePlayScreen::GAME_PLAY:
+      game_play_screen->player_krampus_controller.on_key_down(al_keycode);
+      break;
+   case GamePlayScreen::ENTERING_THROUGH_DOOR:
+      // nothing
+      break;
+   default:
+      break;
+   }
+}
+
+
+
 void GamePlayScreenStateHelper::set_state(int new_state)
 {
    game_play_screen->state = (GamePlayScreen::state_t)new_state;

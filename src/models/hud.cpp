@@ -23,7 +23,7 @@ HUD::HUD(Inventory *player_inventory, NaughtyList *naughty_list)
    , stone_of_defiance_item_bitmap(nullptr)
    , naughty_list_item_bitmap(nullptr)
 {
-   ALLEGRO_BITMAP *bmp = create_pixel_perfect_scaled_render(Framework::bitmap("top_hud-01.png"), 5);
+   ALLEGRO_BITMAP *bmp = create_pixel_perfect_scaled_render(Framework::bitmap("top_hud-02.png"), 5);
    chrome_bitmap.bitmap(bmp);
 
    chrome_bitmap.position(1280/2, 20);

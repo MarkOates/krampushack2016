@@ -3,6 +3,7 @@
 
 
 #include <models/inventory.h>
+#include <models/naughty_list.h>
 
 
 
@@ -20,7 +21,7 @@ private:
    int num_total_adults;
 
 public:
-   HUD(Inventory *player_inventory);
+   HUD(Inventory *player_inventory, NaughtyList *naughty_list);
 
    void set_values(
       int player_health,

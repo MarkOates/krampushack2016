@@ -8,10 +8,11 @@
 
 
 
-HUD::HUD(Inventory *player_inventory)
+HUD::HUD(Inventory *player_inventory, NaughtyList *naughty_list)
    : player_health(0)
    , player_max_health(0)
    , player_inventory(player_inventory)
+   , naughty_list(naughty_list)
    , num_alive_naughty_children(0)
    , num_alive_nice_children(0)
    , num_alive_adults(0)

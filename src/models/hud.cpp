@@ -9,40 +9,19 @@
 
 
 HUD::HUD(Inventory *player_inventory, NaughtyList *naughty_list)
-   : player_health(0)
-   , player_max_health(0)
-   , player_inventory(player_inventory)
+   : player_inventory(player_inventory)
    , naughty_list(naughty_list)
-   , num_alive_naughty_children(0)
-   , num_alive_nice_children(0)
-   , num_alive_adults(0)
-   , num_total_naughty_children(0)
-   , num_total_nice_children(0)
-   , num_total_adults(0)
+   , player_health(0)
+   , player_max_health(0)
 {
 }
 
 
 
-void HUD::set_values(
-      int player_health,
-      int player_max_health,
-      int num_alive_naughty_children,
-      int num_alive_nice_children,
-      int num_alive_adults,
-      int num_total_naughty_children,
-      int num_total_nice_children,
-      int num_total_adults
-      )
+void HUD::set_values(int player_health, int player_max_health)
 {
    this->player_health = player_health;
    this->player_max_health = player_max_health;
-   this->num_alive_naughty_children = num_alive_naughty_children;
-   this->num_alive_nice_children = num_alive_nice_children;
-   this->num_alive_adults = num_alive_adults;
-   this->num_total_naughty_children = num_total_naughty_children;
-   this->num_total_nice_children = num_total_nice_children;
-   this->num_total_adults = num_total_adults;
 }
 
 
@@ -55,9 +34,13 @@ void HUD::draw()
 
    hud_str << "Player: " << player_health << "/" << player_max_health;
    hud_str << "     Inventory: " << player_inventory->get_str();
-   hud_str << "     Naughty Kids: " << num_alive_naughty_children << "/" << num_total_naughty_children;
-   hud_str << "     Nice Kids: " << num_alive_nice_children << "/" << num_total_nice_children;
-   hud_str << "     Adults: " << num_alive_adults;
+   hud_str << "     Naughty Kids: "
+      << naughty_list->get_num_alive_naughty_kids()
+      << "/" << naughty_list->get_num_total_naughty_kids();
+   hud_str << "     Nice Kids: "
+      << naughty_list->get_num_alive_nice_kids()
+      << "/" << naughty_list->get_num_total_nice_kids();
+   hud_str << "     Adults: " << naughty_list->get_num_alive_adults();
 
    al_draw_text(font, color::white, 10, 10, 0, hud_str.str().c_str());
 }

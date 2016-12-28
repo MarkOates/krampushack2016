@@ -119,9 +119,6 @@ void GamePlayScreen::update()
 void GamePlayScreen::draw()
 {
    state_helper.draw_state();
-
-   hud.set_values(3, 10);
-   hud.draw();
 }
 
 

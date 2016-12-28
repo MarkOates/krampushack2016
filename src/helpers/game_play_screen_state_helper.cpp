@@ -94,6 +94,9 @@ void GamePlayScreenStateHelper::update_state()
 
    // always update the camera, regardless of state
    game_play_screen->camera.update(game_play_screen->scene->get_width());
+
+   // always update the hud, regardless of state
+   game_play_screen->hud.set_values(3, 10);
 }
 
 
@@ -155,6 +158,8 @@ void GamePlayScreenStateHelper::draw_scene_with_camera()
    game_play_screen->camera.start_transform();
    game_play_screen->scene->draw_all();
    game_play_screen->camera.restore_transform();
+
+   game_play_screen->hud.draw();
 }
 
 

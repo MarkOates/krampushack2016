@@ -8,10 +8,24 @@
 
 
 
-HUD::HUD(
+HUD::HUD(Inventory *player_inventory)
+   : player_health(0)
+   , player_max_health(0)
+   , player_inventory(player_inventory)
+   , num_alive_naughty_children(0)
+   , num_alive_nice_children(0)
+   , num_alive_adults(0)
+   , num_total_naughty_children(0)
+   , num_total_nice_children(0)
+   , num_total_adults(0)
+{
+}
+
+
+
+void HUD::set_values(
       int player_health,
       int player_max_health,
-      Inventory *player_inventory,
       int num_alive_naughty_children,
       int num_alive_nice_children,
       int num_alive_adults,
@@ -19,16 +33,15 @@ HUD::HUD(
       int num_total_nice_children,
       int num_total_adults
       )
-   : player_health(player_health)
-   , player_max_health(player_max_health)
-   , player_inventory(player_inventory)
-   , num_alive_naughty_children(num_alive_naughty_children)
-   , num_alive_nice_children(num_alive_nice_children)
-   , num_alive_adults(num_alive_adults)
-   , num_total_naughty_children(num_total_naughty_children)
-   , num_total_nice_children(num_total_nice_children)
-   , num_total_adults(num_total_adults)
 {
+   this->player_health = player_health;
+   this->player_max_health = player_max_health;
+   this->num_alive_naughty_children = num_alive_naughty_children;
+   this->num_alive_nice_children = num_alive_nice_children;
+   this->num_alive_adults = num_alive_adults;
+   this->num_total_naughty_children = num_total_naughty_children;
+   this->num_total_nice_children = num_total_nice_children;
+   this->num_total_adults = num_total_adults;
 }
 
 

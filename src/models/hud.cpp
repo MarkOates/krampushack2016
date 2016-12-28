@@ -5,6 +5,7 @@
 
 #include <allegro_flare/framework.h>
 #include <allegro_flare/image_processing.h>
+#include <item_type_nums.h>
 #include <sstream>
 
 
@@ -88,10 +89,10 @@ void HUD::draw()
 {
    chrome_bitmap.draw();
 
-   club_item_bitmap.draw();
-   key_item_bitmap.draw();
-   stone_of_defiance_item_bitmap.draw();
-   naughty_list_item_bitmap.draw();
+   if (player_inventory->has_item(ITEM_TYPE_CLUB)) club_item_bitmap.draw();
+   if (player_inventory->has_item(ITEM_TYPE_KEY)) key_item_bitmap.draw();
+   if (player_inventory->has_item(ITEM_TYPE_STONE_OF_DEFIANCE)) stone_of_defiance_item_bitmap.draw();
+   if (player_inventory->has_item(ITEM_TYPE_NAUGHTY_LIST)) naughty_list_item_bitmap.draw();
 
 
    std::stringstream hud_str;

@@ -19,7 +19,7 @@ private:
       int scene_id;
       behavior_t behavior;
       bool killed;
-      Kid(std::string name);
+      Kid(std::string name, int scene_id, behavior_t behavoir);
       bool is_naughty();
       bool is_nice();
       bool is_adult();
@@ -29,6 +29,7 @@ private:
    std::vector<Kid> kids;
 
    KidNameGenerator kid_name_generator;
+   Kid _build_kid(int scene_id);
 
 public:
    NaughtyList();

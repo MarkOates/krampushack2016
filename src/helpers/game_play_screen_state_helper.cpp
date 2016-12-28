@@ -25,18 +25,21 @@ void GamePlayScreenStateHelper::set_state(int new_state)
    switch (game_play_screen->state)
    {
    case GamePlayScreen::GAME_PLAY:
+      game_play_screen->hud.set_to_game_play_mode();
       break;
    case GamePlayScreen::ITEM_COLLECTED:
       {
          SceneCollectionHelper collections(game_play_screen->scene);
          KrampusEntity *krampus = collections.get_krampus();
          if (krampus) krampus->celebrate();
+         game_play_screen->hud.set_to_cinema_mode();
          game_play_screen->camera.zoom_to(0.6, 0.3);
          game_play_screen->camera.tilt_to(random_bool() ? 0.1 : -0.1, 0.3);
       }
       break;
    case GamePlayScreen::ENTERING_THROUGH_DOOR:
       game_play_screen->camera.set_overlay_color(color::black);
+      game_play_screen->hud.set_to_cinema_mode();
       game_play_screen->camera.fade_to_clear(1.5);
       game_play_screen->camera.set_zoom(0.8);
       game_play_screen->camera.zoom_to(1.0, 2.2);
@@ -74,11 +77,14 @@ void GamePlayScreenStateHelper::update_state()
       break;
    case GamePlayScreen::ENTERING_THROUGH_DOOR:
       update_scene();
-      if (state_counter > 0.65)
+      if (state_counter > 0.5)
       {
          SceneCollectionHelper collections(game_play_screen->scene);
          KrampusEntity *krampus = collections.get_krampus();
          if (krampus) krampus->stand_still();
+      }
+      if (state_counter > 1.1)
+      {
          set_state(GamePlayScreen::GAME_PLAY);
       }
       break;

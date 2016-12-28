@@ -44,6 +44,7 @@ bool NaughtyList::Kid::is_alive()
 
 NaughtyList::NaughtyList()
    : kids()
+   , kid_name_generator()
 {}
 
 

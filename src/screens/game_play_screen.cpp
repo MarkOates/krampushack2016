@@ -120,7 +120,11 @@ void GamePlayScreen::draw()
 {
    state_helper.draw_state();
 
-   HUD hud(3, 10, &player_inventory, 3, 6);
+   int num_nice_kids = naughty_list.get_num_alive_nice_kids();
+   int num_naughty_kids = naughty_list.get_num_alive_naughty_kids();
+   int num_adults = naughty_list.get_num_alive_adults();
+
+   HUD hud(3, 10, &player_inventory, num_naughty_kids, num_nice_kids, num_adults);
    hud.draw();
 }
 

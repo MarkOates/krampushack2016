@@ -28,6 +28,18 @@ void GamePlayScreenStateHelper::process_key_down(int al_keycode)
    case GamePlayScreen::ENTERING_THROUGH_DOOR:
       // nothing
       break;
+   case GamePlayScreen::ITEM_COLLECTED:
+       // can only close dialogue after a delay
+      if (state_counter > 3.0
+         && (al_keycode == ALLEGRO_KEY_SPACE || al_keycode == ALLEGRO_KEY_ENTER))
+      {
+         SceneCollectionHelper collections(game_play_screen->scene);
+         KrampusEntity *krampus = collections.get_krampus();
+         if (krampus) krampus->stand_still();
+         game_play_screen->camera.zoom_to(1.0, 0.6);
+         game_play_screen->camera.tilt_to(0.0, 0.3);
+         set_state(GamePlayScreen::GAME_PLAY);
+      }
    default:
       break;
    }
@@ -84,13 +96,6 @@ void GamePlayScreenStateHelper::update_state()
          SceneCollectionHelper collections(game_play_screen->scene);
          KrampusEntity *krampus = collections.get_krampus();
          if (krampus) krampus->update();
-         if (state_counter > 3.0)
-         {
-            if (krampus) krampus->stand_still();
-            game_play_screen->camera.zoom_to(1.0, 0.6);
-            game_play_screen->camera.tilt_to(0.0, 0.3);
-            set_state(GamePlayScreen::GAME_PLAY);
-         }
       }
       break;
    case GamePlayScreen::ENTERING_THROUGH_DOOR:

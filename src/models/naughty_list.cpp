@@ -59,7 +59,28 @@ NaughtyList::Kid NaughtyList::_build_kid(int scene_id)
 NaughtyList::NaughtyList()
    : kids()
    , kid_name_generator()
-{}
+{
+   std::vector<std::pair<int, int>> scene_kids =
+   {
+   // {scene_id, num_of_kids}
+      {1, 20},
+      {2, 3},
+      {3, 6},
+      {5, 1},
+      {6, 1},
+      {7, 25}
+   };
+
+   // generate the kids for each scene
+   for (unsigned i=0; i<scene_kids.size(); i++)
+   {
+      int scene_id = scene_kids[i].first;
+      int num_kids = scene_kids[i].second;
+
+      for (unsigned i=0; i<num_kids; i++)
+         kids.push_back(_build_kid(scene_id));
+   }
+}
 
 
 

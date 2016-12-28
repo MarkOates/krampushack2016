@@ -4,6 +4,7 @@
 
 #include <models/inventory.h>
 #include <models/naughty_list.h>
+#include <sprite_sheet.h>
 
 
 
@@ -25,6 +26,11 @@ private:
    void set_mode(mode_t new_mode);
    BitmapObject chrome_bitmap;
    ALLEGRO_FONT *font;
+   SpriteSheet sprite_sheet;
+   BitmapObject club_item_bitmap;
+   BitmapObject key_item_bitmap;
+   BitmapObject stone_of_defiance_item_bitmap;
+   BitmapObject naughty_list_item_bitmap;
    float black_bar_counter;
 
 public:

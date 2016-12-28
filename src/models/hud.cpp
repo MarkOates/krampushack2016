@@ -17,6 +17,11 @@ HUD::HUD(Inventory *player_inventory, NaughtyList *naughty_list)
    , chrome_bitmap(nullptr)
    , font(Framework::font("ChronoTrigger.ttf 40"))
    , black_bar_counter(0)
+   , sprite_sheet("sprites_grid-05-black_outline.png", 32, 32, 6, 6, 4)
+   , club_item_bitmap(nullptr)
+   , key_item_bitmap(nullptr)
+   , stone_of_defiance_item_bitmap(nullptr)
+   , naughty_list_item_bitmap(nullptr)
 {
    ALLEGRO_BITMAP *bmp = create_pixel_perfect_scaled_render(Framework::bitmap("top_hud-01.png"), 5);
    chrome_bitmap.bitmap(bmp);
@@ -24,6 +29,28 @@ HUD::HUD(Inventory *player_inventory, NaughtyList *naughty_list)
    chrome_bitmap.position(1280/2, 20);
    chrome_bitmap.align(0.5, 2.0);
    chrome_bitmap.scale(0.95);
+
+   club_item_bitmap.bitmap(sprite_sheet.get_sprite(23))
+      .position(640, 84-40)
+      .rotation(0.4)
+      .scale(2.0, 2.0)
+      .align(0.5, 0.5);
+
+   stone_of_defiance_item_bitmap.bitmap(sprite_sheet.get_sprite(24))
+      .position(435*2, 48*2-20)
+      .rotation(0.1)
+      .align(0.5, 0.5);
+
+   naughty_list_item_bitmap.bitmap(sprite_sheet.get_sprite(25))
+      .position(503*2, 48*2-20)
+      .flags(ALLEGRO_FLIP_HORIZONTAL)
+      .rotation(0.1)
+      .align(0.5, 0.5);
+
+   key_item_bitmap.bitmap(sprite_sheet.get_sprite(26))
+      .position(568*2, 48*2-40)
+      .rotation(0.1)
+      .align(0.5, 0.5);
 
    set_to_game_play_mode();
 }
@@ -60,6 +87,12 @@ void HUD::set_values(int player_health, int player_max_health)
 void HUD::draw()
 {
    chrome_bitmap.draw();
+
+   club_item_bitmap.draw();
+   key_item_bitmap.draw();
+   stone_of_defiance_item_bitmap.draw();
+   naughty_list_item_bitmap.draw();
+
 
    std::stringstream hud_str;
 

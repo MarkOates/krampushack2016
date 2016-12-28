@@ -8,7 +8,6 @@
 #include <factories/entity_factory.h>
 #include <factories/scene_factory.h>
 #include <helpers/scene_collection_helper.h>
-#include <models/hud.h>
 #include <user_events.h>
 
 
@@ -26,6 +25,7 @@ GamePlayScreen::GamePlayScreen(Display *display)
    , ai_kid_controllers()
    , player_inventory()
    , naughty_list()
+   , hud(&player_inventory)
    , state_helper(this)
    , camera(display, nullptr)
    , _item_recently_collected(0)
@@ -127,7 +127,6 @@ void GamePlayScreen::draw()
    int total_naughty_kids = naughty_list.get_num_total_naughty_kids();
    int total_adults = naughty_list.get_num_total_adults();
 
-   HUD hud(&player_inventory);
    hud.set_values(3, 10, num_naughty_kids, num_nice_kids, num_adults, total_naughty_kids, total_nice_kids, total_adults);
    hud.draw();
 }

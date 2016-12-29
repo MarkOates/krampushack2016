@@ -14,6 +14,20 @@ NaughtyList::Kid::Kid(std::string name, int scene_id, behavior_t behavior)
 
 
 
+behavior_t NaughtyList::Kid::get_behavior()
+{
+   return behavior;
+}
+
+
+
+std::string NaughtyList::Kid::get_name()
+{
+   return name;
+}
+
+
+
 bool NaughtyList::Kid::is_naughty()
 {
    return behavior == BEHAVIOR_NAUGHTY;

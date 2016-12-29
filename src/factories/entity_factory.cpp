@@ -8,7 +8,6 @@
 #include <entities/door_entity.h>
 #include <entities/damage_zone_entity.h>
 #include <entities/item_entity.h>
-#include <entities/kid_entity.h>
 #include <entities/krampus_entity.h>
 #include <item_type_nums.h>
 
@@ -58,6 +57,13 @@ EntityBase *EntityFactory::create_random_kid(ElementID *parent, float x, float y
 {
    behavior_t behavior = (behavior_t)random_int(BEHAVIOR_ADULT, BEHAVIOR_NICE);
    return new KidEntity(parent, &get_instance()->character_sprite_sheet, &get_instance()->flat_color_shader, x, y, "[random name]", behavior);
+}
+
+
+
+KidEntity *EntityFactory::create_named_kid(ElementID *parent, std::string name, behavior_t behavior, float x, float y)
+{
+   return new KidEntity(parent, &get_instance()->character_sprite_sheet, &get_instance()->flat_color_shader, x, y, name, behavior);
 }
 
 

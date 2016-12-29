@@ -14,16 +14,22 @@ class NaughtyList
 public:
    class Kid
    {
-   public:
+   private:
       std::string name;
       int scene_id;
       behavior_t behavior;
       bool killed;
+
+   public:
       Kid(std::string name, int scene_id, behavior_t behavoir);
+      behavior_t get_behavior();
+      std::string get_name();
       bool is_naughty();
       bool is_nice();
       bool is_adult();
       bool is_alive();
+
+      friend class NaughtyList;
    };
 
 private:

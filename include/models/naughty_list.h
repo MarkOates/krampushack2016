@@ -37,6 +37,9 @@ private:
 
    KidNameGenerator kid_name_generator;
    Kid _build_kid(int scene_id);
+   int _get_random_sprite_for_boy();
+   int _get_random_sprite_for_girl();
+   int _get_random_sprite_for_adult();
 
 public:
    NaughtyList();

@@ -70,6 +70,27 @@ NaughtyList::Kid NaughtyList::_build_kid(int scene_id)
 
 
 
+int NaughtyList::_get_random_sprite_for_boy()
+{
+   return 2;
+}
+
+
+
+int NaughtyList::_get_random_sprite_for_girl()
+{
+   return 3;
+}
+
+
+
+int NaughtyList::_get_random_sprite_for_adult()
+{
+   return 0;
+}
+
+
+
 NaughtyList::NaughtyList()
    : kids()
    , kid_name_generator()

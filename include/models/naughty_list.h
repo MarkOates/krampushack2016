@@ -25,6 +25,7 @@ public:
       Kid(std::string name, int sprite_index, int scene_id, behavior_t behavoir);
       behavior_t get_behavior();
       std::string get_name();
+      int get_sprite_index();
       bool is_naughty();
       bool is_nice();
       bool is_adult();

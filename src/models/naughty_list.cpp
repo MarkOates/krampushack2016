@@ -29,6 +29,13 @@ std::string NaughtyList::Kid::get_name()
 
 
 
+int NaughtyList::Kid::get_sprite_index()
+{
+   return sprite_index;
+}
+
+
+
 bool NaughtyList::Kid::is_naughty()
 {
    return behavior == BEHAVIOR_NAUGHTY;

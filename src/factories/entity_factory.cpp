@@ -61,9 +61,9 @@ EntityBase *EntityFactory::create_random_kid(ElementID *parent, float x, float y
 
 
 
-KidEntity *EntityFactory::create_named_kid(ElementID *parent, std::string name, behavior_t behavior, float x, float y)
+KidEntity *EntityFactory::create_named_kid(ElementID *parent, std::string name, behavior_t behavior, int sprite_index, float x, float y)
 {
-   return new KidEntity(parent, &get_instance()->character_sprite_sheet, &get_instance()->flat_color_shader, x, y, name, behavior);
+   return new KidEntity(parent, &get_instance()->character_sprite_sheet, &get_instance()->flat_color_shader, x, y, name, behavior, sprite_index);
 }
 
 

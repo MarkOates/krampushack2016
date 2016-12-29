@@ -194,6 +194,7 @@ bool KrampusEntity::set_state(state_t new_state, bool override_if_busy)
    case CELEBRATING:
       bitmap.bitmap(sprite_sheet->get_sprite(19));
       velocity.position = vec2d(0.0, 0.0);
+      break;
    default:
       return false;
       break;

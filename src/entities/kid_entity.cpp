@@ -7,6 +7,10 @@
 
 
 
+#define IDENTITY_REVEAL_MAX 999.9
+
+
+
 KidEntity::KidEntity(ElementID *parent, SpriteSheet *sprite_sheet, Shader *flat_color_shader, float x, float y, std::string name, behavior_t behavior, int sprite_index)
    : EntityBase(parent, "kid", x, y)
    , name(name)
@@ -14,7 +18,7 @@ KidEntity::KidEntity(ElementID *parent, SpriteSheet *sprite_sheet, Shader *flat_
    , state(STATE_STANDING_STILL)
    , flat_color_shader(flat_color_shader)
    , behavior(behavior)
-   , identity_reveal_counter(999)
+   , identity_reveal_counter(IDENTITY_REVEAL_MAX)
 {
    place.size = vec2d(60, 30);
 
@@ -43,7 +47,9 @@ void KidEntity::reveal_behavior()
 
 void KidEntity::update()
 {
-   identity_reveal_counter += 1.0 / 60.0;
+   if (identity_reveal_counter < IDENTITY_REVEAL_MAX)
+      identity_reveal_counter += 1.0 / 60.0;
+
    place += velocity;
 
    switch(state)

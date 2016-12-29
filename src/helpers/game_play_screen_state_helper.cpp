@@ -40,6 +40,7 @@ void GamePlayScreenStateHelper::process_key_down(int al_keycode)
          game_play_screen->camera.tilt_to(0.0, 0.3);
          set_state(GamePlayScreen::GAME_PLAY);
       }
+      break;
    default:
       break;
    }

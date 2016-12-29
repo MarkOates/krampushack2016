@@ -3,7 +3,9 @@
 
 #include <entities/krampus_entity.h>
 
+#include <emitters/user_event_emitter.h>
 #include <factories/entity_factory.h>
+#include <user_events.h>
 #include <cmath>
 
 
@@ -209,6 +211,7 @@ bool KrampusEntity::set_state(state_t new_state, bool override_if_busy)
       state_is_busy = true;
       bitmap.bitmap(sprite_sheet->get_sprite(19));
       velocity.position = vec2d(0.0, 0.0);
+      UserEventEmitter::emit_event(USE_STONE_OF_DEFIANCE_EVENT);
       break;
    default:
       return false;

@@ -94,6 +94,11 @@ void GamePlayScreen::user_event_func()
          set_state(ITEM_COLLECTED);
          break;
       }
+   case USE_STONE_OF_DEFIANCE_EVENT:
+      {
+         set_state(USING_STONE_OF_DEFIANCE);
+         break;
+      }
    }
 }
 

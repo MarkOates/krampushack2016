@@ -34,6 +34,7 @@ void PlayerKrampusController::on_key_down(int al_keycode)
    switch(al_keycode)
    {
    case ALLEGRO_KEY_SPACE: krampus->attack(); break;
+   case ALLEGRO_KEY_R: krampus->use_stone_of_defiance(); break;
    default: break;
    }
 }

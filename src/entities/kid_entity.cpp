@@ -34,7 +34,7 @@ KidEntity::~KidEntity()
 
 
 
-void KidEntity::reveal_identity()
+void KidEntity::reveal_behavior()
 {
    identity_reveal_counter = 0.0;
 }

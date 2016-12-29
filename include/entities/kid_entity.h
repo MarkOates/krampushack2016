@@ -56,7 +56,7 @@ public:
    void walk_left();
    void walk_right();
 
-   void reveal_identity();
+   void reveal_behavior();
    std::string get_name();
 };
 

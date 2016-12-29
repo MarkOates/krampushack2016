@@ -7,7 +7,7 @@
 
 
 
-KidEntity::KidEntity(ElementID *parent, SpriteSheet *sprite_sheet, Shader *flat_color_shader, float x, float y, std::string name, behavior_t behavior)
+KidEntity::KidEntity(ElementID *parent, SpriteSheet *sprite_sheet, Shader *flat_color_shader, float x, float y, std::string name, behavior_t behavior, int sprite_index)
    : EntityBase(parent, "kid", x, y)
    , name(name)
    , walk_speed(1.5)
@@ -17,7 +17,9 @@ KidEntity::KidEntity(ElementID *parent, SpriteSheet *sprite_sheet, Shader *flat_
    , identity_reveal_counter(0.0)
 {
    place.size = vec2d(60, 30);
-   bitmap.bitmap(sprite_sheet->get_sprite(random_int(0, 16)));
+
+   if (sprite_index < 0) sprite_index = random_int(0, 16);
+   bitmap.bitmap(sprite_sheet->get_sprite(sprite_index));
    bitmap.align(0.5, 1.0);
    bitmap.scale(2.0, 2.0);
 

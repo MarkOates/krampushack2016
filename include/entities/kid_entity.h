@@ -44,7 +44,7 @@ private:
    friend class AIKidController;
 
 public:
-   KidEntity(ElementID *parent, SpriteSheet *sprite_sheet, Shader *flat_color_shader, float x, float y, std::string name, behavior_t behavior);
+   KidEntity(ElementID *parent, SpriteSheet *sprite_sheet, Shader *flat_color_shader, float x, float y, std::string name, behavior_t behavior, int sprite_index=-1);
    virtual ~KidEntity();
 
    void update() override;

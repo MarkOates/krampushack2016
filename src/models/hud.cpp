@@ -34,7 +34,6 @@ HUD::HUD(Inventory *player_inventory, NaughtyList *naughty_list)
    club_item_bitmap.bitmap(sprite_sheet.get_sprite(23))
       .position(640, 84-40)
       .rotation(0.4)
-      .scale(2.0, 2.0)
       .align(0.5, 0.5);
 
    stone_of_defiance_item_bitmap.bitmap(sprite_sheet.get_sprite(24))
@@ -66,10 +65,18 @@ void HUD::set_mode(mode_t new_mode)
    {
    case MODE_GAME_PLAY:
       chrome_bitmap.get_attr("align_y") = 0.0; //<- a really annoying way to have to do this
+      club_item_bitmap.scale(2.0, 2.0);
+      key_item_bitmap.scale(1.0, 1.0);
+      stone_of_defiance_item_bitmap.scale(1.0, 1.0);
+      naughty_list_item_bitmap.scale(1.0, 1.0);
       black_bar_counter = 0.0;
       break;
    case MODE_CINEMA:
       chrome_bitmap.get_attr("align_y") = 2.0; //<- a really annoying way to have to do this
+      club_item_bitmap.scale(0.0, 0.0);
+      key_item_bitmap.scale(0.0, 0.0);
+      stone_of_defiance_item_bitmap.scale(0.0, 0.0);
+      naughty_list_item_bitmap.scale(0.0, 0.0);
       black_bar_counter = 1.0;
       break;
    };
@@ -97,7 +104,7 @@ void HUD::draw()
    // fill the player health bar
    std::string player_health_str = "";
    player_health_str += tostring(player_health) + " / " + tostring(player_max_health);
-   al_draw_text(font, color::white, 324, 86, ALLEGRO_ALIGN_CENTRE, player_health_str.c_str());
+   if (mode == MODE_GAME_PLAY) al_draw_text(font, color::white, 324, 86, ALLEGRO_ALIGN_CENTRE, player_health_str.c_str());
 
    // draw the naughty list stats
    if (player_inventory->has_item(ITEM_TYPE_NAUGHTY_LIST))
@@ -112,7 +119,8 @@ void HUD::draw()
          << "/" << naughty_list->get_num_total_nice_kids();
       hud_str << "     Adults: " << naughty_list->get_num_alive_adults();
 
-      al_draw_text(font, color::white, 1280 - 100, 720-70, ALLEGRO_ALIGN_RIGHT, hud_str.str().c_str());
+      if (mode == MODE_GAME_PLAY)
+         al_draw_text(font, color::white, 1280 - 100, 720-70, ALLEGRO_ALIGN_RIGHT, hud_str.str().c_str());
    }
 
    // draw the black bars

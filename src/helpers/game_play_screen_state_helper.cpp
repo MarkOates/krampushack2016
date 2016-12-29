@@ -75,6 +75,14 @@ void GamePlayScreenStateHelper::set_state(int new_state)
       game_play_screen->camera.set_zoom(0.8);
       game_play_screen->camera.zoom_to(1.0, 2.2);
       break;
+   case GamePlayScreen::USING_STONE_OF_DEFIANCE:
+      {
+         game_play_screen->camera.zoom_to(1.15, 0.3);
+         game_play_screen->camera.set_overlay_color(color::color(color::mix(color::red, color::violet, 0.5), 0.2));
+         SceneCollectionHelper collections(game_play_screen->scene);
+         for (auto &kid : collections.get_kids()) kid->reveal_behavior();
+      }
+      break;
    default:
       break;
    }
@@ -119,6 +127,15 @@ void GamePlayScreenStateHelper::update_state()
          update_scene();
       }
       break;
+   case GamePlayScreen::USING_STONE_OF_DEFIANCE:
+      update_scene();
+      if (previous_state_counter < 2.0 && state_counter >= 2.0)
+      {
+         game_play_screen->camera.zoom_to(1.0, 3.0);
+         game_play_screen->camera.fade_to_clear(1.5);
+         set_state(GamePlayScreen::GAME_PLAY);
+      }
+      break;
    default:
       break;
    }
@@ -151,6 +168,11 @@ void GamePlayScreenStateHelper::draw_state()
          break;
       }
    case GamePlayScreen::ENTERING_THROUGH_DOOR:
+      {
+         if (game_play_screen->scene) draw_scene_with_camera();
+         break;
+      }
+   case GamePlayScreen::USING_STONE_OF_DEFIANCE:
       {
          if (game_play_screen->scene) draw_scene_with_camera();
          break;

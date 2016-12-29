@@ -14,7 +14,7 @@ KidEntity::KidEntity(ElementID *parent, SpriteSheet *sprite_sheet, Shader *flat_
    , state(STATE_STANDING_STILL)
    , flat_color_shader(flat_color_shader)
    , behavior(behavior)
-   , identity_reveal_counter(0.0)
+   , identity_reveal_counter(999)
 {
    place.size = vec2d(60, 30);
 

@@ -175,7 +175,13 @@ void GamePlayScreenStateHelper::update_scene()
    // destroy the AI controllers for kids flagged for deletion
    SceneCollectionHelper collections(game_play_screen->scene);
    for (auto &kid : collections.get_kids_flagged_for_deletion())
+   {
+      // "kill" the kid off from the naughty list
+      game_play_screen->naughty_list.kill_kid_by_name(kid->get_name());
+
+      // destroy the ai controller
       game_play_screen->_destroy_ai_kid_controller_for(kid);
+   }
 
    // now remove those entities
    game_play_screen->scene->cleanup_all();

@@ -174,3 +174,10 @@ float KidEntity::get_identity_tint_intensity()
 
 
 
+std::string KidEntity::get_name()
+{
+   return name;
+}
+
+
+

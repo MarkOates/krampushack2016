@@ -230,3 +230,26 @@ int NaughtyList::get_num_total_adults()
 
 
 
+bool NaughtyList::kill_kid_by_name(std::string name)
+{
+   Kid *found_kid = nullptr;
+
+   // find the kid
+   for (auto &kid : kids)
+      if (kid.name == name)
+      {
+         found_kid = &kid;
+         break;
+      }
+
+   if (found_kid && found_kid->is_alive())
+   {
+      found_kid->killed = true;
+      return true;
+   }
+
+   return false;
+}
+
+
+

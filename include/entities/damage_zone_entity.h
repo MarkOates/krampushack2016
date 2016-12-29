@@ -20,6 +20,9 @@ public:
 
    bool is_dealing_damage();
    int get_damage(float x=0, float y=0);
+
+   bool is_krampus_damage_zone();
+   bool is_krampus_damage_zone_with_club();
 };
 
 

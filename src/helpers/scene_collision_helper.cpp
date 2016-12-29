@@ -69,7 +69,8 @@ void SceneCollisionHelper::check_damage_zones_on_children()
       {
          if (damage_zone->is_dealing_damage() && damage_zone->collides(*kid))
          {
-            kid->flag_for_deletion();
+            if (damage_zone->is_krampus_damage_zone()) kid->take_hit();
+            else if (damage_zone->is_krampus_damage_zone_with_club()) kid->flag_for_deletion();
          }
       }
    }

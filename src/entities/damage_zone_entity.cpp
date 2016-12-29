@@ -50,3 +50,17 @@ int DamageZoneEntity::get_damage(float x, float y)
 
 
 
+bool DamageZoneEntity::is_krampus_damage_zone()
+{
+   return exists("damage_zone_type", "krampus_damage_zone");
+}
+
+
+
+bool DamageZoneEntity::is_krampus_damage_zone_with_club()
+{
+   return exists("damage_zone_type", "krampus_damage_zone_club");
+}
+
+
+

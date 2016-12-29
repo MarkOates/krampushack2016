@@ -71,6 +71,9 @@ void KrampusEntity::update()
          if (state_counter_modded*scale >= 0.3 && previous_state_counter_modded*scale < 0.3) bitmap.bitmap(sprite_sheet->get_sprite(18));
       }
       break;
+   case USING_MAGIC:
+      if (state_counter >= 1.6 && previous_state_counter < 1.6) set_state(STANDING, true);
+      break;
    default:
       break;
    }
@@ -153,6 +156,13 @@ void KrampusEntity::celebrate()
 
 
 
+void KrampusEntity::use_stone_of_defiance()
+{
+   set_state(USING_MAGIC);
+}
+
+
+
 bool KrampusEntity::set_state(state_t new_state, bool override_if_busy)
 {
    if (override_if_busy) state_is_busy = false;
@@ -192,6 +202,11 @@ bool KrampusEntity::set_state(state_t new_state, bool override_if_busy)
       velocity.position = vec2d(0.0, 0.0);
       break;
    case CELEBRATING:
+      bitmap.bitmap(sprite_sheet->get_sprite(19));
+      velocity.position = vec2d(0.0, 0.0);
+      break;
+   case USING_MAGIC:
+      state_is_busy = true;
       bitmap.bitmap(sprite_sheet->get_sprite(19));
       velocity.position = vec2d(0.0, 0.0);
       break;

@@ -19,6 +19,7 @@ public:
       STANDING,
       CELEBRATING,
       ATTACKING,
+      USING_MAGIC,
       DEAD
    };
    int state;
@@ -47,6 +48,7 @@ public:
    void walk_right();
    void face_left();
    void face_right();
+   void use_stone_of_defiance();
 
    void get_weapon();
 

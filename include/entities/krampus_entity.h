@@ -26,6 +26,7 @@ public:
    bool state_is_busy;
    int walking_speed;
    bool facing_right;
+   bool _has_weapon;
    SpriteSheet *sprite_sheet;
 
    bool set_state(state_t new_state, bool override_if_busy=false);
@@ -46,7 +47,10 @@ public:
    void face_left();
    void face_right();
 
+   void get_weapon();
+
    bool is_idle();
+   bool has_weapon();
 };
 
 

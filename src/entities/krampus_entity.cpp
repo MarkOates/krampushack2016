@@ -13,6 +13,7 @@ KrampusEntity::KrampusEntity(ElementID *parent, SpriteSheet *sprite_sheet, float
    , state_is_busy(false)
    , walking_speed(5.0)
    , facing_right(true)
+   , _has_weapon(false)
    , state(STANDING)
    , sprite_sheet(sprite_sheet)
 {
@@ -192,9 +193,23 @@ bool KrampusEntity::set_state(state_t new_state, bool override_if_busy)
 
 
 
+void KrampusEntity::get_weapon()
+{
+   _has_weapon = true;
+}
+
+
+
 bool KrampusEntity::is_idle()
 {
    return state == STANDING;
+}
+
+
+
+bool KrampusEntity::has_weapon()
+{
+   return _has_weapon;
 }
 
 

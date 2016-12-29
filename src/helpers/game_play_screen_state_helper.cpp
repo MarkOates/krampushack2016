@@ -151,7 +151,7 @@ void GamePlayScreenStateHelper::update_state()
 
 void GamePlayScreenStateHelper::draw_state()
 {
-   al_clear_to_color(color::hex("1f4630"));
+   al_clear_to_color(color::black);
 
    switch (game_play_screen->state)
    {

@@ -153,6 +153,7 @@ void GamePlayScreenStateHelper::draw_state()
    case GamePlayScreen::ENTERING_THROUGH_DOOR:
       {
          if (game_play_screen->scene) draw_scene_with_camera();
+         break;
       }
    default:
       break;

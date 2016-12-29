@@ -61,6 +61,8 @@ NaughtyList::Kid NaughtyList::_build_kid(int scene_id)
 {
    std::string name = "";
    int sprite_index = -1;
+   behavior_t behavior = BEHAVIOR_NAUGHTY;
+   std::vector<behavior_t> non_adult_behaviors = { BEHAVIOR_NAUGHTY, BEHAVIOR_NICE };
 
    // select a name and sprite index
    int kid_type = random_int(0, 2); // 0 = boy, 1 = girl, 2 = adult
@@ -69,23 +71,23 @@ NaughtyList::Kid NaughtyList::_build_kid(int scene_id)
       case 0:
          name = kid_name_generator.get_boy_name();
          sprite_index = _get_random_sprite_for_boy();
+         behavior = random_element<behavior_t>(non_adult_behaviors);
          break;
       case 1:
          name = kid_name_generator.get_girl_name();
          sprite_index = _get_random_sprite_for_girl();
+         behavior = random_element<behavior_t>(non_adult_behaviors);
          break;
       case 2:
          name = random_bool() ? kid_name_generator.get_girl_name() : kid_name_generator.get_boy_name();
          sprite_index = _get_random_sprite_for_adult();
+         behavior = BEHAVIOR_ADULT;
          break;
       default:
          break;
    }
 
    // select a random behavior
-   std::vector<behavior_t> behaviors = { BEHAVIOR_NAUGHTY, BEHAVIOR_NICE, BEHAVIOR_ADULT };
-   behavior_t behavior = random_element<behavior_t>(behaviors);
-
    return Kid(name, sprite_index, scene_id, behavior);
 }
 

@@ -57,7 +57,10 @@ void Camera::draw_overlay()
 
 void Camera::set_overlay_color(ALLEGRO_COLOR new_overlay_color)
 {
-   overlay_color = new_overlay_color;
+   motion.cmove_to(&overlay_color.r, new_overlay_color.r, 0);
+   motion.cmove_to(&overlay_color.g, new_overlay_color.g, 0);
+   motion.cmove_to(&overlay_color.b, new_overlay_color.b, 0);
+   motion.cmove_to(&overlay_color.a, new_overlay_color.a, 0);
 }
 
 

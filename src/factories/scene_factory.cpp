@@ -23,7 +23,7 @@ Scene *SceneFactory::_create_scene_by_dimentions(int screen_widths, int backgrou
    Scene *scene = new Scene(ONE_SCREEN_WIDTH*screen_widths);
 
    // background
-   for (unsigned i=0; i<screen_widths; i++)
+   for (int i=-1; i<(screen_widths+1); i++)
    {
       switch (background_type)
       {

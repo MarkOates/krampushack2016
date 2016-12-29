@@ -45,6 +45,14 @@ void KidEntity::update()
 {
    identity_reveal_counter += 1.0 / 60.0;
    place += velocity;
+
+   switch(state)
+   {
+   case STATE_TAKING_HIT:
+      break;
+   default:
+      break;
+   }
 }
 
 
@@ -100,6 +108,13 @@ void KidEntity::walk_right()
 
 
 
+void KidEntity::take_hit()
+{
+   set_state(STATE_TAKING_HIT);
+}
+
+
+
 void KidEntity::set_state(state_t new_state)
 {
    state = new_state;
@@ -120,6 +135,10 @@ void KidEntity::set_state(state_t new_state)
       break;
    case STATE_WALKING_RIGHT:
       velocity.position = vec2d(walk_speed, 0.0);
+      break;
+   case STATE_TAKING_HIT:
+      velocity.position = vec2d(0.0, 0.0);
+      reveal_behavior();
       break;
    }
 }

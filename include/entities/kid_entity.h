@@ -24,6 +24,7 @@ private:
    enum state_t
    {
       STATE_STANDING_STILL,
+      STATE_TAKING_HIT,
       STATE_WALKING_UP,
       STATE_WALKING_DOWN,
       STATE_WALKING_LEFT,
@@ -55,6 +56,7 @@ public:
    void walk_down();
    void walk_left();
    void walk_right();
+   void take_hit();
 
    void reveal_behavior();
    std::string get_name();

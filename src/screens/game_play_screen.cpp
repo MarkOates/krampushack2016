@@ -142,7 +142,7 @@ void GamePlayScreen::enter_scene(int scene_id, char door_name)
       float new_kid_x = random_float(0, scene->get_width());
       float new_kid_y = random_float(min_y, max_y);
 
-      EntityFactory::create_random_kid(scene, new_kid_x, new_kid_y);
+      EntityFactory::create_named_kid(scene, kid.get_name(), kid.get_behavior(), new_kid_x, new_kid_y);
    }
 
    // create AI controllers to control the kids

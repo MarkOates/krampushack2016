@@ -36,6 +36,7 @@ public:
    virtual ~KrampusEntity();
 
    void update() override;
+   void draw() override;
 
    void attack();
    void stand_still();

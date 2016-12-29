@@ -77,6 +77,16 @@ void KrampusEntity::update()
 
 
 
+void KrampusEntity::draw()
+{
+   place.start_transform();
+   bitmap.position(place.size.x/2, place.size.y/2);
+   bitmap.draw();
+   place.restore_transform();
+}
+
+
+
 void KrampusEntity::attack()
 {
    set_state(ATTACKING);

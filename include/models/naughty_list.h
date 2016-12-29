@@ -16,12 +16,13 @@ public:
    {
    private:
       std::string name;
+      int sprite_index;
       int scene_id;
       behavior_t behavior;
       bool killed;
 
    public:
-      Kid(std::string name, int scene_id, behavior_t behavoir);
+      Kid(std::string name, int sprite_index, int scene_id, behavior_t behavoir);
       behavior_t get_behavior();
       std::string get_name();
       bool is_naughty();

@@ -71,7 +71,7 @@ void KrampusEntity::update()
             float dy = place.y;
             float dw = 80;
             float dx = facing_right ? place.x + place.w : place.x - place.w;
-            if (has_weapon()) EntityFactory::create_krampus_attack_damage_zone_with_club(get_parent(), dx, dy, dw, dh);
+            if (has_weapon()) EntityFactory::create_krampus_attack_damage_zone_with_club(get_parent(), dx, dy, dw*2, dh);
             else EntityFactory::create_krampus_attack_damage_zone(get_parent(), dx, dy, dw, dh);
          }
          if (state_counter*scale >= 0.7 && previous_state_counter*scale < 0.7)

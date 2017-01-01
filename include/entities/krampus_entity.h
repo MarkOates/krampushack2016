@@ -28,6 +28,7 @@ public:
    int walking_speed;
    bool facing_right;
    bool _has_weapon;
+   BitmapObject club_bitmap;
    SpriteSheet *sprite_sheet;
 
    bool set_state(state_t new_state, bool override_if_busy=false);

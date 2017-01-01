@@ -16,6 +16,7 @@ KrampusEntity::KrampusEntity(ElementID *parent, SpriteSheet *sprite_sheet, float
    , walking_speed(5.0)
    , facing_right(true)
    , _has_weapon(false)
+   , club_bitmap(nullptr)
    , state(STANDING)
    , sprite_sheet(sprite_sheet)
 {
@@ -25,7 +26,12 @@ KrampusEntity::KrampusEntity(ElementID *parent, SpriteSheet *sprite_sheet, float
    bitmap.scale(2.0, 2.0);
    bitmap.position(place.size.x/2, place.size.y/2);
 
+   club_bitmap.bitmap(sprite_sheet->get_sprite(23));
+   club_bitmap.align(0.5, 0.95);
+
    set("bound_in_world");
+
+   set_state(STANDING, true);
 }
 
 
@@ -49,10 +55,17 @@ void KrampusEntity::update()
    case ATTACKING:
       {
          float scale = 2.0;
-         if (state_counter*scale >= 0.4 && previous_state_counter*scale < 0.4) bitmap.bitmap(sprite_sheet->get_sprite(20));
+         if (state_counter*scale >= 0.4 && previous_state_counter*scale < 0.4)
+         {
+            bitmap.bitmap(sprite_sheet->get_sprite(20));
+            club_bitmap.position(bitmap.w()/2+30, 25);
+            club_bitmap.rotation(FULL_ROTATION * 0.05);
+         }
          if (state_counter*scale >= 0.5 && previous_state_counter*scale < 0.5)
          {
             bitmap.bitmap(sprite_sheet->get_sprite(21));
+            club_bitmap.position(bitmap.w()/2 + 36, bitmap.h()-20);
+            club_bitmap.rotation(FULL_ROTATION * 0.25 + 0.1);
 
             float dh = place.h;
             float dy = place.y;
@@ -61,8 +74,16 @@ void KrampusEntity::update()
             if (has_weapon()) EntityFactory::create_krampus_attack_damage_zone_with_club(get_parent(), dx, dy, dw, dh);
             else EntityFactory::create_krampus_attack_damage_zone(get_parent(), dx, dy, dw, dh);
          }
-         if (state_counter*scale >= 0.7 && previous_state_counter*scale < 0.7) bitmap.bitmap(sprite_sheet->get_sprite(22));
-         if (state_counter*scale >= 1.0 && previous_state_counter*scale < 1.0) set_state(STANDING, true);
+         if (state_counter*scale >= 0.7 && previous_state_counter*scale < 0.7)
+         {
+            bitmap.bitmap(sprite_sheet->get_sprite(22));
+            club_bitmap.position(bitmap.w()/2 + 36, bitmap.h()-20);
+            club_bitmap.rotation(FULL_ROTATION * 0.25 - 0.2);
+         }
+         if (state_counter*scale >= 1.0 && previous_state_counter*scale < 1.0)
+         {
+            set_state(STANDING, true);
+         }
          break;
       }
    case CELEBRATING:
@@ -89,6 +110,8 @@ void KrampusEntity::draw()
    place.start_transform();
    bitmap.start_transform();
    bitmap.draw_raw();
+   if (has_weapon()) club_bitmap.draw();
+   club_bitmap.draw_origin();
    bitmap.restore_transform();
    place.restore_transform();
 }
@@ -199,11 +222,15 @@ bool KrampusEntity::set_state(state_t new_state, bool override_if_busy)
    case STANDING:
       bitmap.bitmap(sprite_sheet->get_sprite(18));
       velocity.position = vec2d(0.0, 0.0);
+      club_bitmap.position(bitmap.w()/2 + 36, bitmap.h()-20);
+      club_bitmap.rotation(FULL_ROTATION * 0.25 - 0.2);
       break;
    case ATTACKING:
       state_is_busy = true;
       bitmap.bitmap(sprite_sheet->get_sprite(19));
       velocity.position = vec2d(0.0, 0.0);
+      club_bitmap.position(bitmap.w()/2, 10);
+      club_bitmap.rotation(FULL_ROTATION * -0.2);
       break;
    case CELEBRATING:
       bitmap.bitmap(sprite_sheet->get_sprite(19));

@@ -17,14 +17,20 @@ TitleScreen::TitleScreen(Display *display)
    : Screen(display)
    , fonts()
    , menu_cursor_pos(0)
-   , title(TextObject("KrampusHack"))
+   , title(TextObject("The Krampus"))
+   , title2(TextObject("Christmas Calamity"))
    , menu_items({TextObject(MENU_OPTION_START), TextObject(MENU_OPTION_EXIT)})
    , state(SHOWING_TITLE)
 {
    ALLEGRO_FONT *font = fonts["ChronoTrigger.ttf 60"];
 
    title.font(font)
-      .align(0.5, 0.5)
+      .align(0.5, 1.1)
+      .scale(2, 2)
+      .position(display->center(), display->middle()-100);
+
+   title2.font(font)
+      .align(0.5, -0.1)
       .scale(2, 2)
       .position(display->center(), display->middle()-100);
 
@@ -34,7 +40,7 @@ TitleScreen::TitleScreen(Display *display)
       menu_item.font(font)
          .align(0.5, 0.5)
          .scale(1.0, 1.0)
-         .position(display->center(), display->middle()+count*50);
+         .position(display->center(), display->middle()+count*50 + 100);
 
       count++;
    }
@@ -50,6 +56,7 @@ void TitleScreen::primary_timer_func()
 
    // draw the title
    title.draw();
+   title2.draw();
 
    // draw the menu options
    for (auto &menu_item : menu_items) menu_item.draw();

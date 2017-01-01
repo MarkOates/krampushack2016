@@ -20,6 +20,7 @@ public:
    FontBin fonts;
    int menu_cursor_pos;
    TextObject title;
+   TextObject title2;
    std::vector<TextObject> menu_items;
    int state;
 

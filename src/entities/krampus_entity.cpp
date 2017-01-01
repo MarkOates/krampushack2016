@@ -120,7 +120,6 @@ void KrampusEntity::draw()
    bitmap.start_transform();
    bitmap.draw_raw();
    if (has_weapon()) club_bitmap.draw();
-   club_bitmap.draw_origin();
    bitmap.restore_transform();
    place.restore_transform();
 }

@@ -23,6 +23,7 @@ KrampusEntity::KrampusEntity(ElementID *parent, SpriteSheet *sprite_sheet, float
    bitmap.bitmap(sprite_sheet->get_sprite(18));
    bitmap.align(0.5, 1.0);
    bitmap.scale(2.0, 2.0);
+   bitmap.position(place.size.x/2, place.size.y/2);
 
    set("bound_in_world");
 }
@@ -86,8 +87,9 @@ void KrampusEntity::update()
 void KrampusEntity::draw()
 {
    place.start_transform();
-   bitmap.position(place.size.x/2, place.size.y/2);
-   bitmap.draw();
+   bitmap.start_transform();
+   bitmap.draw_raw();
+   bitmap.restore_transform();
    place.restore_transform();
 }
 

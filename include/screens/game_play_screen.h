@@ -24,6 +24,7 @@ private:
       GET_READY,
       GAME_PLAY,
       GAME_LOST,
+      GAME_WON,
       PAUSED,
       ITEM_COLLECTED,
       USING_STONE_OF_DEFIANCE,

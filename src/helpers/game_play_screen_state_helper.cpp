@@ -50,6 +50,13 @@ void GamePlayScreenStateHelper::process_key_down(int al_keycode)
       {
          UserEventEmitter::emit_event(QUIT_GAME_EVENT);
       }
+   case GamePlayScreen::GAME_WON:
+       // can only close dialogue after a delay
+      if (state_counter > 3.0
+         && (al_keycode == ALLEGRO_KEY_SPACE || al_keycode == ALLEGRO_KEY_ENTER))
+      {
+         UserEventEmitter::emit_event(QUIT_GAME_EVENT);
+      }
    default:
       break;
    }
@@ -96,6 +103,15 @@ void GamePlayScreenStateHelper::set_state(int new_state)
       game_play_screen->camera.set_overlay_color(color::color(color::red, 0.3));
       game_play_screen->camera.zoom_to(0.8, 2.2);
       game_play_screen->camera.tilt_to(random_bool() ? 0.03 : -0.03, 0.3);
+      break;
+   case GamePlayScreen::GAME_WON:
+      {
+         SceneCollectionHelper collections(game_play_screen->scene);
+         KrampusEntity *krampus = collections.get_krampus();
+         if (krampus) krampus->celebrate();
+         game_play_screen->camera.set_overlay_color(color::color(color::white, 0.1));
+         game_play_screen->camera.zoom_to(1.1, 5.0);
+      }
       break;
    default:
       break;
@@ -153,6 +169,9 @@ void GamePlayScreenStateHelper::update_state()
    case GamePlayScreen::GAME_LOST:
       update_scene();
       break;
+   case GamePlayScreen::GAME_WON:
+      update_scene();
+      break;
    default:
       break;
    }
@@ -198,6 +217,13 @@ void GamePlayScreenStateHelper::draw_state()
       {
          if (game_play_screen->scene) draw_scene_with_camera();
          ItemDialogue dialogue = DialogueFactory::build_dialogue("Game Over\n\nOh no!  Don't hurt the nice children!  Only the naughty ones deserve that!");
+         dialogue.draw(0);
+         break;
+      }
+   case GamePlayScreen::GAME_WON:
+      {
+         if (game_play_screen->scene) draw_scene_with_camera();
+         ItemDialogue dialogue = DialogueFactory::build_dialogue("You win!\n\nYou delivered pain to all the naughty boys and girls! Thanks for playing!");
          dialogue.draw(0);
          break;
       }

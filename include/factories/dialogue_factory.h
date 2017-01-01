@@ -20,6 +20,7 @@ private:
 
 public:
    static ItemDialogue build_collected_item_dialog(int item_type);
+   static ItemDialogue build_dialogue(std::string message);
 };
 
 

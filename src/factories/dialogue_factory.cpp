@@ -71,6 +71,24 @@ ItemDialogue DialogueFactory::build_collected_item_dialog(int item_type)
 
 
 
+ItemDialogue DialogueFactory::build_dialogue(std::string message)
+{
+   ALLEGRO_DISPLAY *display = al_get_current_display();
+   int dialogue_x = al_get_display_width(display)/2;
+   int dialogue_y = al_get_display_height(display)/4;
+   int dialogue_w = 800;
+   int dialogue_h = 160;
+   ALLEGRO_FONT *font = get_instance()->dialogue_font;
+   ALLEGRO_BITMAP *item_bitmap = nullptr;
+   std::vector<std::string> dialogue = {message};
+
+   ItemDialogue item_dialogue = ItemDialogue(dialogue_x, dialogue_y, dialogue_w, dialogue_h, item_bitmap, font, dialogue);
+
+   return item_dialogue;
+}
+
+
+
 DialogueFactory *DialogueFactory::instance = nullptr;
 
 

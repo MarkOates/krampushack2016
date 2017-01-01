@@ -28,6 +28,9 @@ public:
          delete current_screen;
          current_screen = new GamePlayScreen(display);
          break;
+      case QUIT_GAME_EVENT:
+         Framework::shutdown_program = true;
+         break;
       }
    }
 };

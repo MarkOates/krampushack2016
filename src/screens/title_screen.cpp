@@ -114,7 +114,7 @@ void TitleScreen::select_option_action()
    if (selected_menu_str == MENU_OPTION_START)
       UserEventEmitter::emit_event(START_GAME_EVENT);
    else if (selected_menu_str == MENU_OPTION_EXIT)
-      Framework::shutdown_program = true;
+      UserEventEmitter::emit_event(QUIT_GAME_EVENT);
 }
 
 

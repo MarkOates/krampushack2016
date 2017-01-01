@@ -20,6 +20,8 @@ public:
 
    void update_scene();
    void draw_scene_with_camera();
+
+   void check_for_win_or_loss_condition();
 };
 
 

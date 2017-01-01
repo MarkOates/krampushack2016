@@ -55,6 +55,9 @@ public:
    int get_num_total_nice_kids();
    int get_num_total_adults();
 
+   bool are_all_naughty_kids_killed();
+   bool are_any_nice_kids_killed();
+
    bool kill_kid_by_name(std::string name);
 };
 

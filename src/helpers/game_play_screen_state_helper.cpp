@@ -130,6 +130,7 @@ void GamePlayScreenStateHelper::update_state()
    case GamePlayScreen::GAME_PLAY:
       game_play_screen->player_krampus_controller.update_polled_keyboard_input();
       update_scene();
+      check_for_win_or_loss_condition();
       break;
    case GamePlayScreen::ITEM_COLLECTED:
       {
@@ -271,6 +272,17 @@ void GamePlayScreenStateHelper::draw_scene_with_camera()
 
    game_play_screen->hud.draw();
 }
+
+
+
+void GamePlayScreenStateHelper::check_for_win_or_loss_condition()
+{
+   if (game_play_screen->naughty_list.are_any_nice_kids_killed())
+      set_state(GamePlayScreen::GAME_LOST);
+   else if (game_play_screen->naughty_list.are_all_naughty_kids_killed())
+      set_state(GamePlayScreen::GAME_WON);
+}
+
 
 
 

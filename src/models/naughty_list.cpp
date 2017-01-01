@@ -248,6 +248,22 @@ int NaughtyList::get_num_total_adults()
 
 
 
+bool NaughtyList::are_all_naughty_kids_killed()
+{
+   if (get_num_alive_naughty_kids() == 0) return true;
+   return false;
+}
+
+
+
+bool NaughtyList::are_any_nice_kids_killed()
+{
+   if (get_num_alive_nice_kids() < get_num_total_nice_kids()) return true;
+   return false;
+}
+
+
+
 bool NaughtyList::kill_kid_by_name(std::string name)
 {
    Kid *found_kid = nullptr;

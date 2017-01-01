@@ -11,6 +11,7 @@
 AudioController::AudioController()
    : game_show_music(Framework::sample("369920__mrthenoronha__cartoon-game-theme-loop.wav"))
    , haunting_music(Framework::sample("haunting_atmosphere-01.wav"))
+   , hurt_sound_effect(Framework::sample("217192__rt759__game-voice-3.wav"))
    , current_music_track_num(0)
 {
    game_show_music.loop(true);
@@ -30,6 +31,7 @@ void AudioController::stop_all()
 {
    haunting_music.stop();
    game_show_music.stop();
+   hurt_sound_effect.stop();
 }
 
 
@@ -48,6 +50,13 @@ void AudioController::play_haunting_music()
 
 
 
+void AudioController::play_hurt_sound_effect()
+{
+   play_sound_effect_by_id(HURT_SOUND_EFFECT);
+}
+
+
+
 void AudioController::play_audio_track_by_id(int track_id)
 {
    if (track_id == current_music_track_num) return;
@@ -62,6 +71,20 @@ void AudioController::play_audio_track_by_id(int track_id)
       break;
    case HAUNTING_MUSIC:
       haunting_music.play();
+      break;
+   default:
+      break;
+   }
+}
+
+
+
+void AudioController::play_sound_effect_by_id(int track_id)
+{
+   switch (track_id)
+   {
+   case HURT_SOUND_EFFECT:
+      hurt_sound_effect.play();
       break;
    default:
       break;

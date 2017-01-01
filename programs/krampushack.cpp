@@ -45,6 +45,12 @@ public:
             audio_controller.play_audio_track_by_id(track_id);
          }
          break;
+      case PLAY_SOUND_EFFECT:
+         {
+            int sound_effect_id = event->user.data1;
+            audio_controller.play_sound_effect_by_id(sound_effect_id);
+         }
+         break;
       case QUIT_GAME_EVENT:
          Framework::shutdown_program = true;
          break;

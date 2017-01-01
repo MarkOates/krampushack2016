@@ -11,6 +11,7 @@ class AudioController
 private:
    Sound game_show_music;
    Sound haunting_music;
+   Sound hurt_sound_effect;
    int current_music_track_num;
 
 public:
@@ -19,10 +20,12 @@ public:
 
    void play_game_show_music();
    void play_haunting_music();
+   void play_hurt_sound_effect();
 
    void stop_all();
 
    void play_audio_track_by_id(int id);
+   void play_sound_effect_by_id(int id);
 };
 
 

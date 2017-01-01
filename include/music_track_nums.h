@@ -6,6 +6,7 @@ enum music_track_t
 {
    HAUNTING_MUSIC,
    GAME_SHOW_MUSIC,
+   HURT_SOUND_EFFECT
 };
 
 

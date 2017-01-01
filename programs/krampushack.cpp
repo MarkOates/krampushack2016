@@ -3,6 +3,7 @@
 
 #include <allegro_flare/allegro_flare.h>
 
+#include <emitters/user_event_emitter.h>
 #include <screens/title_screen.h>
 #include <screens/game_play_screen.h>
 #include <user_events.h>
@@ -15,8 +16,10 @@ public:
    Screen *current_screen;
 	KrampusHackProject(Display *display)
       : Screen(display)
-      , current_screen(new TitleScreen(display))
-   {}
+      , current_screen(nullptr)
+   {
+      UserEventEmitter::emit_event(START_TITLE_SCREEN);
+   }
 
    void user_event_func() override
    {
@@ -24,6 +27,10 @@ public:
 
       switch (event->user.type)
       {
+      case START_TITLE_SCREEN:
+         if (current_screen) delete current_screen;
+         current_screen = new TitleScreen(display);
+         break;
       case START_GAME_EVENT:
          delete current_screen;
          current_screen = new GamePlayScreen(display);

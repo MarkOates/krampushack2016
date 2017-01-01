@@ -23,6 +23,7 @@ private:
       NONE,
       GET_READY,
       GAME_PLAY,
+      GAME_LOST,
       PAUSED,
       ITEM_COLLECTED,
       USING_STONE_OF_DEFIANCE,

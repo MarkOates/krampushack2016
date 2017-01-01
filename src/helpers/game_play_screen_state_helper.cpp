@@ -3,9 +3,11 @@
 
 #include <helpers/game_play_screen_state_helper.h>
 
+#include <emitters/user_event_emitter.h>
 #include <factories/dialogue_factory.h>
 #include <helpers/scene_collection_helper.h>
 #include <screens/game_play_screen.h>
+#include <user_events.h>
 #include <item_type_nums.h>
 
 
@@ -41,6 +43,13 @@ void GamePlayScreenStateHelper::process_key_down(int al_keycode)
          set_state(GamePlayScreen::GAME_PLAY);
       }
       break;
+   case GamePlayScreen::GAME_LOST:
+       // can only close dialogue after a delay
+      if (state_counter > 2.0
+         && (al_keycode == ALLEGRO_KEY_SPACE || al_keycode == ALLEGRO_KEY_ENTER))
+      {
+         UserEventEmitter::emit_event(QUIT_GAME_EVENT);
+      }
    default:
       break;
    }
@@ -82,6 +91,11 @@ void GamePlayScreenStateHelper::set_state(int new_state)
          SceneCollectionHelper collections(game_play_screen->scene);
          for (auto &kid : collections.get_kids()) kid->reveal_behavior();
       }
+      break;
+   case GamePlayScreen::GAME_LOST:
+      game_play_screen->camera.set_overlay_color(color::color(color::red, 0.3));
+      game_play_screen->camera.zoom_to(0.8, 2.2);
+      game_play_screen->camera.tilt_to(random_bool() ? 0.03 : -0.03, 0.3);
       break;
    default:
       break;
@@ -136,6 +150,9 @@ void GamePlayScreenStateHelper::update_state()
          set_state(GamePlayScreen::GAME_PLAY);
       }
       break;
+   case GamePlayScreen::GAME_LOST:
+      update_scene();
+      break;
    default:
       break;
    }
@@ -175,6 +192,13 @@ void GamePlayScreenStateHelper::draw_state()
    case GamePlayScreen::USING_STONE_OF_DEFIANCE:
       {
          if (game_play_screen->scene) draw_scene_with_camera();
+         break;
+      }
+   case GamePlayScreen::GAME_LOST:
+      {
+         if (game_play_screen->scene) draw_scene_with_camera();
+         ItemDialogue dialogue = DialogueFactory::build_dialogue("Game Over\n\nOh no!  Don't hurt the nice children!  Only the naughty ones deserve that!");
+         dialogue.draw(0);
          break;
       }
    default:

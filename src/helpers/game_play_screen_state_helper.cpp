@@ -32,7 +32,7 @@ void GamePlayScreenStateHelper::process_key_down(int al_keycode)
       break;
    case GamePlayScreen::ITEM_COLLECTED:
        // can only close dialogue after a delay
-      if (state_counter > 3.0
+      if (state_counter > 2.0
          && (al_keycode == ALLEGRO_KEY_SPACE || al_keycode == ALLEGRO_KEY_ENTER))
       {
          SceneCollectionHelper collections(game_play_screen->scene);

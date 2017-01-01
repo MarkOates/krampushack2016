@@ -5,10 +5,12 @@
 
 #include <allegro_flare/allegro_flare.h>
 #include <entities/door_entity.h>
+#include <emitters/user_event_emitter.h>
 #include <factories/entity_factory.h>
 #include <factories/scene_factory.h>
 #include <helpers/scene_collection_helper.h>
 #include <item_type_nums.h>
+#include <music_track_nums.h>
 #include <user_events.h>
 
 
@@ -173,6 +175,9 @@ void GamePlayScreen::enter_scene(int scene_id, char door_name)
 
    // have the camera follow krampus
    camera.set_target(krampus);
+
+   // start (or resume) the music for this scene
+   UserEventEmitter::emit_event(PLAY_MUSIC_TRACK, HAUNTING_MUSIC);
 
    // place krampus at the destination_door and walk down
    if (door)

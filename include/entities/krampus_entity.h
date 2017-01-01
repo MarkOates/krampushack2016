@@ -28,6 +28,7 @@ public:
    int walking_speed;
    bool facing_right;
    bool _has_weapon;
+   bool _has_stone_of_defiance;
    BitmapObject club_bitmap;
    SpriteSheet *sprite_sheet;
 
@@ -52,6 +53,7 @@ public:
    void use_stone_of_defiance();
 
    void get_weapon();
+   void get_stone_of_defiance();
 
    bool is_idle();
    bool has_weapon();

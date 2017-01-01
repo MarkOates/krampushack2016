@@ -16,6 +16,7 @@ KrampusEntity::KrampusEntity(ElementID *parent, SpriteSheet *sprite_sheet, float
    , walking_speed(5.0)
    , facing_right(true)
    , _has_weapon(false)
+   , _has_stone_of_defiance(false)
    , club_bitmap(nullptr)
    , state(STANDING)
    , sprite_sheet(sprite_sheet)
@@ -193,7 +194,7 @@ void KrampusEntity::celebrate()
 
 void KrampusEntity::use_stone_of_defiance()
 {
-   set_state(USING_MAGIC);
+   if (_has_stone_of_defiance) set_state(USING_MAGIC);
 }
 
 
@@ -267,6 +268,13 @@ bool KrampusEntity::set_state(state_t new_state, bool override_if_busy)
 void KrampusEntity::get_weapon()
 {
    _has_weapon = true;
+}
+
+
+
+void KrampusEntity::get_stone_of_defiance()
+{
+   _has_stone_of_defiance = true;
 }
 
 

@@ -101,6 +101,12 @@ void GamePlayScreen::user_event_func()
             KrampusEntity *krampus = collections.get_krampus();
             krampus->get_weapon();
          }
+         else if (item_type_int == ITEM_TYPE_STONE_OF_DEFIANCE)
+         {
+            SceneCollectionHelper collections(scene);
+            KrampusEntity *krampus = collections.get_krampus();
+            krampus->get_stone_of_defiance();
+         }
 
          set_state(ITEM_COLLECTED);
          break;
@@ -169,6 +175,7 @@ void GamePlayScreen::enter_scene(int scene_id, char door_name)
 
    // equip the KrampusEntity with a weapon (if the player has one)
    if (player_inventory.has_item(ITEM_TYPE_CLUB)) krampus->get_weapon();
+   if (player_inventory.has_item(ITEM_TYPE_STONE_OF_DEFIANCE)) krampus->get_stone_of_defiance();
 
    // set the player controller to control krampus
    player_krampus_controller.set_krampus(krampus);

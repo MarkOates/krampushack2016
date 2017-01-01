@@ -26,6 +26,7 @@ private:
    void set_mode(mode_t new_mode);
    BitmapObject chrome_bitmap;
    ALLEGRO_FONT *font;
+   ALLEGRO_FONT *font_bigger;
    SpriteSheet sprite_sheet;
    BitmapObject club_item_bitmap;
    BitmapObject key_item_bitmap;

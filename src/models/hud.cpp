@@ -5,6 +5,7 @@
 
 #include <allegro_flare/framework.h>
 #include <allegro_flare/image_processing.h>
+#include <allegro_flare/objects/text_object.h>
 #include <item_type_nums.h>
 #include <sstream>
 
@@ -17,6 +18,7 @@ HUD::HUD(Inventory *player_inventory, NaughtyList *naughty_list)
    , player_max_health(0)
    , chrome_bitmap(nullptr)
    , font(Framework::font("ChronoTrigger.ttf 40"))
+   , font_bigger(Framework::font("ChronoTrigger.ttf 55"))
    , black_bar_counter(0)
    , sprite_sheet("sprites_grid-06.png", 34, 34, 6, 6, 3)
    , club_item_bitmap(nullptr)
@@ -121,6 +123,14 @@ void HUD::draw()
 
       if (mode == MODE_GAME_PLAY)
          al_draw_text(font, color::white, 1280 - 100, 720-70, ALLEGRO_ALIGN_RIGHT, hud_str.str().c_str());
+   }
+   if (player_inventory->has_item(ITEM_TYPE_STONE_OF_DEFIANCE))
+   {
+      // draw the letter "R" above the stone of defiance item
+      TextObject r_key_hint("R");
+      r_key_hint.font(font_bigger);
+      r_key_hint.position(860, 25);
+      r_key_hint.draw();
    }
 
    // draw the black bars

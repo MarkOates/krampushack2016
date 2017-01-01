@@ -67,35 +67,49 @@ bool NaughtyList::Kid::is_alive()
 
 NaughtyList::Kid NaughtyList::_build_kid(int scene_id)
 {
+   static int behavior_distribution = -1;
+   behavior_distribution += 1;
+   behavior_distribution = behavior_distribution % 5;
+
+   static bool boy_girl = true;
+   boy_girl = !boy_girl;
+
    std::string name = "";
    int sprite_index = -1;
    behavior_t behavior = BEHAVIOR_NAUGHTY;
    std::vector<behavior_t> non_adult_behaviors = { BEHAVIOR_NAUGHTY, BEHAVIOR_NICE };
 
-   // select a name and sprite index
-   int kid_type = random_int(0, 2); // 0 = boy, 1 = girl, 2 = adult
-   switch(kid_type)
+   switch(behavior_distribution)
    {
       case 0:
-         name = kid_name_generator.get_boy_name();
-         sprite_index = _get_random_sprite_for_boy();
-         behavior = random_element<behavior_t>(non_adult_behaviors);
+      case 2:
+         behavior = BEHAVIOR_NAUGHTY;
          break;
       case 1:
-         name = kid_name_generator.get_girl_name();
-         sprite_index = _get_random_sprite_for_girl();
-         behavior = random_element<behavior_t>(non_adult_behaviors);
+      case 3:
+         behavior = BEHAVIOR_NICE;
          break;
-      case 2:
-         name = random_bool() ? kid_name_generator.get_girl_name() : kid_name_generator.get_boy_name();
+      case 4:
          sprite_index = _get_random_sprite_for_adult();
+         name = (boy_girl) ? kid_name_generator.get_boy_name() : kid_name_generator.get_girl_name();
          behavior = BEHAVIOR_ADULT;
-         break;
-      default:
          break;
    }
 
-   // select a random behavior
+   if (behavior != BEHAVIOR_ADULT)
+   {
+      if (boy_girl)
+      {
+         name = kid_name_generator.get_boy_name();
+         sprite_index = _get_random_sprite_for_boy();
+      }
+      else
+      {
+         name = kid_name_generator.get_girl_name();
+         sprite_index = _get_random_sprite_for_girl();
+      }
+   }
+
    return Kid(name, sprite_index, scene_id, behavior);
 }
 

@@ -50,6 +50,15 @@ void KrampusEntity::update()
 
    switch(state)
    {
+   case WALKING_UP:
+   case WALKING_DOWN:
+   case WALKING_LEFT:
+   case WALKING_RIGHT:
+      {
+         float bounce_counter = sin(al_get_time()*36)*0.5 + 0.5;
+         bitmap.anchor(0, bounce_counter * -12);
+      }
+      break;
    case STANDING:
       break;
    case ATTACKING:
@@ -220,12 +229,14 @@ bool KrampusEntity::set_state(state_t new_state, bool override_if_busy)
       velocity.position = vec2d(walking_speed, 0.0);
       break;
    case STANDING:
+      bitmap.anchor(0, 0);
       bitmap.bitmap(sprite_sheet->get_sprite(18));
       velocity.position = vec2d(0.0, 0.0);
       club_bitmap.position(bitmap.w()/2 + 36, bitmap.h()-20);
       club_bitmap.rotation(FULL_ROTATION * 0.25 - 0.2);
       break;
    case ATTACKING:
+      bitmap.anchor(0, 0);
       state_is_busy = true;
       bitmap.bitmap(sprite_sheet->get_sprite(19));
       velocity.position = vec2d(0.0, 0.0);
@@ -233,10 +244,12 @@ bool KrampusEntity::set_state(state_t new_state, bool override_if_busy)
       club_bitmap.rotation(FULL_ROTATION * -0.2);
       break;
    case CELEBRATING:
+      bitmap.anchor(0, 0);
       bitmap.bitmap(sprite_sheet->get_sprite(19));
       velocity.position = vec2d(0.0, 0.0);
       break;
    case USING_MAGIC:
+      bitmap.anchor(0, 0);
       state_is_busy = true;
       bitmap.bitmap(sprite_sheet->get_sprite(19));
       velocity.position = vec2d(0.0, 0.0);

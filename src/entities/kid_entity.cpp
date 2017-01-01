@@ -3,7 +3,10 @@
 
 #include <entities/kid_entity.h>
 
+#include <emitters/user_event_emitter.h>
 #include <cmath>
+#include <music_track_nums.h>
+#include <user_events.h>
 
 
 
@@ -144,6 +147,7 @@ void KidEntity::set_state(state_t new_state)
       break;
    case STATE_TAKING_HIT:
       velocity.position = vec2d(0.0, 0.0);
+      UserEventEmitter::emit_event(PLAY_SOUND_EFFECT, HURT_SOUND_EFFECT);
       reveal_behavior();
       break;
    }

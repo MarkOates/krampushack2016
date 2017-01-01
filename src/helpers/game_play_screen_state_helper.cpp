@@ -124,6 +124,7 @@ void GamePlayScreenStateHelper::update_state()
 {
    float previous_state_counter = state_counter;
    state_counter += 1.0 / 60.0;
+   int __dirty_player_health = 10;
 
    switch (game_play_screen->state)
    {
@@ -168,6 +169,7 @@ void GamePlayScreenStateHelper::update_state()
       }
       break;
    case GamePlayScreen::GAME_LOST:
+      __dirty_player_health = 0;
       update_scene();
       break;
    case GamePlayScreen::GAME_WON:
@@ -181,7 +183,7 @@ void GamePlayScreenStateHelper::update_state()
    game_play_screen->camera.update(game_play_screen->scene->get_width());
 
    // always update the hud, regardless of state
-   game_play_screen->hud.set_values(3, 10);
+   game_play_screen->hud.set_values(__dirty_player_health, 10);
 }
 
 

@@ -48,14 +48,14 @@ void GamePlayScreenStateHelper::process_key_down(int al_keycode)
       if (state_counter > 2.0
          && (al_keycode == ALLEGRO_KEY_SPACE || al_keycode == ALLEGRO_KEY_ENTER))
       {
-         UserEventEmitter::emit_event(QUIT_GAME_EVENT);
+         UserEventEmitter::emit_event(START_TITLE_SCREEN);
       }
    case GamePlayScreen::GAME_WON:
        // can only close dialogue after a delay
       if (state_counter > 3.0
          && (al_keycode == ALLEGRO_KEY_SPACE || al_keycode == ALLEGRO_KEY_ENTER))
       {
-         UserEventEmitter::emit_event(QUIT_GAME_EVENT);
+         UserEventEmitter::emit_event(START_TITLE_SCREEN);
       }
    default:
       break;

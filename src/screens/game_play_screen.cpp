@@ -8,6 +8,7 @@
 #include <factories/entity_factory.h>
 #include <factories/scene_factory.h>
 #include <helpers/scene_collection_helper.h>
+#include <item_type_nums.h>
 #include <user_events.h>
 
 
@@ -91,6 +92,14 @@ void GamePlayScreen::user_event_func()
          int item_type_int = event->user.data1;
          player_inventory.add_item(item_type_int);
          _item_recently_collected = item_type_int;
+
+         if (item_type_int == ITEM_TYPE_CLUB)
+         {
+            SceneCollectionHelper collections(scene);
+            KrampusEntity *krampus = collections.get_krampus();
+            krampus->get_weapon();
+         }
+
          set_state(ITEM_COLLECTED);
          break;
       }
@@ -155,6 +164,9 @@ void GamePlayScreen::enter_scene(int scene_id, char door_name)
 
    for (auto &kid : collections.get_kids())
       ai_kid_controllers.push_back(AIKidController(kid));
+
+   // equip the KrampusEntity with a weapon (if the player has one)
+   if (player_inventory.has_item(ITEM_TYPE_CLUB)) krampus->get_weapon();
 
    // set the player controller to control krampus
    player_krampus_controller.set_krampus(krampus);

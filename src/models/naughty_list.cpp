@@ -2,6 +2,7 @@
 
 
 #include <models/naughty_list.h>
+#include <allegro_flare/useful.h>
 
 
 
@@ -102,21 +103,24 @@ NaughtyList::Kid NaughtyList::_build_kid(int scene_id)
 
 int NaughtyList::_get_random_sprite_for_boy()
 {
-   return 2;
+   std::vector<int> boy_sprites = {2, 4, 8, 9, 15, 16};
+   return random_element<int>(boy_sprites);
 }
 
 
 
 int NaughtyList::_get_random_sprite_for_girl()
 {
-   return 3;
+   std::vector<int> girl_sprites = {3, 5, 6, 11, 14, 17};
+   return random_element<int>(girl_sprites);
 }
 
 
 
 int NaughtyList::_get_random_sprite_for_adult()
 {
-   return 0;
+   std::vector<int> girl_sprites = {0, 1, 7, 10, 12, 13};
+   return random_element<int>(girl_sprites);
 }
 
 

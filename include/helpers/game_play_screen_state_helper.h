@@ -9,6 +9,7 @@ class GamePlayScreenStateHelper
 private:
    GamePlayScreen *game_play_screen;
    float state_counter;
+   bool _can_bypass_dialogue();
 
 public:
    GamePlayScreenStateHelper(GamePlayScreen *game_play_screen);

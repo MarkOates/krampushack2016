@@ -33,7 +33,7 @@ void GamePlayScreenStateHelper::process_key_down(int al_keycode)
       break;
    case GamePlayScreen::ITEM_COLLECTED:
        // can only close dialogue after a delay
-      if (state_counter > 2.0
+      if (_can_bypass_dialogue()
          && (al_keycode == ALLEGRO_KEY_SPACE || al_keycode == ALLEGRO_KEY_ENTER))
       {
          SceneCollectionHelper collections(game_play_screen->scene);
@@ -46,14 +46,14 @@ void GamePlayScreenStateHelper::process_key_down(int al_keycode)
       break;
    case GamePlayScreen::GAME_LOST:
        // can only close dialogue after a delay
-      if (state_counter > 3.0
+      if (_can_bypass_dialogue()
          && (al_keycode == ALLEGRO_KEY_SPACE || al_keycode == ALLEGRO_KEY_ENTER))
       {
          UserEventEmitter::emit_event(START_TITLE_SCREEN);
       }
    case GamePlayScreen::GAME_WON:
        // can only close dialogue after a delay
-      if (state_counter > 3.0
+      if (_can_bypass_dialogue()
          && (al_keycode == ALLEGRO_KEY_SPACE || al_keycode == ALLEGRO_KEY_ENTER))
       {
          UserEventEmitter::emit_event(START_TITLE_SCREEN);
@@ -206,6 +206,7 @@ void GamePlayScreenStateHelper::draw_state()
       {
          if (game_play_screen->scene) draw_scene_with_camera();
          ItemDialogue dialogue = DialogueFactory::build_collected_item_dialog(game_play_screen->_item_recently_collected);
+         if (_can_bypass_dialogue()) dialogue.set_showing_continue_notification();
          dialogue.draw(0);
          break;
       }
@@ -223,6 +224,7 @@ void GamePlayScreenStateHelper::draw_state()
       {
          if (game_play_screen->scene) draw_scene_with_camera();
          ItemDialogue dialogue = DialogueFactory::build_dialogue("Game Over\n\nOh no!  Don't hurt the nice children!  Only the naughty ones deserve that!");
+         if (_can_bypass_dialogue()) dialogue.set_showing_continue_notification();
          dialogue.draw(0);
          break;
       }
@@ -230,6 +232,7 @@ void GamePlayScreenStateHelper::draw_state()
       {
          if (game_play_screen->scene) draw_scene_with_camera();
          ItemDialogue dialogue = DialogueFactory::build_dialogue("You win!\n\nYou delivered pain to all the naughty boys and girls! Thanks for playing!");
+         if (_can_bypass_dialogue()) dialogue.set_showing_continue_notification();
          dialogue.draw(0);
          break;
       }
@@ -288,6 +291,12 @@ void GamePlayScreenStateHelper::check_for_win_or_loss_condition()
       set_state(GamePlayScreen::GAME_WON);
 }
 
+
+
+bool GamePlayScreenStateHelper::_can_bypass_dialogue()
+{
+   return state_counter > 3.0;
+}
 
 
 

@@ -3,8 +3,10 @@
 
 #include <models/item_dialogue.h>
 
+#include <allegro_flare/objects/text_object.h>
 #include <allegro_flare/color.h>
 #include <allegro_flare/framework.h>
+#include <cmath>
 
 
 
@@ -13,6 +15,7 @@ ItemDialogue::ItemDialogue(float x, float y, float w, float h, ALLEGRO_BITMAP *i
    , bitmap(item_bitmap)
    , font(font)
    , pages(pages)
+   , showing_continue_notification(false)
 {
    bitmap.align(0.5, 0.5);
    bitmap.position(150/2-30, 150/2-40);
@@ -47,6 +50,20 @@ void ItemDialogue::draw(int page_num)
             pages[page_num].c_str()
          );
 
+   // show the "continue" notification
+   if (showing_continue_notification)
+   {
+      TextObject continue_notification("press ENTER to continue");
+      continue_notification.font(font);
+      continue_notification.position(place.w, place.h + 30);
+      continue_notification.align(1.0, 1.0);
+      continue_notification.scale(0.80, 0.80);
+      continue_notification.color(color::yellow);
+      float notification_opacity = sin(al_get_time()*4.5) * 0.5 + 0.5;
+      continue_notification.opacity(notification_opacity);
+      continue_notification.draw();
+   }
+
    place.restore_transform();
 }
 
@@ -55,6 +72,13 @@ void ItemDialogue::draw(int page_num)
 int ItemDialogue::get_num_pages()
 {
    return pages.size();
+}
+
+
+
+void ItemDialogue::set_showing_continue_notification()
+{
+   showing_continue_notification = true;
 }
 
 

@@ -15,7 +15,7 @@ private:
    std::vector<std::string> pages;
 
 public:
-	StoryboardScreen(Display *display);
+	StoryboardScreen(Display *display, std::vector<std::string> pages);
 
    void primary_timer_func() override;
    void key_down_func() override;

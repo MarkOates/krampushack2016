@@ -15,6 +15,7 @@ private:
    Sound hurt_sound_effect;
    Sound win_cheer_sound_effect;
    Sound fail_moan_sound_effect;
+   Sound strong_punch_sound_effect;
    int current_music_track_num;
 
 public:
@@ -25,6 +26,7 @@ public:
    void play_storyboard_music();
    void play_haunting_music();
    void play_hurt_sound_effect();
+   void play_strong_punch_sound_effect();
 
    void stop_all();
 

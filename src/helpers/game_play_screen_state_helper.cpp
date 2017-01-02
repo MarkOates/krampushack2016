@@ -51,6 +51,7 @@ void GamePlayScreenStateHelper::process_key_down(int al_keycode)
       {
          UserEventEmitter::emit_event(START_TITLE_SCREEN);
       }
+      break;
    case GamePlayScreen::GAME_WON:
        // can only close dialogue after a delay
       if (_can_bypass_dialogue()
@@ -58,6 +59,7 @@ void GamePlayScreenStateHelper::process_key_down(int al_keycode)
       {
          UserEventEmitter::emit_event(START_CLOSING_STORYBOARD_SCREEN);
       }
+      break;
    default:
       break;
    }

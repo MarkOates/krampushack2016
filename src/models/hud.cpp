@@ -68,9 +68,9 @@ void HUD::set_mode(mode_t new_mode)
    case MODE_GAME_PLAY:
       chrome_bitmap.get_attr("align_y") = 0.0; //<- a really annoying way to have to do this
       club_item_bitmap.scale(2.0, 2.0);
-      key_item_bitmap.scale(1.0, 1.0);
-      stone_of_defiance_item_bitmap.scale(1.0, 1.0);
-      naughty_list_item_bitmap.scale(1.0, 1.0);
+      key_item_bitmap.scale(1.65, 1.65);
+      stone_of_defiance_item_bitmap.scale(1.65, 1.65);
+      naughty_list_item_bitmap.scale(1.65, 1.65);
       black_bar_counter = 0.0;
       break;
    case MODE_CINEMA:

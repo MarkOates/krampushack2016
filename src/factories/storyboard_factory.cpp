@@ -22,3 +22,19 @@ StoryboardScreen *StoryboardFactory::create_opening_storyboard_screen(Display *d
 
 
 
+StoryboardScreen *StoryboardFactory::create_closing_storyboard_screen(Display *display)
+{
+   std::vector<std::string> pages;
+
+   pages.push_back("\nCongratulations!\n\nWow!  You sure served up a healthy dish of comeuppance with a side of eggnog!");
+   pages.push_back("\nThanks to you, Christmas has been saved and all the naughty children will have plenty to think about through the year.");
+   pages.push_back("Santa thanks you, too.");
+   pages.push_back("\nAnd so do I! :)");
+   pages.push_back("\n\nThanks for being a part of KrampusHack 2016!");
+
+   StoryboardScreen *storyboard_screen = new StoryboardScreen(display, pages);
+   return storyboard_screen;
+}
+
+
+

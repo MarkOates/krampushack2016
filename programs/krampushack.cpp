@@ -41,6 +41,11 @@ public:
          current_screen = StoryboardFactory::create_opening_storyboard_screen(display);
          audio_controller.play_storyboard_music();
          break;
+      case START_CLOSING_STORYBOARD_SCREEN:
+         if (current_screen) delete current_screen;
+         current_screen = StoryboardFactory::create_closing_storyboard_screen(display);
+         audio_controller.play_game_show_music();
+         break;
       case START_GAME_EVENT:
          delete current_screen;
          current_screen = new GamePlayScreen(display);

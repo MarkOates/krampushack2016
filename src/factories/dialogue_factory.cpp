@@ -10,7 +10,7 @@
 
 
 DialogueFactory::DialogueFactory()
-   : item_sprite_sheet("sprites_grid-06.png", 34, 34, 6, 6, 3)
+   : item_sprite_sheet("sprites_grid-07.png", 34, 34, 6, 6, 3)
    , dialogue_font(Framework::font("ChronoTrigger.ttf 50"))
 {
 }

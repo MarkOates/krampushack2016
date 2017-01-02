@@ -119,7 +119,7 @@ void TitleScreen::select_option_action()
    std::string selected_menu_str = menu_items[menu_cursor_pos].str;
 
    if (selected_menu_str == MENU_OPTION_START)
-      UserEventEmitter::emit_event(START_GAME_EVENT);
+      UserEventEmitter::emit_event(START_INTRO_STORYBOARD_SCREEN);
    else if (selected_menu_str == MENU_OPTION_EXIT)
       UserEventEmitter::emit_event(QUIT_GAME_EVENT);
 }

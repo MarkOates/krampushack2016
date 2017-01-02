@@ -5,6 +5,7 @@
 
 #include <controllers/audio_controller.h>
 #include <emitters/user_event_emitter.h>
+#include <screens/storyboard_screen.h>
 #include <screens/title_screen.h>
 #include <screens/game_play_screen.h>
 #include <user_events.h>
@@ -34,6 +35,11 @@ public:
          if (current_screen) delete current_screen;
          current_screen = new TitleScreen(display);
          audio_controller.play_game_show_music();
+         break;
+      case START_INTRO_STORYBOARD_SCREEN:
+         if (current_screen) delete current_screen;
+         current_screen = new StoryboardScreen(display);
+         audio_controller.play_storyboard_music();
          break;
       case START_GAME_EVENT:
          delete current_screen;

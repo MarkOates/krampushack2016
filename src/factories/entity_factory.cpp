@@ -56,14 +56,17 @@ EntityFactory::EntityFactory()
 EntityBase *EntityFactory::create_random_kid(ElementID *parent, float x, float y)
 {
    behavior_t behavior = (behavior_t)random_int(BEHAVIOR_ADULT, BEHAVIOR_NICE);
-   return new KidEntity(parent, &get_instance()->character_sprite_sheet, &get_instance()->flat_color_shader, x, y, "[random name]", behavior);
+   return new KidEntity(parent, &get_instance()->character_sprite_sheet, &get_instance()->flat_color_shader, x, y, "[random name]", behavior, -1, -1);
 }
 
 
 
 KidEntity *EntityFactory::create_named_kid(ElementID *parent, std::string name, behavior_t behavior, int sprite_index, float x, float y)
 {
-   return new KidEntity(parent, &get_instance()->character_sprite_sheet, &get_instance()->flat_color_shader, x, y, name, behavior, sprite_index);
+   int identity_sprite_index = 29;
+   if (behavior == BEHAVIOR_NAUGHTY) identity_sprite_index = 28;
+   else if (behavior == BEHAVIOR_NICE) identity_sprite_index = 27;
+   return new KidEntity(parent, &get_instance()->character_sprite_sheet, &get_instance()->flat_color_shader, x, y, name, behavior, sprite_index, identity_sprite_index);
 }
 
 

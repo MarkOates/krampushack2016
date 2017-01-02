@@ -14,7 +14,7 @@
 
 
 
-KidEntity::KidEntity(ElementID *parent, SpriteSheet *sprite_sheet, Shader *flat_color_shader, float x, float y, std::string name, behavior_t behavior, int sprite_index)
+KidEntity::KidEntity(ElementID *parent, SpriteSheet *sprite_sheet, Shader *flat_color_shader, float x, float y, std::string name, behavior_t behavior, int sprite_index, int identity_sprite_index)
    : EntityBase(parent, "kid", x, y)
    , name(name)
    , walk_speed(1.5)
@@ -22,11 +22,13 @@ KidEntity::KidEntity(ElementID *parent, SpriteSheet *sprite_sheet, Shader *flat_
    , flat_color_shader(flat_color_shader)
    , behavior(behavior)
    , identity_reveal_counter(IDENTITY_REVEAL_MAX)
+   , kid_bitmap(sprite_sheet->get_sprite(sprite_index))
+   , identity_bitmap(sprite_sheet->get_sprite(identity_sprite_index))
 {
    place.size = vec2d(60, 30);
 
    if (sprite_index < 0) sprite_index = random_int(0, 16);
-   bitmap.bitmap(sprite_sheet->get_sprite(sprite_index));
+   bitmap.bitmap(kid_bitmap);
    bitmap.align(0.5, 1.0);
    bitmap.scale(2.0, 2.0);
 
@@ -75,9 +77,21 @@ void KidEntity::draw()
 
    flat_color_shader->set_vec3("tint", identity_color.r, identity_color.g, identity_color.b);
    flat_color_shader->set_float("tint_intensity", tint_intensity);
-   EntityBase::draw();
+
+   place.start_transform();
+   bitmap.position(place.size.x/2, place.size.y/2);
+      bitmap.opacity(1.0);
+      bitmap.bitmap(kid_bitmap);
+      bitmap.draw();
 
    flat_color_shader->stop();
+
+   bitmap.bitmap(identity_bitmap);
+      bitmap.opacity(tint_intensity);
+      bitmap.draw();
+
+   place.restore_transform();
+
 }
 
 

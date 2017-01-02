@@ -56,7 +56,7 @@ void GamePlayScreenStateHelper::process_key_down(int al_keycode)
       if (_can_bypass_dialogue()
          && (al_keycode == ALLEGRO_KEY_SPACE || al_keycode == ALLEGRO_KEY_ENTER))
       {
-         UserEventEmitter::emit_event(START_TITLE_SCREEN);
+         UserEventEmitter::emit_event(START_CLOSING_STORYBOARD_SCREEN);
       }
    default:
       break;
@@ -232,7 +232,7 @@ void GamePlayScreenStateHelper::draw_state()
    case GamePlayScreen::GAME_WON:
       {
          if (game_play_screen->scene) draw_scene_with_camera();
-         ItemDialogue dialogue = DialogueFactory::build_dialogue("You win!\n\nYou delivered pain to all the naughty boys and girls! Thanks for playing!");
+         ItemDialogue dialogue = DialogueFactory::build_dialogue("Awesome!!\n\nYou did it! You punished all the naughty children on the naughty list!");
          if (_can_bypass_dialogue()) dialogue.set_showing_continue_notification();
          dialogue.draw(0);
          break;

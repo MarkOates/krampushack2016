@@ -13,6 +13,7 @@ AudioController::AudioController()
    , storyboard_music(Framework::sample("storyboard_music.ogg"))
    , haunting_music(Framework::sample("haunting_atmosphere-01.ogg"))
    , hurt_sound_effect(Framework::sample("217192__rt759__game-voice-3.wav"))
+   , tada_sound_effect(Framework::sample("tada.ogg"))
    , win_cheer_sound_effect(Framework::sample("win_cheer.ogg"))
    , fail_moan_sound_effect(Framework::sample("fail_moan.ogg"))
    , strong_punch_sound_effect(Framework::sample("strong_punch.ogg"))
@@ -38,6 +39,7 @@ void AudioController::stop_all()
    storyboard_music.stop();
    game_show_music.stop();
    hurt_sound_effect.stop();
+   tada_sound_effect.stop();
    win_cheer_sound_effect.stop();
    fail_moan_sound_effect.stop();
    strong_punch_sound_effect.stop();
@@ -69,6 +71,13 @@ void AudioController::play_haunting_music()
 void AudioController::play_hurt_sound_effect()
 {
    play_sound_effect_by_id(HURT_SOUND_EFFECT);
+}
+
+
+
+void AudioController::play_tada_sound_effect()
+{
+   play_sound_effect_by_id(TADA_SOUND_EFFECT);
 }
 
 
@@ -117,6 +126,9 @@ void AudioController::play_sound_effect_by_id(int track_id)
       break;
    case FAIL_MOAN_SOUND_EFFECT:
       fail_moan_sound_effect.play();
+      break;
+   case TADA_SOUND_EFFECT:
+      tada_sound_effect.play();
       break;
    case STRONG_PUNCH_SOUND_EFFECT:
       strong_punch_sound_effect.play();

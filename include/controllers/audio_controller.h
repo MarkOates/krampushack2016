@@ -13,6 +13,7 @@ private:
    Sound storyboard_music;
    Sound haunting_music;
    Sound hurt_sound_effect;
+   Sound tada_sound_effect;
    Sound win_cheer_sound_effect;
    Sound fail_moan_sound_effect;
    Sound strong_punch_sound_effect;
@@ -26,6 +27,7 @@ public:
    void play_storyboard_music();
    void play_haunting_music();
    void play_hurt_sound_effect();
+   void play_tada_sound_effect();
    void play_strong_punch_sound_effect();
 
    void stop_all();

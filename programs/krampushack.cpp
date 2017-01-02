@@ -5,7 +5,7 @@
 
 #include <controllers/audio_controller.h>
 #include <emitters/user_event_emitter.h>
-#include <screens/storyboard_screen.h>
+#include <factories/storyboard_factory.h>
 #include <screens/title_screen.h>
 #include <screens/game_play_screen.h>
 #include <user_events.h>
@@ -38,7 +38,7 @@ public:
          break;
       case START_INTRO_STORYBOARD_SCREEN:
          if (current_screen) delete current_screen;
-         current_screen = new StoryboardScreen(display);
+         current_screen = StoryboardFactory::create_opening_storyboard_screen(display);
          audio_controller.play_storyboard_music();
          break;
       case START_GAME_EVENT:

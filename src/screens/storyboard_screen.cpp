@@ -9,11 +9,12 @@
 
 
 
-StoryboardScreen::StoryboardScreen(Display *display, std::vector<std::string> pages)
+StoryboardScreen::StoryboardScreen(Display *display, std::vector<std::string> pages, intptr_t event_to_emit_after_completing)
    : Screen(display)
    , text_font(Framework::font("ChronoTrigger.ttf 60"))
    , pages(pages)
    , current_page(0)
+   , event_to_emit_after_completing(event_to_emit_after_completing)
 {
 }
 
@@ -47,7 +48,7 @@ void StoryboardScreen::key_down_func()
    current_page++;
 
    if (current_page >= pages.size())
-      UserEventEmitter::emit_event(START_GAME_EVENT);
+      UserEventEmitter::emit_event(event_to_emit_after_completing);
 }
 
 

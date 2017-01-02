@@ -3,6 +3,8 @@
 
 #include <factories/storyboard_factory.h>
 
+#include <user_events.h>
+
 
 
 StoryboardScreen *StoryboardFactory::create_opening_storyboard_screen(Display *display)
@@ -17,7 +19,7 @@ StoryboardScreen *StoryboardFactory::create_opening_storyboard_screen(Display *d
    pages.push_back("\nYou won't be able to do much damage on your own. You'll need to find a proper weapon to inflict some REAL Christmas pain!");
    pages.push_back("Good Luck!");
 
-   StoryboardScreen *storyboard_screen = new StoryboardScreen(display, pages);
+   StoryboardScreen *storyboard_screen = new StoryboardScreen(display, pages, START_GAME_EVENT);
    return storyboard_screen;
 }
 
@@ -33,7 +35,7 @@ StoryboardScreen *StoryboardFactory::create_closing_storyboard_screen(Display *d
    pages.push_back("\nAnd so do I! :)");
    pages.push_back("\n\nThanks for being a part of KrampusHack 2016!");
 
-   StoryboardScreen *storyboard_screen = new StoryboardScreen(display, pages);
+   StoryboardScreen *storyboard_screen = new StoryboardScreen(display, pages, START_TITLE_SCREEN);
    return storyboard_screen;
 }
 

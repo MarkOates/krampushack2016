@@ -10,6 +10,7 @@ class AudioController
 {
 private:
    Sound game_show_music;
+   Sound storyboard_music;
    Sound haunting_music;
    Sound hurt_sound_effect;
    Sound win_cheer_sound_effect;
@@ -21,6 +22,7 @@ public:
    ~AudioController();
 
    void play_game_show_music();
+   void play_storyboard_music();
    void play_haunting_music();
    void play_hurt_sound_effect();
 

@@ -10,13 +10,15 @@
 
 AudioController::AudioController()
    : game_show_music(Framework::sample("369920__mrthenoronha__cartoon-game-theme-loop.wav"))
+   , storyboard_music(Framework::sample("storyboard_music.ogg"))
    , haunting_music(Framework::sample("haunting_atmosphere-01.wav"))
    , hurt_sound_effect(Framework::sample("217192__rt759__game-voice-3.wav"))
    , win_cheer_sound_effect(Framework::sample("win_cheer.ogg"))
    , fail_moan_sound_effect(Framework::sample("fail_moan.ogg"))
-   , current_music_track_num(0)
+   , current_music_track_num(-1)
 {
    game_show_music.loop(true);
+   storyboard_music.loop(true);
    haunting_music.loop(true);
 }
 
@@ -32,6 +34,7 @@ AudioController::~AudioController()
 void AudioController::stop_all()
 {
    haunting_music.stop();
+   storyboard_music.stop();
    game_show_music.stop();
    hurt_sound_effect.stop();
    win_cheer_sound_effect.stop();
@@ -43,6 +46,13 @@ void AudioController::stop_all()
 void AudioController::play_game_show_music()
 {
    play_audio_track_by_id(GAME_SHOW_MUSIC);
+}
+
+
+
+void AudioController::play_storyboard_music()
+{
+   play_audio_track_by_id(STORYBOARD_MUSIC);
 }
 
 
@@ -75,6 +85,9 @@ void AudioController::play_audio_track_by_id(int track_id)
       break;
    case HAUNTING_MUSIC:
       haunting_music.play();
+      break;
+   case STORYBOARD_MUSIC:
+      storyboard_music.play();
       break;
    default:
       break;

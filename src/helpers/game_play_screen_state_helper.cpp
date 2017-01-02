@@ -46,7 +46,7 @@ void GamePlayScreenStateHelper::process_key_down(int al_keycode)
       break;
    case GamePlayScreen::GAME_LOST:
        // can only close dialogue after a delay
-      if (state_counter > 2.0
+      if (state_counter > 3.0
          && (al_keycode == ALLEGRO_KEY_SPACE || al_keycode == ALLEGRO_KEY_ENTER))
       {
          UserEventEmitter::emit_event(START_TITLE_SCREEN);
@@ -104,7 +104,7 @@ void GamePlayScreenStateHelper::set_state(int new_state)
       UserEventEmitter::emit_event(PLAY_SOUND_EFFECT, FAIL_MOAN_SOUND_EFFECT);
       game_play_screen->camera.set_overlay_color(color::color(color::red, 0.3));
       game_play_screen->camera.zoom_to(0.8, 2.2);
-      game_play_screen->camera.tilt_to(random_bool() ? 0.03 : -0.03, 0.3);
+      game_play_screen->camera.tilt_to(random_bool() ? 0.03 : -0.03, 2.0);
       break;
    case GamePlayScreen::GAME_WON:
       {

@@ -2,7 +2,7 @@
 
 
 
-#include <allegro_flare/screen.h>
+#include <framework/screen.h>
 
 #include <controllers/player_krampus_controller.h>
 #include <controllers/ai_kid_controller.h>

@@ -3,7 +3,7 @@
 
 #include <factories/dialogue_factory.h>
 
-#include <allegro_flare/framework.h>
+#include <framework/framework.h>
 #include <models/item_dialogue.h>
 #include <item_type_nums.h>
 

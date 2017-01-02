@@ -1,8 +1,8 @@
 
 
 
-#include <allegro_flare/framework.h>
-#include <allegro_flare/image_processing.h>
+#include <framework/framework.h>
+#include <framework/image_processing.h>
 #include <factories/entity_factory.h>
 #include <entities/background_entity.h>
 #include <entities/door_entity.h>

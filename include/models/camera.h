@@ -2,8 +2,8 @@
 
 
 
-#include <allegro_flare/display.h>
-#include <allegro_flare/motion.h>
+#include <framework/display.h>
+#include <framework/motion.h>
 #include <entities/entity_base.h>
 
 

@@ -1,7 +1,7 @@
 
 
 
-#include <allegro_flare/allegro_flare.h>
+#include <framework/screen.h>
 
 #include <controllers/audio_controller.h>
 #include <emitters/user_event_emitter.h>

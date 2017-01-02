@@ -3,8 +3,8 @@
 
 #include <sprite_sheet.h>
 
-#include <allegro_flare/framework.h>
-#include <allegro_flare/image_processing.h>
+#include <framework/framework.h>
+#include <framework/image_processing.h>
 
 
 

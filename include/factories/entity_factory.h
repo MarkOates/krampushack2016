@@ -4,7 +4,7 @@
 
 #include <sprite_sheet.h>
 
-#include <allegro_flare/shader.h>
+#include <framework/shader.h>
 #include <entities/entity_base.h>
 #include <entities/kid_entity.h>
 

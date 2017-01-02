@@ -3,9 +3,9 @@
 
 #include <models/item_dialogue.h>
 
-#include <allegro_flare/objects/text_object.h>
-#include <allegro_flare/color.h>
-#include <allegro_flare/framework.h>
+#include <framework/objects/text_object.h>
+#include <framework/color.h>
+#include <framework/framework.h>
 #include <cmath>
 
 

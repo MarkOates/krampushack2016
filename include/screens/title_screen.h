@@ -2,8 +2,8 @@
 
 
 
-#include <allegro_flare/screen.h>
-#include <allegro_flare/objects/text_object.h>
+#include <framework/screen.h>
+#include <framework/objects/text_object.h>
 
 
 

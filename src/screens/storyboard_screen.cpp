@@ -4,7 +4,7 @@
 #include <screens/storyboard_screen.h>
 
 #include <emitters/user_event_emitter.h>
-#include <allegro_flare/framework.h>
+#include <framework/framework.h>
 #include <user_events.h>
 
 

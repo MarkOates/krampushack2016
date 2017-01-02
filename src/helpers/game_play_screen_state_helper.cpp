@@ -7,8 +7,9 @@
 #include <factories/dialogue_factory.h>
 #include <helpers/scene_collection_helper.h>
 #include <screens/game_play_screen.h>
-#include <user_events.h>
 #include <item_type_nums.h>
+#include <music_track_nums.h>
+#include <user_events.h>
 
 
 
@@ -100,6 +101,7 @@ void GamePlayScreenStateHelper::set_state(int new_state)
       }
       break;
    case GamePlayScreen::GAME_LOST:
+      UserEventEmitter::emit_event(PLAY_SOUND_EFFECT, FAIL_MOAN_SOUND_EFFECT);
       game_play_screen->camera.set_overlay_color(color::color(color::red, 0.3));
       game_play_screen->camera.zoom_to(0.8, 2.2);
       game_play_screen->camera.tilt_to(random_bool() ? 0.03 : -0.03, 0.3);
@@ -109,6 +111,7 @@ void GamePlayScreenStateHelper::set_state(int new_state)
          SceneCollectionHelper collections(game_play_screen->scene);
          KrampusEntity *krampus = collections.get_krampus();
          if (krampus) krampus->celebrate();
+         UserEventEmitter::emit_event(PLAY_SOUND_EFFECT, WIN_CHEER_SOUND_EFFECT);
          game_play_screen->camera.set_overlay_color(color::color(color::white, 0.1));
          game_play_screen->camera.zoom_to(1.1, 5.0);
       }

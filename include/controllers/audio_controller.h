@@ -12,6 +12,8 @@ private:
    Sound game_show_music;
    Sound haunting_music;
    Sound hurt_sound_effect;
+   Sound win_cheer_sound_effect;
+   Sound fail_moan_sound_effect;
    int current_music_track_num;
 
 public:

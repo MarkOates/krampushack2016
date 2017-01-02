@@ -80,6 +80,7 @@ void GamePlayScreenStateHelper::set_state(int new_state)
          SceneCollectionHelper collections(game_play_screen->scene);
          KrampusEntity *krampus = collections.get_krampus();
          if (krampus) krampus->celebrate();
+         UserEventEmitter::emit_event(PLAY_SOUND_EFFECT, TADA_SOUND_EFFECT);
          game_play_screen->hud.set_to_cinema_mode();
          game_play_screen->camera.zoom_to(0.6, 0.3);
          game_play_screen->camera.tilt_to(random_bool() ? 0.1 : -0.1, 0.3);

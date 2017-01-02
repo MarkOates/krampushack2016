@@ -9,9 +9,9 @@
 
 
 AudioController::AudioController()
-   : game_show_music(Framework::sample("369920__mrthenoronha__cartoon-game-theme-loop.wav"))
+   : game_show_music(Framework::sample("game_show_music.ogg"))
    , storyboard_music(Framework::sample("storyboard_music.ogg"))
-   , haunting_music(Framework::sample("haunting_atmosphere-01.wav"))
+   , haunting_music(Framework::sample("haunting_atmosphere-01.ogg"))
    , hurt_sound_effect(Framework::sample("217192__rt759__game-voice-3.wav"))
    , win_cheer_sound_effect(Framework::sample("win_cheer.ogg"))
    , fail_moan_sound_effect(Framework::sample("fail_moan.ogg"))
